@@ -35,25 +35,28 @@ class FoodRecommender extends HTMLElement {
                 :host {
                     display: block;
                     width: 100%;
+                    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
                 }
                 .card {
-                    background-color: var(--card-bg, #fff);
+                    background: var(--glass-bg, rgba(255, 255, 255, 0.7));
+                    backdrop-filter: blur(12px);
+                    -webkit-backdrop-filter: blur(12px);
+                    border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.5));
                     border-radius: 24px;
                     padding: 0;
-                    box-shadow: var(--shadow-md, 0 8px 24px rgba(0,0,0,0.12));
+                    box-shadow: var(--glass-shadow, 0 8px 32px 0 rgba(31, 38, 135, 0.1));
                     text-align: center;
                     transition: all 0.3s ease;
                     position: relative;
                     overflow: hidden;
-                    border: 1px solid rgba(0,0,0,0.05);
                     display: flex;
                     flex-direction: column;
                 }
                 
                 .image-area {
                     width: 100%;
-                    height: 300px;
-                    background-color: #eee;
+                    height: 350px;
+                    background-color: rgba(0,0,0,0.03);
                     position: relative;
                     overflow: hidden;
                 }
@@ -62,7 +65,7 @@ class FoodRecommender extends HTMLElement {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
-                    transition: transform 0.5s ease;
+                    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
                 }
                 
                 /* Placeholder pattern */
@@ -77,7 +80,7 @@ class FoodRecommender extends HTMLElement {
                 }
 
                 .content {
-                    padding: 2rem;
+                    padding: 2.5rem 2rem;
                     flex: 1;
                     display: flex;
                     flex-direction: column;
@@ -86,58 +89,82 @@ class FoodRecommender extends HTMLElement {
 
                 .category {
                     display: inline-block;
-                    padding: 0.4rem 1rem;
+                    padding: 0.5rem 1.2rem;
                     border-radius: 50px;
-                    background-color: rgba(255, 107, 107, 0.1);
+                    background: rgba(255, 107, 107, 0.1);
                     color: #ff6b6b;
-                    font-size: 0.9rem;
-                    font-weight: 600;
+                    font-size: 0.95rem;
+                    font-weight: 700;
                     margin-bottom: 1rem;
+                    letter-spacing: 0.5px;
+                    text-transform: uppercase;
                 }
 
                 h2 {
-                    margin: 0 0 0.5rem 0;
-                    font-size: 2.2rem;
-                    color: var(--text-main, #333);
+                    margin: 0 0 0.8rem 0;
+                    font-size: 2.5rem;
+                    color: var(--text-main, #2d3436);
+                    font-weight: 800;
+                    line-height: 1.1;
                 }
 
                 .desc {
-                    color: var(--text-muted, #888);
-                    margin-bottom: 2rem;
+                    color: var(--text-muted, #636e72);
+                    margin-bottom: 2.5rem;
                     font-size: 1.1rem;
                     min-height: 1.5em;
+                    font-weight: 400;
                 }
 
                 button {
-                    background: linear-gradient(45deg, #ff6b6b, #ff922b);
+                    background: linear-gradient(135deg, #ff6b6b, #ffa502);
                     color: white;
                     border: none;
-                    padding: 1rem 2.5rem;
+                    padding: 1.2rem 3rem;
                     font-size: 1.1rem;
-                    font-weight: bold;
+                    font-weight: 700;
                     border-radius: 50px;
                     cursor: pointer;
-                    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-                    transition: transform 0.2s, box-shadow 0.2s;
+                    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+                    transition: all 0.3s ease;
                     width: 100%;
-                    max-width: 300px;
+                    max-width: 320px;
                 }
 
                 button:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+                    transform: translateY(-3px);
+                    box-shadow: 0 15px 30px rgba(255, 107, 107, 0.4);
                 }
 
                 button:disabled {
                     opacity: 0.7;
                     cursor: wait;
-                    background: #adb5bd;
+                    background: #b2bec3;
                     box-shadow: none;
+                    transform: none;
                 }
 
                 /* Animation Classes */
+                .spinner {
+                    width: 50px;
+                    height: 50px;
+                    border: 5px solid rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    border-top-color: #fff;
+                    animation: spin 1s ease-in-out infinite;
+                }
+
+                @keyframes spin {
+                    to { transform: rotate(360deg); }
+                }
+
+                @keyframes fadeInUp {
+                    from { opacity: 0; transform: translateY(30px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+
                 .result-show .image-area img {
-                    animation: zoomIn 0.5s ease-out;
+                    animation: zoomIn 0.8s ease-out;
                 }
 
                 @keyframes zoomIn {
