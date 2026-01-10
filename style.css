@@ -1,1 +1,29 @@
-/* Add styles here */
+:root {
+    --main-bg-color: #f4f4f4;
+    --text-color: #333;
+    --card-bg-color: #fff;
+    --shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+body {
+    font-family: sans-serif;
+    background-color: var(--main-bg-color);
+    color: var(--text-color);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header, footer {
+    background-color: var(--card-bg-color);
+    padding: 1rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+main {
+    flex-grow: 1;
+    display: grid;
+    place-items: center;
+}
