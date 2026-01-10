@@ -113,7 +113,24 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Animations */
+    /* Animation Classes */
+    .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    .result-show .image-area img {
+        animation: zoomIn 0.5s ease-out;
+    }
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }

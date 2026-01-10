@@ -208,18 +208,28 @@ class FoodRecommender extends HTMLElement {
         categoryEl.textContent = pick.category;
         descEl.textContent = pick.desc;
 
-        // Generate AI Image URL (Pollinations.ai)
-        // Using random seed to avoid caching same image for same food if requested again, 
-        // or removing seed to get consistent best match. Let's use a random seed for variety.
-        const seed = Math.floor(Math.random() * 1000);
-        const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(pick.keyword)}%20high%20quality%20food%20photography%204k?width=800&height=600&nologo=true&seed=${seed}`;
+        // Show loading state
+        imgArea.innerHTML = '<div class="image-placeholder"><div class="spinner"></div></div>';
 
-        // Create and load image
+        // Generate AI Image URL (Pollinations.ai)
+        // Using random seed to ensure fresh requests
+        const seed = Math.floor(Math.random() * 10000);
+        const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(pick.keyword)}%20delicious%20food%20photography%204k?width=800&height=600&nologo=true&seed=${seed}`;
+
+        // Create image
         const img = document.createElement('img');
-        img.src = imageUrl;
         img.alt = pick.name;
         
-        img.onload = () => {
+        // Safety Timeout (5 seconds)
+        const timeoutId = setTimeout(() => {
+            if (this.isAnimating) { // If still waiting
+                console.warn("Image load timed out");
+                handleError();
+            }
+        }, 5000);
+
+        const handleSuccess = () => {
+            clearTimeout(timeoutId);
             imgArea.innerHTML = '';
             imgArea.appendChild(img);
             
@@ -227,17 +237,27 @@ class FoodRecommender extends HTMLElement {
             void card.offsetWidth; 
             card.classList.add('result-show');
             
+            enableButton();
+        };
+
+        const handleError = () => {
+            clearTimeout(timeoutId);
+            imgArea.innerHTML = '<div class="image-placeholder" style="font-size: 5rem;">😋</div>';
+            enableButton();
+        };
+
+        const enableButton = () => {
             btn.textContent = "다른 거 추천받기";
             btn.disabled = false;
             this.isAnimating = false;
         };
 
-        img.onerror = () => {
-            imgArea.innerHTML = '<div class="image-placeholder">😋</div>';
-            btn.textContent = "다른 거 추천받기";
-            btn.disabled = false;
-            this.isAnimating = false;
-        };
+        // Attach handlers BEFORE setting src
+        img.onload = handleSuccess;
+        img.onerror = handleError;
+        
+        // Trigger load
+        img.src = imageUrl;
     }
 }
 
