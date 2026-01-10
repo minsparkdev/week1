@@ -42,7 +42,7 @@ class FoodRecommender extends HTMLElement {
                     backdrop-filter: blur(12px);
                     -webkit-backdrop-filter: blur(12px);
                     border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.5));
-                    border-radius: 24px;
+                    border-radius: var(--radius, 24px); 
                     padding: 0;
                     box-shadow: var(--glass-shadow, 0 8px 32px 0 rgba(31, 38, 135, 0.1));
                     text-align: center;
