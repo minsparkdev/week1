@@ -1,21 +1,20 @@
-
-// Food Data
+// Food Data with English keywords for AI Image Generation
 const foodData = [
-    { name: "김치찌개", category: "한식", icon: "🥘", desc: "얼큰하고 칼칼한 국물이 땡기는 날" },
-    { name: "삼겹살", category: "한식", icon: "🥩", desc: "지글지글 구워지는 고기 소리" },
-    { name: "비빔밥", category: "한식", icon: "🥗", desc: "신선한 야채와 고추장의 조화" },
-    { name: "초밥", category: "일식", icon: "🍣", desc: "깔끔하고 신선한 한 끼" },
-    { name: "라멘", category: "일식", icon: "🍜", desc: "진한 국물과 쫄깃한 면발" },
-    { name: "돈까스", category: "일식", icon: "🍱", desc: "바삭바삭한 튀김의 유혹" },
-    { name: "짜장면", category: "중식", icon: "🥢", desc: "국민 배달 음식의 정석" },
-    { name: "마라탕", category: "중식", icon: "🌶️", desc: "스트레스 풀리는 매운 맛" },
-    { name: "탕수육", category: "중식", icon: "🍖", desc: "부먹? 찍먹? 일단 먹자" },
-    { name: "피자", category: "양식", icon: "🍕", desc: "치즈가 쭉 늘어나는 행복" },
-    { name: "파스타", category: "양식", icon: "🍝", desc: "분위기 있게 즐기는 한 끼" },
-    { name: "햄버거", category: "양식", icon: "🍔", desc: "빠르고 든든하게 채우는 맛" },
-    { name: "치킨", category: "야식", icon: "🍗", desc: "오늘 밤은 치느님과 함께" },
-    { name: "떡볶이", category: "분식", icon: "🥘", desc: "매콤달콤 중독성 있는 맛" },
-    { name: "샐러드", category: "다이어트", icon: "🥗", desc: "가볍고 건강하게" }
+    { name: "김치찌개", category: "한식", keyword: "Kimchi stew korean food delicious", desc: "얼큰하고 칼칼한 국물이 땡기는 날" },
+    { name: "삼겹살", category: "한식", keyword: "Grilled Pork Belly korean bbq", desc: "지글지글 구워지는 고기 소리" },
+    { name: "비빔밥", category: "한식", keyword: "Bibimbap colorful korean food", desc: "신선한 야채와 고추장의 조화" },
+    { name: "초밥", category: "일식", keyword: "Sushi platter fresh", desc: "깔끔하고 신선한 한 끼" },
+    { name: "라멘", category: "일식", keyword: "Japanese Ramen noodles rich broth", desc: "진한 국물과 쫄깃한 면발" },
+    { name: "돈까스", category: "일식", keyword: "Tonkatsu pork cutlet crispy", desc: "바삭바삭한 튀김의 유혹" },
+    { name: "짜장면", category: "중식", keyword: "Jajangmyeon black bean noodles", desc: "국민 배달 음식의 정석" },
+    { name: "마라탕", category: "중식", keyword: "Malatang spicy hot pot", desc: "스트레스 풀리는 매운 맛" },
+    { name: "탕수육", category: "중식", keyword: "Sweet and sour pork chinese", desc: "부먹? 찍먹? 일단 먹자" },
+    { name: "피자", category: "양식", keyword: "Pepperoni Pizza cheesy", desc: "치즈가 쭉 늘어나는 행복" },
+    { name: "파스타", category: "양식", keyword: "Creamy Pasta plating", desc: "분위기 있게 즐기는 한 끼" },
+    { name: "햄버거", category: "양식", keyword: "Juicy Burger with fries", desc: "빠르고 든든하게 채우는 맛" },
+    { name: "치킨", category: "야식", keyword: "Fried Chicken crispy", desc: "오늘 밤은 치느님과 함께" },
+    { name: "떡볶이", category: "분식", keyword: "Tteokbokki spicy rice cake", desc: "매콤달콤 중독성 있는 맛" },
+    { name: "샐러드", category: "다이어트", keyword: "Fresh Salad bowl healthy", desc: "가볍고 건강하게" }
 ];
 
 class FoodRecommender extends HTMLElement {
@@ -39,21 +38,50 @@ class FoodRecommender extends HTMLElement {
                 }
                 .card {
                     background-color: var(--card-bg, #fff);
-                    border-radius: 20px;
-                    padding: 3rem 2rem;
+                    border-radius: 24px;
+                    padding: 0;
                     box-shadow: var(--shadow-md, 0 8px 24px rgba(0,0,0,0.12));
                     text-align: center;
                     transition: all 0.3s ease;
                     position: relative;
                     overflow: hidden;
                     border: 1px solid rgba(0,0,0,0.05);
+                    display: flex;
+                    flex-direction: column;
                 }
                 
-                .icon-area {
+                .image-area {
+                    width: 100%;
+                    height: 300px;
+                    background-color: #eee;
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                .image-area img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.5s ease;
+                }
+                
+                /* Placeholder pattern */
+                .image-placeholder {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
                     font-size: 5rem;
-                    margin-bottom: 1rem;
-                    height: 100px;
-                    line-height: 100px;
+                }
+
+                .content {
+                    padding: 2rem;
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
                 }
 
                 .category {
@@ -75,7 +103,7 @@ class FoodRecommender extends HTMLElement {
 
                 .desc {
                     color: var(--text-muted, #888);
-                    margin-bottom: 2.5rem;
+                    margin-bottom: 2rem;
                     font-size: 1.1rem;
                     min-height: 1.5em;
                 }
@@ -100,43 +128,34 @@ class FoodRecommender extends HTMLElement {
                     box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
                 }
 
-                button:active {
-                    transform: translateY(1px);
-                }
-
                 button:disabled {
                     opacity: 0.7;
                     cursor: wait;
+                    background: #adb5bd;
+                    box-shadow: none;
                 }
 
                 /* Animation Classes */
-                .shake {
-                    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+                .result-show .image-area img {
+                    animation: zoomIn 0.5s ease-out;
                 }
 
-                @keyframes shake {
-                    10%, 90% { transform: translate3d(-1px, 0, 0); }
-                    20%, 80% { transform: translate3d(2px, 0, 0); }
-                    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
-                    40%, 60% { transform: translate3d(4px, 0, 0); }
-                }
-
-                .result-show {
-                    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                }
-
-                @keyframes popIn {
-                    0% { transform: scale(0.8); opacity: 0; }
-                    100% { transform: scale(1); opacity: 1; }
+                @keyframes zoomIn {
+                    from { transform: scale(1.1); opacity: 0; }
+                    to { transform: scale(1); opacity: 1; }
                 }
             </style>
 
             <div class="card" id="card">
-                <div class="category" id="category">READY</div>
-                <div class="icon-area" id="icon">🎲</div>
-                <h2 id="food-name">무엇을 먹을까요?</h2>
-                <p class="desc" id="desc">버튼을 눌러 오늘의 메뉴를 추천받으세요!</p>
-                <button id="recommend-btn">메뉴 추천받기</button>
+                <div class="image-area" id="image-area">
+                    <div class="image-placeholder">🍽️</div>
+                </div>
+                <div class="content">
+                    <div class="category" id="category">READY</div>
+                    <h2 id="food-name">무엇을 먹을까요?</h2>
+                    <p class="desc" id="desc">버튼을 눌러 AI가 추천하는 오늘의 메뉴를 확인하세요!</p>
+                    <button id="recommend-btn">메뉴 추천받기</button>
+                </div>
             </div>
         `;
     }
@@ -151,51 +170,80 @@ class FoodRecommender extends HTMLElement {
         this.isAnimating = true;
 
         const btn = this.shadowRoot.getElementById('recommend-btn');
-        const icon = this.shadowRoot.getElementById('icon');
+        const imgArea = this.shadowRoot.getElementById('image-area');
+        const nameEl = this.shadowRoot.getElementById('food-name');
+        const categoryEl = this.shadowRoot.getElementById('category');
+        
+        btn.disabled = true;
+        btn.textContent = "AI가 메뉴를 고르는 중...";
+        
+        // Shuffle effect
+        let counter = 0;
+        const interval = setInterval(() => {
+            const randomFood = foodData[Math.floor(Math.random() * foodData.length)];
+            nameEl.textContent = randomFood.name;
+            categoryEl.textContent = randomFood.category;
+            counter++;
+            
+            if (counter > 10) {
+                clearInterval(interval);
+                this.finalizeRecommendation();
+            }
+        }, 100);
+    }
+
+    finalizeRecommendation() {
+        const btn = this.shadowRoot.getElementById('recommend-btn');
         const card = this.shadowRoot.getElementById('card');
+        const imgArea = this.shadowRoot.getElementById('image-area');
         const nameEl = this.shadowRoot.getElementById('food-name');
         const categoryEl = this.shadowRoot.getElementById('category');
         const descEl = this.shadowRoot.getElementById('desc');
 
-        btn.disabled = true;
-        btn.textContent = "메뉴 고르는 중...";
-        
-        // Random shuffle effect
-        let counter = 0;
-        const interval = setInterval(() => {
-            const randomFood = foodData[Math.floor(Math.random() * foodData.length)];
-            icon.textContent = randomFood.icon;
-            counter++;
-            
-            if (counter > 15) {
-                clearInterval(interval);
-                this.finalizeRecommendation(card, icon, nameEl, categoryEl, descEl, btn);
-            }
-        }, 80);
-    }
-
-    finalizeRecommendation(card, icon, nameEl, categoryEl, descEl, btn) {
+        // Pick a food
         const pick = foodData[Math.floor(Math.random() * foodData.length)];
         
-        // Remove animation class to re-trigger it
-        card.classList.remove('result-show');
-        void card.offsetWidth; // Trigger reflow
-        card.classList.add('result-show');
-
-        icon.textContent = pick.icon;
+        // Update Text
         nameEl.textContent = pick.name;
         categoryEl.textContent = pick.category;
         descEl.textContent = pick.desc;
 
-        btn.textContent = "다른 거 먹을래요";
-        btn.disabled = false;
-        this.isAnimating = false;
+        // Generate AI Image URL (Pollinations.ai)
+        // Using random seed to avoid caching same image for same food if requested again, 
+        // or removing seed to get consistent best match. Let's use a random seed for variety.
+        const seed = Math.floor(Math.random() * 1000);
+        const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(pick.keyword)}%20high%20quality%20food%20photography%204k?width=800&height=600&nologo=true&seed=${seed}`;
+
+        // Create and load image
+        const img = document.createElement('img');
+        img.src = imageUrl;
+        img.alt = pick.name;
+        
+        img.onload = () => {
+            imgArea.innerHTML = '';
+            imgArea.appendChild(img);
+            
+            card.classList.remove('result-show');
+            void card.offsetWidth; 
+            card.classList.add('result-show');
+            
+            btn.textContent = "다른 거 추천받기";
+            btn.disabled = false;
+            this.isAnimating = false;
+        };
+
+        img.onerror = () => {
+            imgArea.innerHTML = '<div class="image-placeholder">😋</div>';
+            btn.textContent = "다른 거 추천받기";
+            btn.disabled = false;
+            this.isAnimating = false;
+        };
     }
 }
 
 customElements.define('food-recommender', FoodRecommender);
 
-// Global Theme Logic (Preserved)
+// Global Theme Logic
 document.addEventListener('DOMContentLoaded', () => {
     const toggleButton = document.getElementById('theme-toggle');
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
@@ -206,7 +254,6 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleButton.textContent = theme === 'dark' ? '☀️' : '🌙';
     }
 
-    // Initial Load
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         setTheme(savedTheme);
@@ -216,7 +263,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setTheme('light');
     }
 
-    // Toggle Click
     toggleButton.addEventListener('click', () => {
         const current = document.documentElement.getAttribute('data-theme');
         setTheme(current === 'dark' ? 'light' : 'dark');
