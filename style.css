@@ -142,6 +142,19 @@ main {
     font-weight: 300;
 }
 
+.hero-image {
+    width: 180px;
+    height: auto;
+    margin-bottom: 1.5rem;
+    border-radius: 20px;
+    animation: floatBounce 3s ease-in-out infinite;
+}
+
+@keyframes floatBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
 /* Contact Section (Glass Card) */
 .contact-section {
     width: 100%;
