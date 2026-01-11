@@ -271,9 +271,20 @@ class FoodBalance extends HTMLElement {
                 margin-bottom: 1.5rem;
             }
 
-            .food-emoji {
-                font-size: 4rem;
-                margin-bottom: 1rem;
+            .food-image-wrapper {
+                width: 180px;
+                height: 180px;
+                margin: 0 auto 1.5rem;
+                border-radius: 50%;
+                overflow: hidden;
+                box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+                border: 4px solid rgba(255, 107, 107, 0.3);
+            }
+
+            .food-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
 
             .food-name {
@@ -409,7 +420,9 @@ class FoodBalance extends HTMLElement {
                 </p>
 
                 <div class="recommendation">
-                    <div class="food-emoji">${recommendedFood.emoji}</div>
+                    <div class="food-image-wrapper">
+                        <img src="${recommendedFood.image}" alt="${recommendedFood.name}" class="food-image">
+                    </div>
                     <h3 class="food-name">${recommendedFood.name}</h3>
                     <p class="food-desc">${recommendedFood.desc}</p>
                 </div>

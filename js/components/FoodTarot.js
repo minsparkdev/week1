@@ -48,7 +48,7 @@ class FoodTarot extends HTMLElement {
                                     </div>
                                 </div>
                                 <div class="card-back">
-                                    <span class="card-emoji">${this.cards[idx].emoji}</span>
+                                    <img src="${this.cards[idx].image}" alt="${this.cards[idx].name}" class="card-image">
                                 </div>
                             </div>
                         </div>
@@ -165,10 +165,14 @@ class FoodTarot extends HTMLElement {
             .card-back {
                 background: linear-gradient(135deg, #f6d365, #fda085);
                 transform: rotateY(180deg);
+                overflow: hidden;
             }
 
-            .card-emoji {
-                font-size: 3rem;
+            .card-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 12px;
             }
 
             .tarot-card.selected {
@@ -193,16 +197,28 @@ class FoodTarot extends HTMLElement {
                 animation: fadeIn 0.5s ease-out;
             }
 
+            .result-image-wrapper {
+                width: 200px;
+                height: 200px;
+                margin: 0 auto 1.5rem;
+                border-radius: 50%;
+                overflow: hidden;
+                box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+                border: 4px solid rgba(102, 126, 234, 0.3);
+            }
+
+            .result-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
             .result-food {
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 gap: 1rem;
                 margin-bottom: 1rem;
-            }
-
-            .result-emoji {
-                font-size: 4rem;
             }
 
             .result-name {
@@ -318,8 +334,10 @@ class FoodTarot extends HTMLElement {
 
         resultArea.innerHTML = `
             <div class="result-card">
+                <div class="result-image-wrapper">
+                    <img src="${food.image}" alt="${food.name}" class="result-image">
+                </div>
                 <div class="result-food">
-                    <span class="result-emoji">${food.emoji}</span>
                     <span class="result-name">${food.name}</span>
                 </div>
                 <span class="result-category">${food.category}</span>
