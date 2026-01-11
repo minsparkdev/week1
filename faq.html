@@ -88,9 +88,9 @@
 
     <style>
         .faq-page {
-            max-width: 800px;
+            max-width: 640px;
             margin: 0 auto;
-            padding: var(--space-xl);
+            padding: var(--space-xl) var(--space-lg);
         }
 
         .faq-page h1 {
@@ -111,21 +111,6 @@
             border-radius: var(--radius-lg);
             padding: var(--space-xl);
             box-shadow: var(--shadow-md);
-        }
-
-        .faq-page .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-xs);
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: var(--font-size-sm);
-            margin-bottom: var(--space-lg);
-            transition: color var(--transition-fast);
-        }
-
-        .faq-page .back-link:hover {
-            color: var(--primary);
         }
 
         @media (max-width: 480px) {
@@ -149,8 +134,6 @@
     </header>
 
     <main class="faq-page" role="main">
-        <a href="index.html" class="back-link">&larr; 홈으로 돌아가기</a>
-
         <h1>자주 묻는 질문</h1>
         <p class="faq-intro">What to Eat 서비스에 대해 궁금한 점을 확인하세요.</p>
 
@@ -201,7 +184,13 @@
 
     <footer role="contentinfo">
         <div class="footer-content">
-            <nav class="footer-links" aria-label="법적 고지">
+            <nav class="footer-links" aria-label="사이트 링크">
+                <a href="index.html">홈</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="faq.html" aria-current="page">FAQ</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="contact.html">제휴 문의</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
                 <a href="privacy.html">개인정보처리방침</a>
                 <span class="footer-divider" aria-hidden="true">|</span>
                 <a href="terms.html">이용약관</a>
