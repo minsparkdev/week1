@@ -683,20 +683,17 @@ class PaymentGame extends HTMLElement {
                     `}
                 </div>
 
-                <div class="share-buttons">
-                    <button class="action-btn share-btn" id="share-btn">
+                <div class="result-buttons">
+                    <button class="result-btn primary" id="share-btn">
                         📤 공유하기
                     </button>
-                    <button class="action-btn download-btn" id="download-btn">
+                    <button class="result-btn accent" id="download-btn">
                         💾 이미지 저장
                     </button>
-                </div>
-
-                <div class="action-buttons">
-                    <button class="action-btn primary" id="retry-btn">
+                    <button class="result-btn secondary" id="retry-btn">
                         🔄 다시 하기
                     </button>
-                    <button class="action-btn secondary" id="reset-btn">
+                    <button class="result-btn ghost" id="reset-btn">
                         ← 처음부터
                     </button>
                 </div>
@@ -1656,23 +1653,22 @@ class PaymentGame extends HTMLElement {
                 box-shadow: 0 4px 12px rgba(74, 68, 88, 0.1);
             }
 
-            /* Share Buttons */
-            .share-buttons {
-                display: flex;
-                gap: 0.5rem;
-                justify-content: center;
-                flex-wrap: wrap;
-                margin-bottom: 1rem;
+            /* Result Buttons - 통합된 버튼 스타일 */
+            .result-buttons {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.625rem;
+                margin-top: 1rem;
             }
 
-            .share-btn,
-            .download-btn {
+            .result-btn {
                 display: flex;
                 align-items: center;
-                gap: 0.3rem;
-                padding: 0.625rem 1rem;
-                border-radius: 12px;
-                font-size: 0.875rem;
+                justify-content: center;
+                gap: 0.375rem;
+                padding: 0.875rem 1rem;
+                border-radius: 14px;
+                font-size: 0.9rem;
                 font-weight: 600;
                 cursor: pointer;
                 transition: all 0.25s ease;
@@ -1680,21 +1676,46 @@ class PaymentGame extends HTMLElement {
                 font-family: inherit;
             }
 
-            .share-btn {
+            .result-btn:hover {
+                transform: translateY(-2px);
+            }
+
+            .result-btn:active {
+                transform: translateY(0);
+            }
+
+            .result-btn.primary {
                 background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
                 color: white;
-                box-shadow: 0 4px 12px rgba(255, 139, 123, 0.25);
+                box-shadow: 0 4px 16px rgba(255, 139, 123, 0.3);
             }
 
-            .download-btn {
+            .result-btn.accent {
                 background: linear-gradient(135deg, #D4C1EC, #B8E0D2);
                 color: white;
-                box-shadow: 0 4px 12px rgba(212, 193, 236, 0.25);
+                box-shadow: 0 4px 16px rgba(212, 193, 236, 0.3);
             }
 
-            .share-btn:hover,
-            .download-btn:hover {
-                transform: translateY(-2px);
+            .result-btn.secondary {
+                background: #FFFFFF;
+                color: #4A4458;
+                border: 2px solid rgba(74, 68, 88, 0.12);
+            }
+
+            .result-btn.secondary:hover {
+                border-color: #FFB5A7;
+                color: #FF8B7B;
+            }
+
+            .result-btn.ghost {
+                background: transparent;
+                color: #7D7A8C;
+                border: 1px solid rgba(74, 68, 88, 0.15);
+            }
+
+            .result-btn.ghost:hover {
+                background: rgba(74, 68, 88, 0.05);
+                color: #4A4458;
             }
 
             /* Toast */
@@ -1775,16 +1796,14 @@ class PaymentGame extends HTMLElement {
                     max-width: 280px;
                 }
 
-                .share-buttons {
-                    gap: 0.375rem;
-                    margin-bottom: 0.75rem;
+                .result-buttons {
+                    gap: 0.5rem;
                 }
 
-                .share-btn,
-                .download-btn {
-                    padding: 0.5rem 0.75rem;
-                    font-size: 0.75rem;
-                    border-radius: 10px;
+                .result-btn {
+                    padding: 0.75rem 0.75rem;
+                    font-size: 0.8rem;
+                    border-radius: 12px;
                 }
 
                 .toast {
