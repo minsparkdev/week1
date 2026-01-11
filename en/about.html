@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | What to Eat - Food Recommendation Service</title>
+    <meta name="description" content="What to Eat is a free food recommendation service for those who have trouble deciding what to eat. Choose today's menu with Quick Pick, Food World Cup, Food Tarot, Balance Game, or Payment King.">
+    <meta name="keywords" content="What to Eat, food recommendation, menu picker, what to eat today, food decision">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://whattoeat.pages.dev/en/about.html">
+
+    <!-- hreflang tags -->
+    <link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/about.html" />
+    <link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/about.html" />
+    <link rel="alternate" hreflang="x-default" href="https://whattoeat.pages.dev/about.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://whattoeat.pages.dev/en/about.html">
+    <meta property="og:title" content="About | What to Eat">
+    <meta property="og:description" content="A free food recommendation service for those who have trouble deciding what to eat.">
+    <meta property="og:image" content="https://whattoeat.pages.dev/assets/images/foods/food_think.png">
+    <meta property="og:locale" content="en_US">
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Structured Data: AboutPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "About What to Eat",
+        "description": "A free food recommendation service for those who have trouble deciding what to eat",
+        "url": "https://whattoeat.pages.dev/en/about.html",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "What to Eat",
+            "description": "Food recommendation service for the indecisive",
+            "url": "https://whattoeat.pages.dev/"
+        }
+    }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://whattoeat.pages.dev/en/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "About"
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        .about-page-content {
+            display: block;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: var(--space-xl) var(--space-lg);
+        }
+        .about-page-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            box-shadow: var(--shadow-md);
+        }
+        .about-page-card h1 {
+            font-size: var(--font-size-2xl);
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+            text-align: center;
+        }
+        .about-tagline {
+            text-align: center;
+            color: var(--primary);
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            margin-bottom: var(--space-xl);
+        }
+        .about-section-title {
+            font-size: var(--font-size-lg);
+            color: var(--text-primary);
+            margin: var(--space-xl) 0 var(--space-md) 0;
+            padding-bottom: var(--space-xs);
+            border-bottom: 2px solid var(--primary-light);
+        }
+        .about-page-card p {
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: var(--space-md);
+        }
+        .about-page-card ul {
+            padding-left: var(--space-lg);
+            margin-bottom: var(--space-md);
+        }
+        .about-page-card li {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: var(--space-sm);
+        }
+        .about-page-card strong {
+            color: var(--text-primary);
+        }
+        .service-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+        .service-feature {
+            background: var(--bg-warm);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: all var(--transition-base);
+        }
+        .service-feature:hover {
+            transform: translateY(-2px);
+            background: var(--accent-peach);
+        }
+        .service-feature-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-xs);
+        }
+        .service-feature-name {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-xs);
+        }
+        .service-feature-desc {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+        .cta-box {
+            background: var(--primary-gradient);
+            border-radius: var(--radius-md);
+            padding: var(--space-xl);
+            text-align: center;
+            margin-top: var(--space-xl);
+        }
+        .cta-box h3 {
+            color: white;
+            margin-bottom: var(--space-sm);
+        }
+        .cta-box p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--space-md);
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: var(--space-sm) var(--space-xl);
+            background: white;
+            color: var(--primary);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-base);
+        }
+        .cta-btn:hover {
+            transform: scale(1.05);
+        }
+        @media (max-width: 480px) {
+            .about-page-content {
+                padding: var(--space-md);
+            }
+            .about-page-card {
+                padding: var(--space-lg);
+            }
+            .about-page-card h1 {
+                font-size: var(--font-size-xl);
+            }
+            .service-features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">What to Eat</a>
+        <a href="/about.html" class="lang-switch">🌐 한국어</a>
+    </header>
+
+    <main class="about-page-content">
+        <article class="about-page-card">
+            <h1>About What to Eat</h1>
+            <p class="about-tagline">A service born from the question "What to eat today?"</p>
+
+            <h2 class="about-section-title">About Our Service</h2>
+            <p>
+                <strong>What to Eat</strong> is a <strong>free food recommendation service</strong> created to answer
+                the daily question "What to eat today?" From lunch decisions to dinner dilemmas,
+                we provide fun and diverse menu recommendations for everyone who struggles with food choices.
+            </p>
+            <p>
+                We understand that modern people have to make dozens of big and small decisions every day.
+                Among them, choosing what to eat actually consumes more mental energy than you might think.
+                There's even a psychological term called "Decision Fatigue" - repeated choices wear us down.
+            </p>
+            <p>
+                What to Eat was created to reduce this decision fatigue.
+                From simple random recommendations to game-style selections, we help you decide
+                today's menu in various ways that suit your situation and mood.
+            </p>
+
+            <h2 class="about-section-title">5 Recommendation Methods</h2>
+            <p>
+                What to Eat offers 5 different menu recommendation methods to match your situation and preferences.
+                When you're short on time, get a quick suggestion. When you have time to spare, have fun deciding.
+            </p>
+
+            <div class="service-features">
+                <div class="service-feature">
+                    <div class="service-feature-icon">🎲</div>
+                    <div class="service-feature-name">Quick Pick</div>
+                    <p class="service-feature-desc">Leave it to fate and get an instant recommendation</p>
+                </div>
+                <div class="service-feature">
+                    <div class="service-feature-icon">🏆</div>
+                    <div class="service-feature-name">Food World Cup</div>
+                    <p class="service-feature-desc">Find your favorite food through a 16-team tournament</p>
+                </div>
+                <div class="service-feature">
+                    <div class="service-feature-icon">🔮</div>
+                    <div class="service-feature-name">Food Tarot</div>
+                    <p class="service-feature-desc">Get a recommendation with today's fortune</p>
+                </div>
+                <div class="service-feature">
+                    <div class="service-feature-icon">⚖️</div>
+                    <div class="service-feature-name">Balance Game</div>
+                    <p class="service-feature-desc">Get personalized recommendations through taste analysis</p>
+                </div>
+                <div class="service-feature">
+                    <div class="service-feature-icon">💰</div>
+                    <div class="service-feature-name">Payment King</div>
+                    <p class="service-feature-desc">Decide who pays with roulette or ladder game</p>
+                </div>
+            </div>
+
+            <h2 class="about-section-title">Our Philosophy</h2>
+            <p>
+                What to Eat values the following principles:
+            </p>
+            <ul>
+                <li><strong>Simplicity</strong> - Anyone can use it immediately without signing up. No app installation required.</li>
+                <li><strong>Fun</strong> - Beyond simple recommendations, we provide experiences you can enjoy like a game.</li>
+                <li><strong>Practicality</strong> - We recommend realistic menus that you can actually eat.</li>
+                <li><strong>Free</strong> - All features are provided free of charge. No hidden costs.</li>
+            </ul>
+
+            <h2 class="about-section-title">FAQ</h2>
+            <p>
+                <strong>Q. Do I need to sign up?</strong><br>
+                No, What to Eat can be used immediately without any registration.
+                Simply visit our website and start using the menu recommendation service right away.
+            </p>
+            <p>
+                <strong>Q. What kinds of food are recommended?</strong><br>
+                Our database includes 16 popular foods that are easily accessible in Korea, including Korean, Chinese, Japanese, and Western cuisines.
+                You'll find various categories including Kimchi Stew, Pork Belly, Jajangmyeon, Sushi, Pizza, Fried Chicken, and more.
+            </p>
+            <p>
+                <strong>Q. Can I use it on mobile?</strong><br>
+                Yes, What to Eat is optimized for mobile devices. You can conveniently use it on
+                smartphones, tablets, and PCs.
+            </p>
+
+            <h2 class="about-section-title">Contact</h2>
+            <p>
+                If you have any questions about our service or partnership inquiries,
+                please reach out through our <a href="contact.html">Contact</a> page.
+                We look forward to hearing from you.
+            </p>
+
+            <div class="cta-box">
+                <h3>Start now!</h3>
+                <p>Let What to Eat decide today's menu for you</p>
+                <a href="index.html" class="cta-btn">Get Recommendations</a>
+            </div>
+        </article>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <nav class="footer-links" aria-label="Site links">
+                <a href="index.html">Home</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="blog.html">Blog</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="about.html" aria-current="page">About</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="faq.html">FAQ</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="contact.html">Contact</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="privacy.html">Privacy Policy</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="terms.html">Terms of Service</a>
+            </nav>
+            <p class="footer-copy">&copy; 2026 What to Eat. Bon Appetit!</p>
+        </div>
+    </footer>
+</body>
+</html>

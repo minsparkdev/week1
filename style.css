@@ -111,13 +111,19 @@ body > header {
     height: 56px;
     padding: 0 var(--space-lg);
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background: var(--surface);
     border-bottom: 1px solid var(--border-light);
     position: sticky;
     top: 0;
     z-index: 100;
+}
+
+/* Header layout: empty left space for balance */
+body > header::before {
+    content: '';
+    width: 80px;
 }
 
 .logo {
@@ -133,6 +139,36 @@ body > header {
 .logo:hover {
     color: var(--primary-dark);
     transform: scale(1.02);
+}
+
+/* Language Switch Button */
+.lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.4rem 0.875rem;
+    background: var(--bg-warm);
+    color: var(--text-secondary);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-light);
+    transition: all var(--transition-fast);
+    min-width: 80px;
+    justify-content: center;
+}
+
+.lang-switch:hover {
+    background: var(--accent-peach);
+    color: var(--text-primary);
+    border-color: var(--primary-light);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.lang-switch:active {
+    transform: translateY(0);
 }
 
 /* =====================
@@ -771,6 +807,16 @@ footer {
     main {
         padding: var(--space-sm);
         gap: var(--space-sm);
+    }
+
+    /* Header - Language Switch */
+    body > header::before {
+        width: 60px;
+    }
+    .lang-switch {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.65rem;
+        min-width: 60px;
     }
 
     /* Hero - More compact */

@@ -54,8 +54,9 @@ Allow: /
 User-agent: Meta-ExternalFetcher
 Allow: /
 
-# Sitemap and LLMs.txt locations
+# Sitemap locations
 Sitemap: https://whattoeat.pages.dev/sitemap.xml
 
 # LLMs.txt for AI crawlers (proposed standard)
-# https://whattoeat.pages.dev/llms.txt
+# Korean version: https://whattoeat.pages.dev/llms.txt
+# English version: https://whattoeat.pages.dev/en/llms.txt

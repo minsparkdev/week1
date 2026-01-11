@@ -1,0 +1,895 @@
+/**
+ * FoodBalance Component
+ * - Food Balance Game
+ * - Taste analysis-based recommendation
+ *
+ * Logic Flow:
+ * 1. A/B choice for 5 questions
+ * 2. Update taste profile based on each choice
+ * 3. Recommend optimal food based on final profile
+ * 4. Display with taste analysis results
+ */
+
+import { balanceQuestions, shuffleArray } from '../data/foods.js';
+import {
+    createInitialProfile,
+    updateProfile,
+    analyzeProfile,
+    recommendFoods,
+    generateRecommendationReason
+} from '../utils/tasteAnalyzer.js';
+
+class FoodBalance extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+        this.questions = [];
+        this.currentIndex = 0;
+        this.answers = [];
+        this.totalQuestions = 5;
+        this.profile = null;
+        this.recommendation = null;
+        this.analysis = null;
+    }
+
+    connectedCallback() {
+        this.initGame();
+        this.render();
+    }
+
+    initGame() {
+        // Randomly select 5 questions
+        this.questions = shuffleArray([...balanceQuestions]).slice(0, this.totalQuestions);
+        this.currentIndex = 0;
+        this.answers = [];
+        this.profile = createInitialProfile();
+        this.recommendation = null;
+        this.analysis = null;
+    }
+
+    render() {
+        if (this.currentIndex >= this.totalQuestions) {
+            this.showResult();
+            return;
+        }
+
+        const question = this.questions[this.currentIndex];
+
+        this.shadowRoot.innerHTML = `
+            <style>
+                ${this.getStyles()}
+            </style>
+            <div class="balance-container">
+                <div class="progress-info">
+                    <span class="question-count">${this.currentIndex + 1} / ${this.totalQuestions}</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${((this.currentIndex + 1) / this.totalQuestions) * 100}%"></div>
+                    </div>
+                </div>
+
+                <h2 class="question-text">${question.question}</h2>
+
+                <div class="options-row">
+                    <button class="option-btn" data-choice="A">
+                        <span class="option-emoji">${question.optionA.emoji}</span>
+                        <span class="option-text">${question.optionA.text}</span>
+                    </button>
+
+                    <div class="vs-badge">VS</div>
+
+                    <button class="option-btn" data-choice="B">
+                        <span class="option-emoji">${question.optionB.emoji}</span>
+                        <span class="option-text">${question.optionB.text}</span>
+                    </button>
+                </div>
+
+                <div class="stats-area hidden" id="stats-area">
+                    <div class="stat-bar">
+                        <div class="stat-fill stat-a" id="stat-a"></div>
+                        <div class="stat-fill stat-b" id="stat-b"></div>
+                    </div>
+                    <div class="stat-labels">
+                        <span id="label-a">${question.optionA.text}</span>
+                        <span id="label-b">${question.optionB.text}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        this.bindEvents();
+    }
+
+    getStyles() {
+        return `
+            :host {
+                display: block;
+                width: 100%;
+                animation: fadeIn 0.5s ease-out;
+            }
+
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(16px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+
+            .balance-container {
+                background: #FFFFFF;
+                border: 1px solid rgba(74, 68, 88, 0.08);
+                border-radius: 24px;
+                padding: 1.5rem;
+                box-shadow: 0 4px 20px rgba(74, 68, 88, 0.08);
+                text-align: center;
+            }
+
+            .progress-info {
+                margin-bottom: 1.5rem;
+            }
+
+            .question-count {
+                display: inline-block;
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
+                color: #FFFFFF;
+                padding: 6px 14px;
+                border-radius: 9999px;
+                font-weight: 600;
+                font-size: 0.75rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .progress-bar {
+                width: 100%;
+                height: 6px;
+                background: rgba(74, 68, 88, 0.08);
+                border-radius: 3px;
+                overflow: hidden;
+            }
+
+            .progress-fill {
+                height: 100%;
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
+                border-radius: 3px;
+                transition: width 0.4s ease;
+            }
+
+            .question-text {
+                font-size: 1.25rem;
+                color: #4A4458;
+                margin: 0 0 1.5rem 0;
+                font-weight: 700;
+                line-height: 1.4;
+            }
+
+            .options-row {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .option-btn {
+                flex: 1;
+                min-width: 130px;
+                max-width: 200px;
+                padding: 1.5rem 1rem;
+                background: #FFFFFF;
+                border: 2px solid rgba(74, 68, 88, 0.08);
+                border-radius: 20px;
+                cursor: pointer;
+                transition: all 0.25s ease;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+                box-shadow: 0 2px 8px rgba(74, 68, 88, 0.06);
+            }
+
+            .option-btn:hover {
+                transform: translateY(-4px);
+                border-color: #FFB5A7;
+                box-shadow: 0 8px 24px rgba(255, 139, 123, 0.2);
+            }
+
+            .option-btn:active {
+                transform: scale(0.98);
+            }
+
+            .option-btn.selected {
+                border-color: #FF8B7B;
+                background: rgba(255, 181, 167, 0.1);
+            }
+
+            .option-btn.not-selected {
+                opacity: 0.4;
+            }
+
+            .option-emoji {
+                font-size: 2.5rem;
+            }
+
+            .option-text {
+                font-size: 1rem;
+                font-weight: 600;
+                color: #4A4458;
+            }
+
+            .vs-badge {
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
+                color: #FFFFFF;
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 700;
+                font-size: 0.875rem;
+                flex-shrink: 0;
+            }
+
+            /* Stats Area */
+            .stats-area {
+                margin-top: 1.5rem;
+                animation: fadeIn 0.5s ease-out;
+            }
+
+            .stats-area.hidden {
+                display: none;
+            }
+
+            .stat-bar {
+                display: flex;
+                width: 100%;
+                height: 36px;
+                border-radius: 18px;
+                overflow: hidden;
+                background: rgba(74, 68, 88, 0.08);
+            }
+
+            .stat-fill {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 600;
+                font-size: 0.8rem;
+                color: white;
+                transition: width 0.8s ease;
+            }
+
+            .stat-fill.stat-a {
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
+            }
+
+            .stat-fill.stat-b {
+                background: linear-gradient(135deg, #D4C1EC, #B8E0D2);
+            }
+
+            .stat-labels {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 0.5rem;
+                color: #7D7A8C;
+                font-weight: 500;
+                font-size: 0.8rem;
+            }
+
+            /* Result Screen */
+            .result-container {
+                text-align: center;
+            }
+
+            .result-header {
+                margin-bottom: 1.5rem;
+            }
+
+            .result-badge {
+                display: inline-block;
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
+                color: #FFFFFF;
+                padding: 6px 14px;
+                border-radius: 9999px;
+                font-weight: 600;
+                font-size: 0.75rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .result-title {
+                font-size: 1.25rem;
+                color: #4A4458;
+                font-weight: 700;
+                margin: 0 0 0.25rem 0;
+            }
+
+            .result-subtitle {
+                color: #7D7A8C;
+                font-size: 0.875rem;
+                margin: 0;
+            }
+
+            /* Taste Analysis Card */
+            .analysis-card {
+                background: linear-gradient(135deg, rgba(255, 181, 167, 0.15), rgba(255, 200, 162, 0.15));
+                border: 1px solid rgba(255, 181, 167, 0.3);
+                border-radius: 16px;
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .taste-type {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .taste-type-emoji {
+                font-size: 1.5rem;
+            }
+
+            .taste-type-name {
+                font-size: 1rem;
+                font-weight: 700;
+                color: #4A4458;
+            }
+
+            .taste-type-desc {
+                color: #7D7A8C;
+                font-size: 0.8rem;
+                margin: 0;
+            }
+
+            /* Taste Gauge */
+            .traits-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.5rem;
+                margin-top: 0.75rem;
+            }
+
+            .trait-item {
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+
+            .trait-label {
+                font-size: 0.7rem;
+                color: #7D7A8C;
+                text-align: left;
+            }
+
+            .trait-bar {
+                height: 6px;
+                background: rgba(74, 68, 88, 0.1);
+                border-radius: 3px;
+                overflow: hidden;
+            }
+
+            .trait-fill {
+                height: 100%;
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
+                border-radius: 3px;
+                transition: width 0.5s ease;
+            }
+
+            /* Recommended Food Card */
+            .recommendation {
+                background: linear-gradient(135deg, rgba(255, 218, 193, 0.2), rgba(255, 181, 167, 0.15));
+                border: 1px solid rgba(255, 181, 167, 0.3);
+                border-radius: 20px;
+                padding: 1.5rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .match-score {
+                display: inline-block;
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
+                color: #FFFFFF;
+                padding: 4px 12px;
+                border-radius: 9999px;
+                font-weight: 700;
+                font-size: 0.7rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .food-image-wrapper {
+                width: 140px;
+                height: 140px;
+                margin: 0 auto 1rem;
+                border-radius: 50%;
+                overflow: hidden;
+                box-shadow: 0 8px 24px rgba(255, 139, 123, 0.2);
+                border: 3px solid rgba(255, 181, 167, 0.4);
+            }
+
+            .food-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .food-name {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #4A4458;
+                margin: 0 0 0.25rem 0;
+            }
+
+            .food-category {
+                display: inline-block;
+                padding: 4px 10px;
+                background: #FFDAC1;
+                color: #E07565;
+                font-size: 0.65rem;
+                font-weight: 600;
+                border-radius: 9999px;
+                margin-bottom: 0.5rem;
+            }
+
+            .food-reason {
+                color: #7D7A8C;
+                font-size: 0.8rem;
+                margin: 0;
+                line-height: 1.5;
+            }
+
+            .image-placeholder {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 3rem;
+                background: linear-gradient(135deg, #FFDAC1 0%, #FFB5A7 100%);
+            }
+
+            .action-buttons {
+                display: flex;
+                gap: 0.75rem;
+                justify-content: center;
+                flex-wrap: wrap;
+                margin-top: 0.5rem;
+            }
+
+            .action-btn {
+                padding: 0.75rem 1.25rem;
+                border-radius: 16px;
+                font-size: 0.8rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.25s ease;
+                border: none;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .action-btn.primary {
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
+                color: #FFFFFF;
+                box-shadow: 0 8px 24px rgba(255, 139, 123, 0.25);
+            }
+
+            .action-btn.secondary {
+                background: #FFFFFF;
+                color: #4A4458;
+                border: 1px solid rgba(74, 68, 88, 0.08);
+            }
+
+            .action-btn:hover {
+                transform: translateY(-2px);
+            }
+
+            .btn-icon {
+                font-size: 1rem;
+            }
+
+            /* Tablet */
+            @media (max-width: 600px) {
+                .balance-container {
+                    padding: 1rem;
+                    border-radius: 16px;
+                }
+
+                .progress-info {
+                    margin-bottom: 1rem;
+                }
+
+                .question-count, .result-badge {
+                    padding: 4px 10px;
+                    font-size: 0.625rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                .question-text, .result-title {
+                    font-size: 1rem;
+                    margin-bottom: 1rem;
+                }
+
+                .result-subtitle {
+                    font-size: 0.75rem;
+                }
+
+                .options-row {
+                    gap: 0.5rem;
+                }
+
+                .option-btn {
+                    min-width: 0;
+                    flex: 1;
+                    padding: 1rem 0.5rem;
+                    gap: 0.5rem;
+                    border-radius: 14px;
+                }
+
+                .option-emoji {
+                    font-size: 2rem;
+                }
+
+                .option-text {
+                    font-size: 0.8rem;
+                }
+
+                .vs-badge {
+                    width: 36px;
+                    height: 36px;
+                    font-size: 0.75rem;
+                }
+
+                .stats-area {
+                    margin-top: 1rem;
+                }
+
+                .stat-bar {
+                    height: 30px;
+                    border-radius: 15px;
+                }
+
+                .stat-fill {
+                    font-size: 0.7rem;
+                }
+
+                .stat-labels {
+                    font-size: 0.7rem;
+                }
+
+                .analysis-card {
+                    padding: 0.75rem;
+                    border-radius: 12px;
+                }
+
+                .taste-type-emoji {
+                    font-size: 1.25rem;
+                }
+
+                .taste-type-name {
+                    font-size: 0.875rem;
+                }
+
+                .taste-type-desc {
+                    font-size: 0.7rem;
+                }
+
+                .traits-grid {
+                    gap: 0.375rem;
+                }
+
+                .trait-label {
+                    font-size: 0.625rem;
+                }
+
+                .recommendation {
+                    padding: 1rem;
+                    border-radius: 16px;
+                    margin-bottom: 1rem;
+                }
+
+                .match-score {
+                    padding: 3px 10px;
+                    font-size: 0.625rem;
+                }
+
+                .food-image-wrapper {
+                    width: 120px;
+                    height: 120px;
+                    margin-bottom: 0.75rem;
+                }
+
+                .food-name {
+                    font-size: 1.25rem;
+                }
+
+                .food-category {
+                    font-size: 0.6rem;
+                    padding: 3px 8px;
+                }
+
+                .food-reason {
+                    font-size: 0.75rem;
+                }
+            }
+
+            /* Mobile */
+            @media (max-width: 480px) {
+                .balance-container {
+                    padding: 0.75rem;
+                }
+
+                .question-text, .result-title {
+                    font-size: 0.875rem;
+                    margin-bottom: 0.75rem;
+                }
+
+                .result-subtitle {
+                    font-size: 0.7rem;
+                }
+
+                .options-row {
+                    flex-direction: row;
+                    gap: 0.375rem;
+                }
+
+                .option-btn {
+                    padding: 0.75rem 0.375rem;
+                    border-radius: 12px;
+                }
+
+                .option-emoji {
+                    font-size: 1.5rem;
+                }
+
+                .option-text {
+                    font-size: 0.7rem;
+                }
+
+                .vs-badge {
+                    width: 28px;
+                    height: 28px;
+                    font-size: 0.625rem;
+                }
+
+                .analysis-card {
+                    padding: 0.625rem;
+                    margin-bottom: 0.75rem;
+                }
+
+                .taste-type {
+                    gap: 0.375rem;
+                    margin-bottom: 0.375rem;
+                }
+
+                .taste-type-emoji {
+                    font-size: 1.125rem;
+                }
+
+                .taste-type-name {
+                    font-size: 0.8rem;
+                }
+
+                .taste-type-desc {
+                    font-size: 0.65rem;
+                }
+
+                .traits-grid {
+                    grid-template-columns: 1fr;
+                    gap: 0.25rem;
+                    margin-top: 0.5rem;
+                }
+
+                .trait-bar {
+                    height: 5px;
+                }
+
+                .recommendation {
+                    padding: 0.75rem;
+                    border-radius: 14px;
+                    margin-bottom: 0.75rem;
+                }
+
+                .food-image-wrapper {
+                    width: 100px;
+                    height: 100px;
+                    margin-bottom: 0.5rem;
+                }
+
+                .food-name {
+                    font-size: 1.125rem;
+                }
+
+                .food-reason {
+                    font-size: 0.7rem;
+                }
+
+                .action-buttons {
+                    gap: 0.5rem;
+                }
+
+                .action-btn {
+                    padding: 0.625rem 1rem;
+                    font-size: 0.7rem;
+                    border-radius: 12px;
+                    gap: 0.375rem;
+                }
+
+                .btn-icon {
+                    font-size: 0.9rem;
+                }
+            }
+        `;
+    }
+
+    bindEvents() {
+        const buttons = this.shadowRoot.querySelectorAll('.option-btn');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const choice = btn.dataset.choice;
+                this.selectOption(choice);
+            });
+        });
+    }
+
+    selectOption(choice) {
+        const question = this.questions[this.currentIndex];
+
+        // Save answer
+        this.answers.push({
+            question: question,
+            choice: choice
+        });
+
+        // Update taste profile
+        this.profile = updateProfile(this.profile, {
+            question: question,
+            choice: choice
+        });
+
+        // Update button state
+        const buttons = this.shadowRoot.querySelectorAll('.option-btn');
+        buttons.forEach(btn => {
+            if (btn.dataset.choice === choice) {
+                btn.classList.add('selected');
+            } else {
+                btn.classList.add('not-selected');
+            }
+            btn.disabled = true;
+        });
+
+        // Show statistics
+        this.showStats(question, choice);
+
+        // Next question
+        setTimeout(() => {
+            this.currentIndex++;
+            this.render();
+        }, 1500);
+    }
+
+    showStats(question, choice) {
+        const statsArea = this.shadowRoot.getElementById('stats-area');
+        const statA = this.shadowRoot.getElementById('stat-a');
+        const statB = this.shadowRoot.getElementById('stat-b');
+
+        statsArea.classList.remove('hidden');
+
+        // Add slight random variation (to look like real statistics)
+        const variance = Math.floor(Math.random() * 6) - 3;
+        const percentA = Math.min(95, Math.max(5, question.statsA + variance));
+        const percentB = 100 - percentA;
+
+        statA.style.width = `${percentA}%`;
+        statA.textContent = `${percentA}%`;
+        statB.style.width = `${percentB}%`;
+        statB.textContent = `${percentB}%`;
+    }
+
+    showResult() {
+        // Analyze taste
+        this.analysis = analyzeProfile(this.profile);
+
+        // Recommend food (top 1)
+        const recommendations = recommendFoods(this.profile, 1);
+        this.recommendation = recommendations[0];
+
+        const { food, score } = this.recommendation;
+        const reason = generateRecommendationReason(this.profile, food, score);
+        const { type, descriptions } = this.analysis;
+
+        this.shadowRoot.innerHTML = `
+            <style>
+                ${this.getStyles()}
+            </style>
+            <div class="balance-container result-container">
+                <div class="result-header">
+                    <span class="result-badge">Analysis Complete</span>
+                    <h2 class="result-title">Your food taste has been analyzed!</h2>
+                    <p class="result-subtitle">Results based on 5 questions</p>
+                </div>
+
+                <div class="analysis-card">
+                    <div class="taste-type">
+                        <span class="taste-type-emoji">${type.emoji}</span>
+                        <span class="taste-type-name">${type.name}</span>
+                    </div>
+                    <p class="taste-type-desc">${type.description}</p>
+
+                    <div class="traits-grid">
+                        ${this.renderTraitBars()}
+                    </div>
+                </div>
+
+                <div class="recommendation">
+                    <span class="match-score">Match ${score}%</span>
+                    <div class="food-image-wrapper" id="food-image-wrapper">
+                        <img src="${food.image}" alt="${food.name}" class="food-image" id="food-image">
+                    </div>
+                    <span class="food-category">${food.category}</span>
+                    <h3 class="food-name">${food.name}</h3>
+                    <p class="food-reason">${reason}</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="action-btn primary" id="share-btn">
+                        <span class="btn-icon">📤</span>
+                        Share Result
+                    </button>
+                    <button class="action-btn secondary" id="retry-btn">
+                        <span class="btn-icon">🔄</span>
+                        Try Again
+                    </button>
+                </div>
+            </div>
+        `;
+
+        // Replace with emoji on image load failure
+        const foodImage = this.shadowRoot.getElementById('food-image');
+        const imageWrapper = this.shadowRoot.getElementById('food-image-wrapper');
+        if (foodImage && imageWrapper) {
+            foodImage.onerror = () => {
+                imageWrapper.innerHTML = `<div class="image-placeholder">${food.emoji}</div>`;
+            };
+        }
+
+        this.shadowRoot.getElementById('retry-btn').addEventListener('click', () => {
+            this.initGame();
+            this.render();
+        });
+
+        this.shadowRoot.getElementById('share-btn').addEventListener('click', () => {
+            this.dispatchEvent(new CustomEvent('food-result', {
+                detail: { food: food, mode: 'balance' },
+                bubbles: true,
+                composed: true
+            }));
+        });
+    }
+
+    /**
+     * Render taste gauge bars
+     */
+    renderTraitBars() {
+        const traitLabels = {
+            spicy: 'Spicy',
+            hearty: 'Hearty',
+            adventurous: 'Adventure',
+            social: 'Social',
+            quick: 'Speed'
+        };
+
+        return Object.entries(this.profile).map(([trait, value]) => {
+            const percentage = (value / 5) * 100;
+            return `
+                <div class="trait-item">
+                    <span class="trait-label">${traitLabels[trait] || trait}</span>
+                    <div class="trait-bar">
+                        <div class="trait-fill" style="width: ${percentage}%"></div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+}
+
+customElements.define('food-balance', FoodBalance);
+
+export default FoodBalance;

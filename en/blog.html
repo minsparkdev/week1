@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | What to Eat - Food Stories and Menu Selection Guide</title>
+    <meta name="description" content="Discover food selection psychology, Korean food culture, menu guides and more. Get helpful information for deciding today's menu at the What to Eat blog.">
+    <meta name="keywords" content="food blog, menu recommendation, Korean food culture, food selection, dining guide, food psychology">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://whattoeat.pages.dev/en/blog.html">
+
+    <!-- hreflang -->
+    <link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog.html" />
+    <link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog.html" />
+    <link rel="alternate" hreflang="x-default" href="https://whattoeat.pages.dev/blog.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="blog">
+    <meta property="og:url" content="https://whattoeat.pages.dev/en/blog.html">
+    <meta property="og:title" content="Blog | What to Eat">
+    <meta property="og:description" content="Food selection psychology, Korean food culture, menu guides and more">
+    <meta property="og:image" content="https://whattoeat.pages.dev/assets/images/foods/food_think.png">
+    <meta property="og:locale" content="en_US">
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Structured Data: Blog -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "What to Eat Blog",
+        "description": "Food selection psychology, Korean food culture, menu guides and delicious stories",
+        "url": "https://whattoeat.pages.dev/en/blog.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "What to Eat",
+            "url": "https://whattoeat.pages.dev/"
+        },
+        "inLanguage": "en"
+    }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://whattoeat.pages.dev/en/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog"
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        .blog-page-content {
+            display: block;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--space-xl) var(--space-lg);
+        }
+        .blog-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+        .blog-header h1 {
+            font-size: var(--font-size-2xl);
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+        }
+        .blog-header p {
+            color: var(--text-secondary);
+            font-size: var(--font-size-base);
+        }
+        .blog-categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xl);
+        }
+        .blog-category-btn {
+            padding: var(--space-xs) var(--space-md);
+            background: var(--surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-full);
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+        .blog-category-btn:hover,
+        .blog-category-btn.active {
+            background: var(--primary-light);
+            color: white;
+            border-color: var(--primary-light);
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-lg);
+        }
+        .blog-card {
+            background: var(--surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-base);
+            text-decoration: none;
+            display: block;
+        }
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .blog-card-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            background: var(--bg-warm);
+        }
+        .blog-card-content {
+            padding: var(--space-md);
+        }
+        .blog-card-category {
+            display: inline-block;
+            padding: 2px 8px;
+            background: var(--accent-peach);
+            color: var(--primary-dark);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+        }
+        .blog-card-title {
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-xs);
+            line-height: 1.4;
+        }
+        .blog-card-excerpt {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--space-sm);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .blog-card-meta {
+            font-size: var(--font-size-xs);
+            color: var(--text-muted);
+        }
+        @media (max-width: 640px) {
+            .blog-page-content {
+                padding: var(--space-md);
+            }
+            .blog-header h1 {
+                font-size: var(--font-size-xl);
+            }
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">What to Eat</a>
+        <a href="/blog.html" class="lang-switch" aria-label="Switch to Korean">🌐 한국어</a>
+    </header>
+
+    <main class="blog-page-content">
+        <div class="blog-header">
+            <h1>What to Eat Blog</h1>
+            <p>Food choices, Korean food culture, and delicious stories</p>
+        </div>
+
+        <div class="blog-categories">
+            <button class="blog-category-btn active" data-category="all">All</button>
+            <button class="blog-category-btn" data-category="psychology">Food Psychology</button>
+            <button class="blog-category-btn" data-category="culture">Korean Food Culture</button>
+            <button class="blog-category-btn" data-category="guide">Dining Guide</button>
+            <button class="blog-category-btn" data-category="fun">Fun Stories</button>
+        </div>
+
+        <div class="blog-grid" id="blog-grid">
+            <!-- Food Decision Psychology -->
+            <a href="blog/why-menu-selection-is-hard.html" class="blog-card" data-category="psychology">
+                <img src="../assets/images/foods/food_think.png" alt="Menu selection dilemma" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Food Psychology</span>
+                    <h2 class="blog-card-title">Why Is Choosing What to Eat So Hard? The Psychology of Decision Fatigue</h2>
+                    <p class="blog-card-excerpt">The daily "what should I eat?" dilemma. Why is food selection so difficult? Let's explore the psychological causes of decision fatigue.</p>
+                    <span class="blog-card-meta">2026.01.12 · 5 min</span>
+                </div>
+            </a>
+
+            <a href="blog/lunch-vs-dinner-pattern.html" class="blog-card" data-category="psychology">
+                <img src="../assets/images/foods/food-3.png" alt="Lunch and dinner meals" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Food Psychology</span>
+                    <h2 class="blog-card-title">Lunch vs Dinner: Analyzing Food Selection Patterns by Time of Day</h2>
+                    <p class="blog-card-excerpt">Light for lunch, hearty for dinner? Analyzing how our food choices change depending on the time of day.</p>
+                    <span class="blog-card-meta">2026.01.12 · 4 min</span>
+                </div>
+            </a>
+
+            <a href="blog/solo-vs-group-dining.html" class="blog-card" data-category="psychology">
+                <img src="../assets/images/foods/food-2.png" alt="Solo and group dining" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Food Psychology</span>
+                    <h2 class="blog-card-title">Solo Dining vs Group Dining: How to Choose Menus by Situation</h2>
+                    <p class="blog-card-excerpt">Your menu selection strategy should differ when eating alone versus with others. A situational guide to optimal menu choices.</p>
+                    <span class="blog-card-meta">2026.01.12 · 4 min</span>
+                </div>
+            </a>
+
+            <a href="blog/5-psychological-factors.html" class="blog-card" data-category="psychology">
+                <img src="../assets/images/foods/food_think.png" alt="Food selection factors" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Food Psychology</span>
+                    <h2 class="blog-card-title">5 Psychological Factors That Influence Your Food Choices</h2>
+                    <p class="blog-card-excerpt">We don't choose food based on hunger alone. The hidden psychological factors that influence our food selection.</p>
+                    <span class="blog-card-meta">2026.01.12 · 5 min</span>
+                </div>
+            </a>
+
+            <!-- Korean Food Culture -->
+            <a href="blog/kimchi-jjigae-soul-food.html" class="blog-card" data-category="culture">
+                <img src="../assets/images/foods/food-1.png" alt="Kimchi Stew" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Korean Food Culture</span>
+                    <h2 class="blog-card-title">Korean Soul Food: Everything About Kimchi Stew</h2>
+                    <p class="blog-card-excerpt">Kimchi stew - a beloved dish for all Koreans. From its history to the best ways to enjoy it, we cover everything.</p>
+                    <span class="blog-card-meta">2026.01.12 · 5 min</span>
+                </div>
+            </a>
+
+            <a href="blog/samgyupsal-guide.html" class="blog-card" data-category="culture">
+                <img src="../assets/images/foods/food-2.png" alt="Grilled Pork Belly" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Korean Food Culture</span>
+                    <h2 class="blog-card-title">The Ultimate Samgyupsal Guide: Cuts, Techniques, and Pairings</h2>
+                    <p class="blog-card-excerpt">Samgyupsal, moksal, hangjeongsal... A complete guide to pork cuts, grilling techniques, and side dishes.</p>
+                    <span class="blog-card-meta">2026.01.12 · 6 min</span>
+                </div>
+            </a>
+
+            <a href="blog/jajangmyeon-vs-jjamppong.html" class="blog-card" data-category="culture">
+                <img src="../assets/images/foods/food-7.png" alt="Jajangmyeon and Jjamppong" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Korean Food Culture</span>
+                    <h2 class="blog-card-title">Jajangmyeon vs Jjamppong: The History of an Eternal Debate</h2>
+                    <p class="blog-card-excerpt">The hardest choice at a Chinese restaurant: jajangmyeon or jjamppong. The history, characteristics, and selection guide for both dishes.</p>
+                    <span class="blog-card-meta">2026.01.12 · 5 min</span>
+                </div>
+            </a>
+
+            <a href="blog/korean-chicken-history.html" class="blog-card" data-category="culture">
+                <img src="../assets/images/foods/food-13.png" alt="Korean Fried Chicken" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Korean Food Culture</span>
+                    <h2 class="blog-card-title">The History and Evolution of Korean Fried Chicken</h2>
+                    <p class="blog-card-excerpt">K-Chicken, recognized worldwide. Follow the delicious history of Korean fried chicken from its origins to today.</p>
+                    <span class="blog-card-meta">2026.01.12 · 6 min</span>
+                </div>
+            </a>
+
+            <!-- Dining Guide -->
+            <a href="blog/weather-food-recommendation.html" class="blog-card" data-category="guide">
+                <img src="../assets/images/foods/food-5.png" alt="Weather and food" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Dining Guide</span>
+                    <h2 class="blog-card-title">Weather-Based Menu Recommendations: What to Eat on Rainy Days?</h2>
+                    <p class="blog-card-excerpt">Different weather, different cravings? A guide to optimal menus matching the season and weather.</p>
+                    <span class="blog-card-meta">2026.01.12 · 4 min</span>
+                </div>
+            </a>
+
+            <a href="blog/mood-food-recommendation.html" class="blog-card" data-category="guide">
+                <img src="../assets/images/foods/food-14.png" alt="Mood and food" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Dining Guide</span>
+                    <h2 class="blog-card-title">Mood-Based Food Recommendations: Stressed? Celebrating?</h2>
+                    <p class="blog-card-excerpt">How mood affects food choices and situational menu recommendations. Find the food that matches your mood today.</p>
+                    <span class="blog-card-meta">2026.01.12 · 4 min</span>
+                </div>
+            </a>
+
+            <a href="blog/healthy-late-night-snack.html" class="blog-card" data-category="guide">
+                <img src="../assets/images/foods/food-15.png" alt="Healthy late night snacks" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Dining Guide</span>
+                    <h2 class="blog-card-title">Healthy Late Night Snack Guide: Indulge Without the Guilt</h2>
+                    <p class="blog-card-excerpt">If you can't resist the late night craving, at least choose wisely. A health-conscious guide to late night snacking.</p>
+                    <span class="blog-card-meta">2026.01.12 · 4 min</span>
+                </div>
+            </a>
+
+            <a href="blog/delivery-vs-dine-out-vs-home.html" class="blog-card" data-category="guide">
+                <img src="../assets/images/foods/food-10.png" alt="Delivery dining out home cooking" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Dining Guide</span>
+                    <h2 class="blog-card-title">Delivery vs Dining Out vs Home Cooking: The Best Choice by Situation</h2>
+                    <p class="blog-card-excerpt">Order delivery, go out to eat, or cook at home? A guide to the optimal dining method by situation.</p>
+                    <span class="blog-card-meta">2026.01.12 · 4 min</span>
+                </div>
+            </a>
+
+            <!-- Fun Food Stories -->
+            <a href="blog/food-worldcup-personality.html" class="blog-card" data-category="fun">
+                <img src="../assets/images/foods/food_think.png" alt="Food World Cup" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Fun Stories</span>
+                    <h2 class="blog-card-title">What Your Food World Cup Picks Say About Your Food Personality</h2>
+                    <p class="blog-card-excerpt">What foods did you choose in Food World Cup? An analysis of your food personality based on your selections.</p>
+                    <span class="blog-card-meta">2026.01.12 · 3 min</span>
+                </div>
+            </a>
+
+            <a href="blog/korean-food-debates.html" class="blog-card" data-category="fun">
+                <img src="../assets/images/foods/food-9.png" alt="Food debates" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Fun Stories</span>
+                    <h2 class="blog-card-title">Pour vs Dip: Top 10 Korean Food Debates</h2>
+                    <p class="blog-card-excerpt">Pour the sauce on tangsuyuk or dip it? We've compiled the most heated Korean food debates. What's your choice?</p>
+                    <span class="blog-card-meta">2026.01.12 · 5 min</span>
+                </div>
+            </a>
+
+            <a href="blog/food-trends-2026.html" class="blog-card" data-category="fun">
+                <img src="../assets/images/foods/food-16.png" alt="2026 food trends" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Fun Stories</span>
+                    <h2 class="blog-card-title">5 Food Trends to Watch in 2026</h2>
+                    <p class="blog-card-excerpt">What foods will be trending this year? A preview of the food trends to watch in 2026.</p>
+                    <span class="blog-card-meta">2026.01.12 · 5 min</span>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <nav class="footer-links" aria-label="Site links">
+                <a href="index.html">Home</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="blog.html" aria-current="page">Blog</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="about.html">About</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="faq.html">FAQ</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="contact.html">Contact</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="privacy.html">Privacy Policy</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="terms.html">Terms of Service</a>
+            </nav>
+            <p class="footer-copy">&copy; 2026 What to Eat. Bon Appetit!</p>
+        </div>
+    </footer>
+
+    <script>
+        // Category filtering
+        document.querySelectorAll('.blog-category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const category = btn.dataset.category;
+
+                // Update active button state
+                document.querySelectorAll('.blog-category-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Filter cards
+                document.querySelectorAll('.blog-card').forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

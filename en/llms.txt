@@ -1,0 +1,90 @@
+# What to Eat - Food Recommendation Service
+
+> A free food recommendation service for the indecisive.
+
+## Service Overview
+
+What to Eat is a free web service for those who struggle with meal decisions. Anyone can use it instantly without registration, and it offers 5 fun ways to get menu recommendations or decide who pays for the meal.
+
+## Main Features
+
+### 1. Quick Pick (Random Recommendation)
+- Time required: ~5 seconds
+- Description: Get a random food recommendation with just one click
+- Best for: When you're short on time or want to leave it to fate
+
+### 2. Food World Cup
+- Time required: 1-2 minutes
+- Description: 16 foods compete in tournament style to select a final winner
+- Best for: When you want to find what you really want to eat among many options
+
+### 3. Food Tarot
+- Time required: ~30 seconds
+- Description: Select one of 5 tarot cards to receive today's food fortune and menu recommendation
+- Best for: When you want a fun way to decide your meal
+
+### 4. Balance Game
+- Time required: ~1 minute
+- Description: Answer 5 extreme either-or questions to discover your food preferences
+- Best for: When you want to discover your food taste
+
+### 5. Payment King (Who's Paying?)
+- Time required: ~30 seconds
+- Description: Use roulette or ladder game to decide who pays for the meal
+- Best for: When you need to decide who pays after dining with friends
+- Participants: Supports 2-10 people
+
+## Recommended Menu Items
+
+Food types available in the service:
+- Korean: Kimchi Stew, Bibimbap, Grilled Pork Belly
+- Chinese: Jajangmyeon, Mala Hotpot, Sweet & Sour Pork
+- Japanese: Sushi, Ramen, Tonkatsu
+- Western: Pasta, Pizza, Hamburger
+- Street Food: Tteokbokki, Fried Chicken
+- Asian: Pho
+- Diet: Salad
+
+## Frequently Asked Questions (FAQ)
+
+Q: Is the service free?
+A: Yes, all features of What to Eat are completely free. You can use it immediately without registration.
+
+Q: What types of food are recommended?
+A: We offer 16+ popular menu items across various categories including Korean, Chinese, Japanese, Western, and street food.
+
+Q: Can I save or share the results?
+A: Yes, you can save the recommendation as an image or share it on social media.
+
+Q: Does it work on mobile?
+A: Yes, it's built as a responsive web app and works on smartphones, tablets, and PCs.
+
+Q: How does Food World Cup work?
+A: 16 foods compete in tournament brackets. Each round, you choose which food you prefer more, and the final winner becomes your recommended menu.
+
+Q: What is Payment King?
+A: It's a feature to decide who pays for the meal. You can choose between roulette and ladder game, supporting 2-10 participants.
+
+## Page Structure
+
+- /en/: Main page (all features + service intro)
+- /en/about.html: About page
+- /en/faq.html: Frequently Asked Questions
+- /en/contact.html: Contact & Partnership
+- /en/privacy.html: Privacy Policy
+- /en/terms.html: Terms of Service
+- /en/blog.html: Blog
+
+## Technical Information
+
+- Platform: Web browser (responsive)
+- Language: English
+- Cost: Free
+- Registration: Not required
+
+## Contact
+
+For partnership inquiries, please use the contact form at the bottom of the main page.
+
+---
+Last updated: 2026-01-11

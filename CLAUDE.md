@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**What to Eat (뭐 먹지?)** is a Korean-language web application that helps users decide what to eat through four interactive game modes. Built as a framework-less Single Page Application using vanilla JavaScript with Web Components.
+**What to Eat (뭐 먹지?)** is a Korean-language web application that helps users decide what to eat through five interactive game modes. Built as a framework-less Single Page Application using vanilla JavaScript with Web Components.
 
 **Live URL**: https://whattoeat.pages.dev/
 
@@ -38,6 +38,7 @@ js/
 │   ├── FoodWorldcup.js       # 이상형 월드컵 (Tournament bracket)
 │   ├── FoodTarot.js          # 음식 타로 (Card selection)
 │   ├── FoodBalance.js        # 밸런스 게임 (A/B questions with taste analysis)
+│   ├── PaymentGame.js        # 결제왕 (Payment decider - roulette/ladder games)
 │   └── ResultCard.js         # Shared result display with image generation/sharing
 ├── data/
 │   └── foods.js              # Food database (16 items), balance questions, utilities
@@ -75,6 +76,11 @@ customElements.define('game-component', GameComponent);
 4. app.js catches event, creates `<result-card>` with food-id attribute
 5. ResultCard handles sharing (Web Share API) and image download (Canvas)
 
+Custom events used:
+- `food-result` - Component → App (game completed with food selection)
+- `retry-mode` - Component → App (restart current game)
+- `go-home` - Component → App (return to mode selection hub)
+
 ### Data Model
 
 Food objects in `foods.js`:
@@ -94,7 +100,8 @@ Balance questions modify user's taste profile which is matched against food trai
 
 ## Design System
 
-- **Primary colors**: Coral/peach gradient (`#FFB5A7` to `#FFC8A2`)
+- **Primary color**: Warm Coral (`#FF8B7B`) with gradient variants
+- **Accent colors**: Mint (`#B8E0D2`), Lavender (`#D4C1EC`), Peach (`#FFDAC1`)
 - **Font**: Pretendard (Google Fonts)
 - **Border radius**: 24px containers, 16px buttons
 - **All styles in Shadow DOM** - Global `style.css` for layout only, component styles in `getStyles()`

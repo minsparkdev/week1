@@ -1,157 +1,407 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-    <!-- 메인 페이지 -->
+
+    <!-- ==================== Korean Pages ==================== -->
+
+    <!-- Main Page (Korean) -->
     <url>
         <loc>https://whattoeat.pages.dev/</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://whattoeat.pages.dev/"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
-    <!-- 소개 페이지 -->
+    <!-- About Page (Korean) -->
     <url>
         <loc>https://whattoeat.pages.dev/about.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/about.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/about.html"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- 블로그 목록 -->
+    <!-- Blog Hub (Korean) -->
     <url>
         <loc>https://whattoeat.pages.dev/blog.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog.html"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
-    <!-- 블로그 아티클: 음식 결정 심리학 -->
+    <!-- Blog Articles: Food Psychology (Korean) -->
     <url>
         <loc>https://whattoeat.pages.dev/blog/why-menu-selection-is-hard.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/why-menu-selection-is-hard.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/why-menu-selection-is-hard.html"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://whattoeat.pages.dev/blog/lunch-vs-dinner-pattern.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/lunch-vs-dinner-pattern.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/lunch-vs-dinner-pattern.html"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://whattoeat.pages.dev/blog/solo-vs-group-dining.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/solo-vs-group-dining.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/solo-vs-group-dining.html"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://whattoeat.pages.dev/blog/5-psychological-factors.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/5-psychological-factors.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/5-psychological-factors.html"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
-    <!-- 블로그 아티클: 한국 음식 문화 -->
+    <!-- Blog Articles: Korean Food Culture (Korean) -->
     <url>
         <loc>https://whattoeat.pages.dev/blog/kimchi-jjigae-soul-food.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/kimchi-jjigae-soul-food.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/kimchi-jjigae-soul-food.html"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://whattoeat.pages.dev/blog/samgyupsal-guide.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/samgyupsal-guide.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/samgyupsal-guide.html"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://whattoeat.pages.dev/blog/jajangmyeon-vs-jjamppong.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/jajangmyeon-vs-jjamppong.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/jajangmyeon-vs-jjamppong.html"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://whattoeat.pages.dev/blog/korean-chicken-history.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/korean-chicken-history.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/korean-chicken-history.html"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
-    <!-- 블로그 아티클: 식사 가이드 -->
+    <!-- Blog Articles: Dining Guide (Korean) -->
     <url>
         <loc>https://whattoeat.pages.dev/blog/weather-food-recommendation.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/weather-food-recommendation.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/weather-food-recommendation.html"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://whattoeat.pages.dev/blog/mood-food-recommendation.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/mood-food-recommendation.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/mood-food-recommendation.html"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://whattoeat.pages.dev/blog/healthy-late-night-snack.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/healthy-late-night-snack.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/healthy-late-night-snack.html"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://whattoeat.pages.dev/blog/delivery-vs-dine-out-vs-home.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/delivery-vs-dine-out-vs-home.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/delivery-vs-dine-out-vs-home.html"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
-    <!-- 블로그 아티클: 재미있는 음식 이야기 -->
+    <!-- Blog Articles: Fun Stories (Korean) -->
     <url>
         <loc>https://whattoeat.pages.dev/blog/food-worldcup-personality.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/food-worldcup-personality.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/food-worldcup-personality.html"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://whattoeat.pages.dev/blog/korean-food-debates.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/korean-food-debates.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/korean-food-debates.html"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://whattoeat.pages.dev/blog/food-trends-2026.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/food-trends-2026.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/food-trends-2026.html"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
-    <!-- 기타 페이지 -->
+    <!-- Other Pages (Korean) -->
     <url>
         <loc>https://whattoeat.pages.dev/faq.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/faq.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/faq.html"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://whattoeat.pages.dev/contact.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/contact.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/contact.html"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
         <loc>https://whattoeat.pages.dev/privacy.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/privacy.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/privacy.html"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
         <loc>https://whattoeat.pages.dev/terms.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/terms.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/terms.html"/>
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
         <loc>https://whattoeat.pages.dev/llms.txt</loc>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <!-- ==================== English Pages ==================== -->
+
+    <!-- Main Page (English) -->
+    <url>
+        <loc>https://whattoeat.pages.dev/en/</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://whattoeat.pages.dev/"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- About Page (English) -->
+    <url>
+        <loc>https://whattoeat.pages.dev/en/about.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/about.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/about.html"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Blog Hub (English) -->
+    <url>
+        <loc>https://whattoeat.pages.dev/en/blog.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog.html"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Blog Articles: Food Psychology (English) -->
+    <url>
+        <loc>https://whattoeat.pages.dev/en/blog/why-menu-selection-is-hard.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/why-menu-selection-is-hard.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/why-menu-selection-is-hard.html"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/en/blog/lunch-vs-dinner-pattern.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/lunch-vs-dinner-pattern.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/lunch-vs-dinner-pattern.html"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/en/blog/solo-vs-group-dining.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/solo-vs-group-dining.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/solo-vs-group-dining.html"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/en/blog/5-psychological-factors.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/5-psychological-factors.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/5-psychological-factors.html"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Blog Articles: Korean Food Culture (English) -->
+    <url>
+        <loc>https://whattoeat.pages.dev/en/blog/kimchi-jjigae-soul-food.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/kimchi-jjigae-soul-food.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/kimchi-jjigae-soul-food.html"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/en/blog/samgyupsal-guide.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/samgyupsal-guide.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/samgyupsal-guide.html"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/en/blog/jajangmyeon-vs-jjamppong.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/jajangmyeon-vs-jjamppong.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/jajangmyeon-vs-jjamppong.html"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/en/blog/korean-chicken-history.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/korean-chicken-history.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/korean-chicken-history.html"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Blog Articles: Dining Guide (English) -->
+    <url>
+        <loc>https://whattoeat.pages.dev/en/blog/weather-food-recommendation.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/weather-food-recommendation.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/weather-food-recommendation.html"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/en/blog/mood-food-recommendation.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/mood-food-recommendation.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/mood-food-recommendation.html"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/en/blog/healthy-late-night-snack.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/healthy-late-night-snack.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/healthy-late-night-snack.html"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/en/blog/delivery-vs-dine-out-vs-home.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/delivery-vs-dine-out-vs-home.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/delivery-vs-dine-out-vs-home.html"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Blog Articles: Fun Stories (English) -->
+    <url>
+        <loc>https://whattoeat.pages.dev/en/blog/food-worldcup-personality.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/food-worldcup-personality.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/food-worldcup-personality.html"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/en/blog/korean-food-debates.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/korean-food-debates.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/korean-food-debates.html"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/en/blog/food-trends-2026.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/blog/food-trends-2026.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/blog/food-trends-2026.html"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Other Pages (English) -->
+    <url>
+        <loc>https://whattoeat.pages.dev/en/faq.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/faq.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/faq.html"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/en/contact.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/contact.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/contact.html"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/en/privacy.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/privacy.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/privacy.html"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/en/terms.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/terms.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/terms.html"/>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/en/llms.txt</loc>
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.2</priority>
