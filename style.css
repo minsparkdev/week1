@@ -666,12 +666,7 @@ footer {
 }
 
 .footer-copy {
-    margin-bottom: var(--space-xs);
-}
-
-.footer-info {
-    font-size: var(--font-size-xs);
-    color: var(--text-muted);
+    margin: 0;
 }
 
 /* =====================
