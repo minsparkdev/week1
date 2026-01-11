@@ -159,7 +159,7 @@ main {
 }
 
 .hero-image {
-    width: 160px;
+    width: 192px;
     height: auto;
     margin-bottom: var(--space-lg);
     border-radius: var(--radius-lg);
@@ -740,7 +740,7 @@ footer {
     }
 
     .hero-image {
-        width: 100px;
+        width: 120px;
         margin-bottom: var(--space-sm);
     }
 
@@ -763,7 +763,7 @@ footer {
 
     /* Hero - More compact */
     .hero-image {
-        width: 80px;
+        width: 96px;
     }
 
     .hero h1 {
