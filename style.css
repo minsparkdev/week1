@@ -687,6 +687,11 @@ footer {
     .ad-container.ad-horizontal {
         min-height: 60px;
     }
+
+    /* Hide first ad on tablet/mobile to keep menu visible */
+    .ad-container.ad-desktop-only {
+        display: none;
+    }
 }
 
 @media (max-width: 480px) {
