@@ -523,6 +523,14 @@ class PaymentGame extends HTMLElement {
         if (this.state.phase === 'playing') {
             this.initCanvas();
         }
+
+        if (this.state.phase === 'result') {
+            if (this.state.currentGame === 'ladder') {
+                this.initLadderResultCanvas();
+            } else {
+                this.initRouletteResultCanvas();
+            }
+        }
     }
 
     renderByPhase() {
@@ -647,7 +655,7 @@ class PaymentGame extends HTMLElement {
     }
 
     renderResultScreen() {
-        const { winner } = this.state;
+        const { winner, currentGame } = this.state;
 
         return `
             <div class="result-screen">
@@ -662,6 +670,28 @@ class PaymentGame extends HTMLElement {
 
                 <p class="result-message">오늘의 결제왕입니다!</p>
 
+                <div class="game-preview">
+                    ${currentGame === 'roulette' ? `
+                        <div class="roulette-preview">
+                            <div class="pointer" aria-hidden="true">▼</div>
+                            <canvas id="roulette-result-canvas"></canvas>
+                        </div>
+                    ` : `
+                        <div class="ladder-preview">
+                            <canvas id="ladder-result-canvas"></canvas>
+                        </div>
+                    `}
+                </div>
+
+                <div class="share-buttons">
+                    <button class="action-btn share-btn" id="share-btn">
+                        📤 공유하기
+                    </button>
+                    <button class="action-btn download-btn" id="download-btn">
+                        💾 이미지 저장
+                    </button>
+                </div>
+
                 <div class="action-buttons">
                     <button class="action-btn primary" id="retry-btn">
                         🔄 다시 하기
@@ -670,6 +700,8 @@ class PaymentGame extends HTMLElement {
                         ← 처음부터
                     </button>
                 </div>
+
+                <canvas id="share-canvas" style="display: none;"></canvas>
             </div>
         `;
     }
@@ -717,6 +749,14 @@ class PaymentGame extends HTMLElement {
         // 처음부터
         const resetBtn = shadow.getElementById('reset-btn');
         if (resetBtn) resetBtn.addEventListener('click', () => this.handleReset());
+
+        // 공유하기
+        const shareBtn = shadow.getElementById('share-btn');
+        if (shareBtn) shareBtn.addEventListener('click', () => this.shareResult());
+
+        // 이미지 저장
+        const downloadBtn = shadow.getElementById('download-btn');
+        if (downloadBtn) downloadBtn.addEventListener('click', () => this.downloadImage());
     }
 
     // ========== 이벤트 핸들러 ==========
@@ -897,6 +937,308 @@ class PaymentGame extends HTMLElement {
         const div = document.createElement('div');
         div.textContent = str;
         return div.innerHTML;
+    }
+
+    getFormattedDate() {
+        const now = new Date();
+        return `${now.getFullYear()}.${String(now.getMonth() + 1).padStart(2, '0')}.${String(now.getDate()).padStart(2, '0')}`;
+    }
+
+    // ========== 공유 기능 ==========
+    initRouletteResultCanvas() {
+        const canvas = this.shadowRoot.getElementById('roulette-result-canvas');
+        if (!canvas || !this.rouletteEngine) return;
+
+        canvas.width = CONFIG.CANVAS.WIDTH;
+        canvas.height = CONFIG.CANVAS.ROULETTE_HEIGHT;
+
+        const ctx = canvas.getContext('2d');
+        this.rouletteEngine.draw(ctx, canvas.width, canvas.height);
+    }
+
+    initLadderResultCanvas() {
+        const canvas = this.shadowRoot.getElementById('ladder-result-canvas');
+        if (!canvas || !this.ladderEngine) return;
+
+        canvas.width = CONFIG.CANVAS.WIDTH;
+        canvas.height = CONFIG.CANVAS.LADDER_HEIGHT;
+
+        const ctx = canvas.getContext('2d');
+        this.ladderEngine.draw(ctx, canvas.width, canvas.height);
+    }
+
+    async generateShareImage() {
+        const { currentGame, winner } = this.state;
+
+        if (currentGame === 'ladder') {
+            return this.generateLadderShareImage();
+        } else {
+            return this.generateRouletteShareImage();
+        }
+    }
+
+    generateRouletteShareImage() {
+        const canvas = this.shadowRoot.getElementById('share-canvas');
+        const ctx = canvas.getContext('2d');
+        const { winner } = this.state;
+
+        const rouletteSize = 280;
+        canvas.width = 400;
+        canvas.height = 620;
+
+        // 배경 그라데이션
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, '#FFB5A7');
+        gradient.addColorStop(0.5, '#FFC8A2');
+        gradient.addColorStop(1, '#FFD6BA');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // 상단 타이틀
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 22px Pretendard, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('🎰 결제왕 룰렛', canvas.width / 2, 35);
+
+        // 카드 영역 (흰색)
+        ctx.fillStyle = 'white';
+        this.roundRect(ctx, 20, 55, canvas.width - 40, 470, 20);
+        ctx.fill();
+
+        // 룰렛 영역에 포인터 그리기
+        ctx.fillStyle = '#FF6B6B';
+        ctx.font = '24px serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('▼', canvas.width / 2, 85);
+
+        // 룰렛 그리기
+        if (this.rouletteEngine) {
+            ctx.save();
+            ctx.translate((canvas.width - rouletteSize) / 2, 90);
+            // 작은 캔버스에 룰렛 그리기
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = rouletteSize;
+            tempCanvas.height = rouletteSize;
+            const tempCtx = tempCanvas.getContext('2d');
+            this.rouletteEngine.draw(tempCtx, rouletteSize, rouletteSize);
+            ctx.drawImage(tempCanvas, 0, 0);
+            ctx.restore();
+        }
+
+        // 당첨자 배경
+        const winnerY = 395;
+        const winnerGradient = ctx.createLinearGradient(40, winnerY, canvas.width - 40, winnerY + 60);
+        winnerGradient.addColorStop(0, 'rgba(255, 218, 193, 0.5)');
+        winnerGradient.addColorStop(1, 'rgba(255, 181, 167, 0.3)');
+        ctx.fillStyle = winnerGradient;
+        ctx.strokeStyle = '#FFB5A7';
+        ctx.lineWidth = 2;
+        this.roundRect(ctx, 40, winnerY, canvas.width - 80, 70, 15);
+        ctx.fill();
+        ctx.stroke();
+
+        // 당첨자 이름
+        ctx.fillStyle = '#4A4458';
+        ctx.font = 'bold 28px Pretendard, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('🎉 ' + (winner && winner.name || '') + ' 🎉', canvas.width / 2, winnerY + 45);
+
+        // 결제왕 메시지
+        ctx.fillStyle = '#7D7A8C';
+        ctx.font = '14px Pretendard, sans-serif';
+        ctx.fillText('오늘의 결제왕입니다!', canvas.width / 2, winnerY + 90);
+
+        // 하단 바
+        const footerY = canvas.height - 45;
+        const footerGradient = ctx.createLinearGradient(20, footerY, canvas.width - 20, footerY + 35);
+        footerGradient.addColorStop(0, '#FFB5A7');
+        footerGradient.addColorStop(1, '#FFC8A2');
+        ctx.fillStyle = footerGradient;
+        this.roundRect(ctx, 20, footerY, canvas.width - 40, 35, 12);
+        ctx.fill();
+
+        // 앱 이름 & 날짜
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 13px Pretendard, sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('What to Eat', 40, footerY + 23);
+        ctx.textAlign = 'right';
+        ctx.font = '12px Pretendard, sans-serif';
+        ctx.fillText(this.getFormattedDate(), canvas.width - 40, footerY + 23);
+
+        return canvas.toDataURL('image/png');
+    }
+
+    generateLadderShareImage() {
+        const canvas = this.shadowRoot.getElementById('share-canvas');
+        const ctx = canvas.getContext('2d');
+        const { winner } = this.state;
+
+        const ladderWidth = CONFIG.CANVAS.WIDTH + 80;
+        const ladderHeight = CONFIG.CANVAS.LADDER_HEIGHT + 40;
+
+        canvas.width = ladderWidth;
+        canvas.height = ladderHeight + 180;
+
+        // 배경 그라데이션
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, '#FFB5A7');
+        gradient.addColorStop(0.5, '#FFC8A2');
+        gradient.addColorStop(1, '#FFD6BA');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // 상단 타이틀
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 22px Pretendard, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('🪜 결제왕 사다리타기', canvas.width / 2, 35);
+
+        // 사다리 영역 (흰색 배경)
+        ctx.fillStyle = 'white';
+        this.roundRect(ctx, 20, 55, ladderWidth - 40, ladderHeight, 20);
+        ctx.fill();
+
+        // 사다리 그리기
+        if (this.ladderEngine) {
+            ctx.save();
+            ctx.translate(60, 75);
+            this.ladderEngine.draw(ctx, CONFIG.CANVAS.WIDTH, CONFIG.CANVAS.LADDER_HEIGHT);
+            ctx.restore();
+        }
+
+        // 당첨자 정보 영역
+        const resultY = ladderHeight + 65;
+
+        // 당첨자 배경
+        const winnerGradient = ctx.createLinearGradient(60, resultY, ladderWidth - 60, resultY + 60);
+        winnerGradient.addColorStop(0, 'rgba(255, 218, 193, 0.5)');
+        winnerGradient.addColorStop(1, 'rgba(255, 181, 167, 0.3)');
+        ctx.fillStyle = winnerGradient;
+        ctx.strokeStyle = '#FFB5A7';
+        ctx.lineWidth = 2;
+        this.roundRect(ctx, 60, resultY, ladderWidth - 120, 60, 15);
+        ctx.fill();
+        ctx.stroke();
+
+        // 당첨자 이름
+        ctx.fillStyle = '#4A4458';
+        ctx.font = 'bold 24px Pretendard, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('🎉 결제왕: ' + (winner && winner.name || '') + ' 🎉', canvas.width / 2, resultY + 38);
+
+        // 하단 바
+        const footerY = canvas.height - 45;
+        const footerGradient = ctx.createLinearGradient(20, footerY, canvas.width - 20, footerY + 35);
+        footerGradient.addColorStop(0, '#FFB5A7');
+        footerGradient.addColorStop(1, '#FFC8A2');
+        ctx.fillStyle = footerGradient;
+        this.roundRect(ctx, 20, footerY, canvas.width - 40, 35, 12);
+        ctx.fill();
+
+        // 앱 이름 & 날짜
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 13px Pretendard, sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('What to Eat', 40, footerY + 23);
+        ctx.textAlign = 'right';
+        ctx.font = '12px Pretendard, sans-serif';
+        ctx.fillText(this.getFormattedDate(), canvas.width - 40, footerY + 23);
+
+        return canvas.toDataURL('image/png');
+    }
+
+    roundRect(ctx, x, y, w, h, r) {
+        if (typeof r === 'number') {
+            r = { tl: r, tr: r, br: r, bl: r };
+        }
+        ctx.beginPath();
+        ctx.moveTo(x + r.tl, y);
+        ctx.lineTo(x + w - r.tr, y);
+        ctx.quadraticCurveTo(x + w, y, x + w, y + r.tr);
+        ctx.lineTo(x + w, y + h - r.br);
+        ctx.quadraticCurveTo(x + w, y + h, x + w - r.br, y + h);
+        ctx.lineTo(x + r.bl, y + h);
+        ctx.quadraticCurveTo(x, y + h, x, y + h - r.bl);
+        ctx.lineTo(x, y + r.tl);
+        ctx.quadraticCurveTo(x, y, x + r.tl, y);
+        ctx.closePath();
+    }
+
+    async shareResult() {
+        const { winner, currentGame } = this.state;
+        const gameLabel = currentGame === 'roulette' ? '룰렛' : '사다리타기';
+
+        const shareData = {
+            title: 'What to Eat - 결제왕',
+            text: `🎉 ${gameLabel}으로 결정된 오늘의 결제왕은 "${winner && winner.name}"! - What to Eat`,
+            url: window.location.href
+        };
+
+        if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+            try {
+                await navigator.share(shareData);
+            } catch (err) {
+                if (err.name !== 'AbortError') {
+                    this.copyLink();
+                }
+            }
+        } else {
+            this.copyLink();
+        }
+    }
+
+    async downloadImage() {
+        try {
+            const imageUrl = await this.generateShareImage();
+            const link = document.createElement('a');
+            const { currentGame, winner } = this.state;
+            const gameLabel = currentGame === 'roulette' ? 'roulette' : 'ladder';
+            link.download = `payment-king-${gameLabel}-${winner && winner.name || 'result'}-${Date.now()}.png`;
+            link.href = imageUrl;
+            link.click();
+            this.showToast('이미지가 저장되었습니다!');
+        } catch (err) {
+            console.error('Download failed:', err);
+            this.showToast('저장에 실패했습니다');
+        }
+    }
+
+    async copyLink() {
+        const { winner, currentGame } = this.state;
+        const gameLabel = currentGame === 'roulette' ? '룰렛' : '사다리타기';
+
+        try {
+            const text = `🎉 ${gameLabel}으로 결정된 오늘의 결제왕은 "${winner && winner.name}"! - What to Eat`;
+            await navigator.clipboard.writeText(text);
+            this.showToast('클립보드에 복사되었습니다!');
+        } catch (err) {
+            console.error('Copy failed:', err);
+            this.showToast('복사에 실패했습니다');
+        }
+    }
+
+    showToast(message) {
+        // 기존 토스트 제거
+        const existingToast = this.shadowRoot.querySelector('.toast');
+        if (existingToast) {
+            existingToast.remove();
+        }
+
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.textContent = message;
+        this.shadowRoot.querySelector('.game-container').appendChild(toast);
+
+        // 애니메이션
+        requestAnimationFrame(() => {
+            toast.classList.add('show');
+        });
+
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 300);
+        }, 2000);
     }
 
     getStyles() {
@@ -1221,7 +1563,102 @@ class PaymentGame extends HTMLElement {
             .result-message {
                 color: #7D7A8C;
                 font-size: 1rem;
-                margin: 1rem 0 1.5rem;
+                margin: 1rem 0 1rem;
+            }
+
+            /* Game Preview (Roulette/Ladder) */
+            .game-preview {
+                margin: 1rem 0;
+            }
+
+            .roulette-preview,
+            .ladder-preview {
+                position: relative;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+
+            .roulette-preview .pointer {
+                position: absolute;
+                top: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 1.5rem;
+                color: #FF6B6B;
+                text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                z-index: 10;
+            }
+
+            .roulette-preview canvas,
+            .ladder-preview canvas {
+                width: 100%;
+                height: auto;
+                display: block;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(74, 68, 88, 0.1);
+            }
+
+            /* Share Buttons */
+            .share-buttons {
+                display: flex;
+                gap: 0.5rem;
+                justify-content: center;
+                flex-wrap: wrap;
+                margin-bottom: 1rem;
+            }
+
+            .share-btn,
+            .download-btn {
+                display: flex;
+                align-items: center;
+                gap: 0.3rem;
+                padding: 0.625rem 1rem;
+                border-radius: 12px;
+                font-size: 0.875rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.25s ease;
+                border: none;
+                font-family: inherit;
+            }
+
+            .share-btn {
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
+                color: white;
+                box-shadow: 0 4px 12px rgba(255, 139, 123, 0.25);
+            }
+
+            .download-btn {
+                background: linear-gradient(135deg, #D4C1EC, #B8E0D2);
+                color: white;
+                box-shadow: 0 4px 12px rgba(212, 193, 236, 0.25);
+            }
+
+            .share-btn:hover,
+            .download-btn:hover {
+                transform: translateY(-2px);
+            }
+
+            /* Toast */
+            .toast {
+                position: fixed;
+                bottom: 2rem;
+                left: 50%;
+                transform: translateX(-50%) translateY(100px);
+                background: #4A4458;
+                color: white;
+                padding: 0.875rem 1.5rem;
+                border-radius: 16px;
+                font-weight: 500;
+                font-size: 0.875rem;
+                opacity: 0;
+                transition: all 0.3s ease;
+                z-index: 1000;
+            }
+
+            .toast.show {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
             }
 
             /* Mobile Responsive */
@@ -1269,6 +1706,34 @@ class PaymentGame extends HTMLElement {
                 .action-btn {
                     padding: 0.75rem 1.25rem;
                     font-size: 0.9rem;
+                }
+
+                .game-preview {
+                    margin: 0.75rem 0;
+                }
+
+                .roulette-preview,
+                .ladder-preview {
+                    max-width: 280px;
+                }
+
+                .share-buttons {
+                    gap: 0.375rem;
+                    margin-bottom: 0.75rem;
+                }
+
+                .share-btn,
+                .download-btn {
+                    padding: 0.5rem 0.75rem;
+                    font-size: 0.75rem;
+                    border-radius: 10px;
+                }
+
+                .toast {
+                    padding: 0.625rem 1rem;
+                    font-size: 0.75rem;
+                    border-radius: 12px;
+                    bottom: 1rem;
                 }
             }
         `;
