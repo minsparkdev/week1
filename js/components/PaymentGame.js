@@ -1207,13 +1207,40 @@ class PaymentGame extends HTMLElement {
     async copyLink() {
         const { winner, currentGame } = this.state;
         const gameLabel = currentGame === 'roulette' ? '룰렛' : '사다리타기';
+        const text = `🎉 ${gameLabel}으로 결정된 오늘의 결제왕은 "${winner && winner.name}"! - What to Eat`;
 
         try {
-            const text = `🎉 ${gameLabel}으로 결정된 오늘의 결제왕은 "${winner && winner.name}"! - What to Eat`;
-            await navigator.clipboard.writeText(text);
-            this.showToast('클립보드에 복사되었습니다!');
+            // 먼저 Clipboard API 시도
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                await navigator.clipboard.writeText(text);
+                this.showToast('클립보드에 복사되었습니다!');
+                return;
+            }
         } catch (err) {
-            console.error('Copy failed:', err);
+            console.warn('Clipboard API failed, trying fallback:', err);
+        }
+
+        // 대체 방법: textarea 사용
+        try {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.left = '-9999px';
+            textarea.style.top = '-9999px';
+            document.body.appendChild(textarea);
+            textarea.focus();
+            textarea.select();
+
+            const successful = document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            if (successful) {
+                this.showToast('클립보드에 복사되었습니다!');
+            } else {
+                this.showToast('복사에 실패했습니다');
+            }
+        } catch (err) {
+            console.error('Copy fallback failed:', err);
             this.showToast('복사에 실패했습니다');
         }
     }
