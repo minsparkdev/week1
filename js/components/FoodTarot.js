@@ -142,7 +142,7 @@ class FoodTarot extends HTMLElement {
             }
 
             .card-front {
-                background: linear-gradient(135deg, #D4C1EC, #B8E0D2);
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
             }
 
             .card-pattern {
@@ -188,8 +188,8 @@ class FoodTarot extends HTMLElement {
             }
 
             .result-card {
-                background: linear-gradient(135deg, rgba(212, 193, 236, 0.15), rgba(184, 224, 210, 0.15));
-                border: 1px solid rgba(212, 193, 236, 0.3);
+                background: linear-gradient(135deg, rgba(255, 218, 193, 0.2), rgba(255, 181, 167, 0.15));
+                border: 1px solid rgba(255, 181, 167, 0.3);
                 border-radius: 20px;
                 padding: 1.5rem;
                 animation: fadeIn 0.5s ease-out;
@@ -201,8 +201,8 @@ class FoodTarot extends HTMLElement {
                 margin: 0 auto 1rem;
                 border-radius: 50%;
                 overflow: hidden;
-                box-shadow: 0 8px 24px rgba(212, 193, 236, 0.3);
-                border: 3px solid rgba(212, 193, 236, 0.4);
+                box-shadow: 0 8px 24px rgba(255, 139, 123, 0.2);
+                border: 3px solid rgba(255, 181, 167, 0.4);
             }
 
             .result-image {
@@ -265,9 +265,9 @@ class FoodTarot extends HTMLElement {
             }
 
             .action-btn.primary {
-                background: linear-gradient(135deg, #D4C1EC, #B8E0D2);
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
                 color: #FFFFFF;
-                box-shadow: 0 6px 20px rgba(212, 193, 236, 0.3);
+                box-shadow: 0 8px 24px rgba(255, 139, 123, 0.25);
             }
 
             .action-btn.secondary {

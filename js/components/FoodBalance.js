@@ -127,7 +127,7 @@ class FoodBalance extends HTMLElement {
 
             .question-count {
                 display: inline-block;
-                background: linear-gradient(135deg, #B8E0D2, #D4C1EC);
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
                 color: #FFFFFF;
                 padding: 6px 14px;
                 border-radius: 9999px;
@@ -146,7 +146,7 @@ class FoodBalance extends HTMLElement {
 
             .progress-fill {
                 height: 100%;
-                background: linear-gradient(135deg, #B8E0D2, #D4C1EC);
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
                 border-radius: 3px;
                 transition: width 0.4s ease;
             }
@@ -214,7 +214,7 @@ class FoodBalance extends HTMLElement {
             }
 
             .vs-badge {
-                background: #D4C1EC;
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
                 color: #FFFFFF;
                 width: 44px;
                 height: 44px;
@@ -284,7 +284,7 @@ class FoodBalance extends HTMLElement {
 
             .result-badge {
                 display: inline-block;
-                background: linear-gradient(135deg, #B8E0D2, #D4C1EC);
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
                 color: #FFFFFF;
                 padding: 6px 14px;
                 border-radius: 9999px;
@@ -308,8 +308,8 @@ class FoodBalance extends HTMLElement {
 
             /* 취향 분석 카드 */
             .analysis-card {
-                background: linear-gradient(135deg, rgba(184, 224, 210, 0.15), rgba(212, 193, 236, 0.15));
-                border: 1px solid rgba(184, 224, 210, 0.3);
+                background: linear-gradient(135deg, rgba(255, 181, 167, 0.15), rgba(255, 200, 162, 0.15));
+                border: 1px solid rgba(255, 181, 167, 0.3);
                 border-radius: 16px;
                 padding: 1rem;
                 margin-bottom: 1rem;
@@ -368,15 +368,15 @@ class FoodBalance extends HTMLElement {
 
             .trait-fill {
                 height: 100%;
-                background: linear-gradient(135deg, #B8E0D2, #D4C1EC);
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
                 border-radius: 3px;
                 transition: width 0.5s ease;
             }
 
             /* 추천 음식 카드 */
             .recommendation {
-                background: linear-gradient(135deg, rgba(212, 193, 236, 0.15), rgba(184, 224, 210, 0.15));
-                border: 1px solid rgba(212, 193, 236, 0.3);
+                background: linear-gradient(135deg, rgba(255, 218, 193, 0.2), rgba(255, 181, 167, 0.15));
+                border: 1px solid rgba(255, 181, 167, 0.3);
                 border-radius: 20px;
                 padding: 1.5rem;
                 margin-bottom: 1.25rem;
@@ -384,7 +384,7 @@ class FoodBalance extends HTMLElement {
 
             .match-score {
                 display: inline-block;
-                background: linear-gradient(135deg, #D4C1EC, #B8E0D2);
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
                 color: #FFFFFF;
                 padding: 4px 12px;
                 border-radius: 9999px;
@@ -399,8 +399,8 @@ class FoodBalance extends HTMLElement {
                 margin: 0 auto 1rem;
                 border-radius: 50%;
                 overflow: hidden;
-                box-shadow: 0 8px 24px rgba(212, 193, 236, 0.3);
-                border: 3px solid rgba(212, 193, 236, 0.4);
+                box-shadow: 0 8px 24px rgba(255, 139, 123, 0.2);
+                border: 3px solid rgba(255, 181, 167, 0.4);
             }
 
             .food-image {
@@ -441,7 +441,7 @@ class FoodBalance extends HTMLElement {
                 align-items: center;
                 justify-content: center;
                 font-size: 3rem;
-                background: linear-gradient(135deg, #D4C1EC 0%, #B8E0D2 100%);
+                background: linear-gradient(135deg, #FFDAC1 0%, #FFB5A7 100%);
             }
 
             .action-buttons {
@@ -466,9 +466,9 @@ class FoodBalance extends HTMLElement {
             }
 
             .action-btn.primary {
-                background: linear-gradient(135deg, #D4C1EC, #B8E0D2);
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
                 color: #FFFFFF;
-                box-shadow: 0 6px 20px rgba(212, 193, 236, 0.3);
+                box-shadow: 0 8px 24px rgba(255, 139, 123, 0.25);
             }
 
             .action-btn.secondary {
