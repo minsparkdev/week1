@@ -280,16 +280,120 @@ class FoodTarot extends HTMLElement {
                 transform: translateY(-2px);
             }
 
-            @media (max-width: 480px) {
+            /* Tablet */
+            @media (max-width: 600px) {
+                .tarot-container {
+                    padding: 1rem;
+                    border-radius: 16px;
+                }
+
+                .tarot-header h2 {
+                    font-size: 1rem;
+                }
+
+                .tarot-header p {
+                    font-size: 0.75rem;
+                    margin-bottom: 1rem;
+                }
+
+                .cards-row {
+                    gap: 0.5rem;
+                    margin-bottom: 1rem;
+                }
+
                 .tarot-card {
                     width: 56px;
                     height: 84px;
                 }
+
                 .card-symbol {
                     font-size: 1.25rem;
                 }
-                .card-emoji {
-                    font-size: 2rem;
+
+                .card-front, .card-back {
+                    border-radius: 8px;
+                }
+
+                .card-pattern {
+                    border-radius: 6px;
+                }
+            }
+
+            /* Mobile */
+            @media (max-width: 480px) {
+                .tarot-container {
+                    padding: 0.75rem;
+                }
+
+                .tarot-header h2 {
+                    font-size: 0.875rem;
+                }
+
+                .tarot-header p {
+                    font-size: 0.625rem;
+                    margin-bottom: 0.75rem;
+                }
+
+                .cards-row {
+                    gap: 0.375rem;
+                }
+
+                .tarot-card {
+                    width: 48px;
+                    height: 72px;
+                }
+
+                .card-symbol {
+                    font-size: 1rem;
+                }
+
+                .result-area {
+                    margin-top: 0.75rem;
+                }
+
+                .result-card {
+                    padding: 1rem;
+                    border-radius: 16px;
+                }
+
+                .result-image-wrapper {
+                    width: 100px;
+                    height: 100px;
+                    margin-bottom: 0.75rem;
+                }
+
+                .result-food {
+                    margin-bottom: 0.5rem;
+                }
+
+                .result-name {
+                    font-size: 1rem;
+                }
+
+                .result-category {
+                    padding: 3px 10px;
+                    font-size: 0.625rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                .result-tarot {
+                    font-size: 0.75rem;
+                    margin-bottom: 0.75rem;
+                }
+
+                .result-desc {
+                    font-size: 0.7rem;
+                }
+
+                .action-buttons {
+                    gap: 0.5rem;
+                    margin-top: 0.75rem;
+                }
+
+                .action-btn {
+                    padding: 0.625rem 1rem;
+                    font-size: 0.7rem;
+                    border-radius: 12px;
                 }
             }
         `;

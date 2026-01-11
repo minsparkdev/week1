@@ -154,6 +154,47 @@ class FoodRecommender extends HTMLElement {
                 from { transform: scale(1.05); opacity: 0; }
                 to { transform: scale(1); opacity: 1; }
             }
+
+            /* Mobile Optimization */
+            @media (max-width: 480px) {
+                .card {
+                    border-radius: 16px;
+                }
+
+                .image-area {
+                    height: 180px;
+                }
+
+                .image-placeholder {
+                    font-size: 3rem;
+                }
+
+                .content {
+                    padding: 1rem;
+                }
+
+                .category {
+                    padding: 4px 10px;
+                    font-size: 0.625rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                h2 {
+                    font-size: 1.125rem;
+                    margin-bottom: 0.375rem;
+                }
+
+                .desc {
+                    font-size: 0.75rem;
+                    margin-bottom: 1rem;
+                }
+
+                button {
+                    padding: 0.75rem 1.5rem;
+                    font-size: 0.8rem;
+                    border-radius: 12px;
+                }
+            }
         `;
     }
 

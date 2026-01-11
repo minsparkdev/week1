@@ -328,6 +328,134 @@ class ResultCard extends HTMLElement {
                 transform: translateX(-50%) translateY(0);
                 opacity: 1;
             }
+
+            /* Tablet */
+            @media (max-width: 600px) {
+                .result-container {
+                    padding: 1rem;
+                    border-radius: 16px;
+                }
+
+                .result-header {
+                    margin-bottom: 1rem;
+                }
+
+                .mode-badge {
+                    padding: 4px 10px;
+                    font-size: 0.625rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                .result-header h2 {
+                    font-size: 0.875rem;
+                }
+
+                .result-card {
+                    max-width: 280px;
+                    margin-bottom: 1rem;
+                    border-radius: 14px;
+                }
+
+                .card-image {
+                    height: 160px;
+                }
+
+                .image-placeholder {
+                    font-size: 3rem;
+                }
+
+                .card-content {
+                    padding: 0.875rem;
+                }
+
+                .food-category {
+                    padding: 3px 8px;
+                    font-size: 0.5rem;
+                    margin-bottom: 0.375rem;
+                }
+
+                .food-name {
+                    font-size: 1.125rem;
+                    margin: 0.25rem 0;
+                }
+
+                .food-desc {
+                    font-size: 0.75rem;
+                }
+
+                .card-footer {
+                    padding: 0.625rem 0.875rem;
+                }
+
+                .app-name {
+                    font-size: 0.75rem;
+                }
+
+                .date {
+                    font-size: 0.7rem;
+                }
+            }
+
+            /* Mobile */
+            @media (max-width: 480px) {
+                .result-container {
+                    padding: 0.75rem;
+                }
+
+                .result-card {
+                    max-width: 240px;
+                    border-radius: 12px;
+                }
+
+                .card-image {
+                    height: 130px;
+                }
+
+                .image-placeholder {
+                    font-size: 2.5rem;
+                }
+
+                .card-content {
+                    padding: 0.75rem;
+                }
+
+                .food-name {
+                    font-size: 1rem;
+                }
+
+                .food-desc {
+                    font-size: 0.7rem;
+                }
+
+                .action-buttons {
+                    gap: 0.375rem;
+                    margin-bottom: 0.75rem;
+                }
+
+                .action-btn {
+                    padding: 0.5rem 0.75rem;
+                    font-size: 0.7rem;
+                    border-radius: 10px;
+                    gap: 0.25rem;
+                }
+
+                .btn-icon {
+                    font-size: 0.875rem;
+                }
+
+                .retry-btn {
+                    padding: 0.625rem 1.25rem;
+                    font-size: 0.75rem;
+                    border-radius: 12px;
+                }
+
+                .toast {
+                    padding: 0.625rem 1rem;
+                    font-size: 0.75rem;
+                    border-radius: 12px;
+                    bottom: 1rem;
+                }
+            }
         `;
     }
 

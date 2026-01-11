@@ -167,13 +167,126 @@ class FoodWorldcup extends HTMLElement {
                 align-items: center;
             }
 
+            /* Tablet */
             @media (max-width: 600px) {
-                .battle-arena {
-                    grid-template-columns: 1fr;
-                    gap: 0.75rem;
+                .worldcup-container {
+                    padding: 1rem;
+                    border-radius: 16px;
                 }
+
+                .round-badge {
+                    padding: 4px 10px;
+                    font-size: 0.625rem;
+                }
+
+                .match-count {
+                    font-size: 0.75rem;
+                }
+
+                .progress-bar {
+                    margin-bottom: 0.75rem;
+                }
+
+                .vs-title {
+                    font-size: 0.875rem;
+                    margin-bottom: 0.75rem;
+                }
+
+                .battle-arena {
+                    grid-template-columns: 1fr 36px 1fr;
+                    gap: 0.5rem;
+                }
+
+                .food-image {
+                    height: 100px;
+                }
+
+                .image-placeholder {
+                    font-size: 2rem;
+                }
+
+                .food-info {
+                    padding: 0.625rem;
+                }
+
+                .food-category {
+                    padding: 2px 6px;
+                    font-size: 0.5rem;
+                    margin-bottom: 0.25rem;
+                }
+
+                .food-name {
+                    font-size: 0.875rem;
+                    margin: 0.125rem 0;
+                }
+
+                .food-desc {
+                    font-size: 0.625rem;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
+
                 .vs-badge {
-                    margin: 0.25rem auto;
+                    width: 36px;
+                    height: 36px;
+                    font-size: 0.75rem;
+                }
+            }
+
+            /* Mobile - Keep side by side but more compact */
+            @media (max-width: 400px) {
+                .worldcup-container {
+                    padding: 0.75rem;
+                }
+
+                .round-info {
+                    margin-bottom: 0.5rem;
+                }
+
+                .vs-title {
+                    font-size: 0.8rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                .battle-arena {
+                    grid-template-columns: 1fr 30px 1fr;
+                    gap: 0.375rem;
+                }
+
+                .food-card {
+                    border-radius: 12px;
+                }
+
+                .food-image {
+                    height: 80px;
+                }
+
+                .image-placeholder {
+                    font-size: 1.5rem;
+                }
+
+                .food-info {
+                    padding: 0.5rem;
+                }
+
+                .food-category {
+                    display: none;
+                }
+
+                .food-name {
+                    font-size: 0.75rem;
+                }
+
+                .food-desc {
+                    display: none;
+                }
+
+                .vs-badge {
+                    width: 30px;
+                    height: 30px;
+                    font-size: 0.625rem;
                 }
             }
 
@@ -361,6 +474,50 @@ class FoodWorldcup extends HTMLElement {
 
             .action-btn:hover {
                 transform: translateY(-2px);
+            }
+
+            /* Winner screen mobile */
+            @media (max-width: 480px) {
+                .winner-badge {
+                    font-size: 2rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                .winner-title {
+                    font-size: 0.875rem;
+                }
+
+                .winner-card {
+                    padding: 1rem;
+                    margin: 0.75rem 0;
+                    border-radius: 16px;
+                }
+
+                .winner-image {
+                    max-width: 200px;
+                    height: 140px;
+                    border-radius: 12px;
+                    margin-bottom: 0.75rem;
+                }
+
+                .winner-name {
+                    font-size: 1.125rem;
+                }
+
+                .winner-desc {
+                    font-size: 0.75rem;
+                }
+
+                .action-buttons {
+                    gap: 0.5rem;
+                    margin-top: 0.75rem;
+                }
+
+                .action-btn {
+                    padding: 0.625rem 1rem;
+                    font-size: 0.75rem;
+                    border-radius: 12px;
+                }
             }
         `;
     }

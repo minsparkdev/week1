@@ -335,22 +335,141 @@ class FoodBalance extends HTMLElement {
                 transform: translateY(-2px);
             }
 
+            /* Tablet */
             @media (max-width: 600px) {
                 .balance-container {
-                    padding: 1.25rem;
+                    padding: 1rem;
+                    border-radius: 16px;
                 }
+
+                .progress-info {
+                    margin-bottom: 1rem;
+                }
+
+                .question-count {
+                    padding: 4px 10px;
+                    font-size: 0.625rem;
+                    margin-bottom: 0.5rem;
+                }
+
                 .question-text {
-                    font-size: 1.125rem;
+                    font-size: 1rem;
+                    margin-bottom: 1rem;
                 }
+
+                .options-row {
+                    gap: 0.5rem;
+                }
+
                 .option-btn {
-                    min-width: 110px;
-                    padding: 1.25rem 0.75rem;
+                    min-width: 0;
+                    flex: 1;
+                    padding: 1rem 0.5rem;
+                    gap: 0.5rem;
+                    border-radius: 14px;
                 }
+
                 .option-emoji {
                     font-size: 2rem;
                 }
+
                 .option-text {
+                    font-size: 0.8rem;
+                }
+
+                .vs-badge {
+                    width: 36px;
+                    height: 36px;
+                    font-size: 0.75rem;
+                }
+
+                .stats-area {
+                    margin-top: 1rem;
+                }
+
+                .stat-bar {
+                    height: 30px;
+                    border-radius: 15px;
+                }
+
+                .stat-fill {
+                    font-size: 0.7rem;
+                }
+
+                .stat-labels {
+                    font-size: 0.7rem;
+                }
+            }
+
+            /* Mobile */
+            @media (max-width: 480px) {
+                .balance-container {
+                    padding: 0.75rem;
+                }
+
+                .question-text {
                     font-size: 0.875rem;
+                    margin-bottom: 0.75rem;
+                }
+
+                .options-row {
+                    flex-direction: row;
+                    gap: 0.375rem;
+                }
+
+                .option-btn {
+                    padding: 0.75rem 0.375rem;
+                    border-radius: 12px;
+                }
+
+                .option-emoji {
+                    font-size: 1.5rem;
+                }
+
+                .option-text {
+                    font-size: 0.7rem;
+                }
+
+                .vs-badge {
+                    width: 28px;
+                    height: 28px;
+                    font-size: 0.625rem;
+                }
+
+                /* Result screen mobile */
+                .result-title {
+                    font-size: 1rem;
+                    margin-bottom: 1rem;
+                }
+
+                .recommendation {
+                    padding: 1rem;
+                    border-radius: 14px;
+                    margin-bottom: 0.75rem;
+                }
+
+                .food-image-wrapper {
+                    width: 100px;
+                    height: 100px;
+                    margin-bottom: 0.75rem;
+                }
+
+                .food-name {
+                    font-size: 1.125rem;
+                }
+
+                .food-desc {
+                    font-size: 0.75rem;
+                }
+
+                .action-buttons {
+                    gap: 0.5rem;
+                }
+
+                .action-btn {
+                    padding: 0.625rem 1rem;
+                    font-size: 0.7rem;
+                    border-radius: 12px;
                 }
             }
         `;
