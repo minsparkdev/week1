@@ -434,11 +434,22 @@ class FoodBalance extends HTMLElement {
                 line-height: 1.5;
             }
 
+            .image-placeholder {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 3rem;
+                background: linear-gradient(135deg, #D4C1EC 0%, #B8E0D2 100%);
+            }
+
             .action-buttons {
                 display: flex;
                 gap: 0.75rem;
                 justify-content: center;
                 flex-wrap: wrap;
+                margin-top: 0.5rem;
             }
 
             .action-btn {
@@ -809,8 +820,8 @@ class FoodBalance extends HTMLElement {
 
                 <div class="recommendation">
                     <span class="match-score">적합도 ${score}%</span>
-                    <div class="food-image-wrapper">
-                        <img src="${food.image}" alt="${food.name}" class="food-image" onerror="this.parentElement.innerHTML='<div style=\\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:3rem;\\">${food.emoji}</div>'">
+                    <div class="food-image-wrapper" id="food-image-wrapper">
+                        <img src="${food.image}" alt="${food.name}" class="food-image" id="food-image">
                     </div>
                     <span class="food-category">${food.category}</span>
                     <h3 class="food-name">${food.name}</h3>
@@ -829,6 +840,15 @@ class FoodBalance extends HTMLElement {
                 </div>
             </div>
         `;
+
+        // 이미지 로드 실패 시 이모지로 대체
+        const foodImage = this.shadowRoot.getElementById('food-image');
+        const imageWrapper = this.shadowRoot.getElementById('food-image-wrapper');
+        if (foodImage && imageWrapper) {
+            foodImage.onerror = () => {
+                imageWrapper.innerHTML = `<div class="image-placeholder">${food.emoji}</div>`;
+            };
+        }
 
         this.shadowRoot.getElementById('retry-btn').addEventListener('click', () => {
             this.initGame();
