@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>블로그 | What to Eat - 음식 이야기와 메뉴 선택 가이드</title>
+    <meta name="description" content="음식 선택 심리학, 한국 음식 문화, 메뉴 가이드 등 다양한 음식 이야기를 만나보세요. What to Eat 블로그에서 오늘의 메뉴 결정에 도움이 되는 정보를 제공합니다.">
+    <meta name="keywords" content="음식 블로그, 메뉴 추천, 한국 음식 문화, 음식 선택, 식사 가이드, 음식 심리학">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://whattoeat.pages.dev/blog.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="blog">
+    <meta property="og:url" content="https://whattoeat.pages.dev/blog.html">
+    <meta property="og:title" content="블로그 | What to Eat">
+    <meta property="og:description" content="음식 선택 심리학, 한국 음식 문화, 메뉴 가이드 등 다양한 음식 이야기">
+    <meta property="og:image" content="https://whattoeat.pages.dev/assets/images/foods/food_think.png">
+    <meta property="og:locale" content="ko_KR">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Structured Data: Blog -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "What to Eat 블로그",
+        "description": "음식 선택 심리학, 한국 음식 문화, 메뉴 가이드 등 다양한 음식 이야기",
+        "url": "https://whattoeat.pages.dev/blog.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "What to Eat",
+            "url": "https://whattoeat.pages.dev/"
+        },
+        "inLanguage": "ko"
+    }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "홈",
+                "item": "https://whattoeat.pages.dev/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "블로그"
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        .blog-page-content {
+            display: block;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--space-xl) var(--space-lg);
+        }
+        .blog-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+        .blog-header h1 {
+            font-size: var(--font-size-2xl);
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+        }
+        .blog-header p {
+            color: var(--text-secondary);
+            font-size: var(--font-size-base);
+        }
+        .blog-categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xl);
+        }
+        .blog-category-btn {
+            padding: var(--space-xs) var(--space-md);
+            background: var(--surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-full);
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+        .blog-category-btn:hover,
+        .blog-category-btn.active {
+            background: var(--primary-light);
+            color: white;
+            border-color: var(--primary-light);
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-lg);
+        }
+        .blog-card {
+            background: var(--surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-base);
+            text-decoration: none;
+            display: block;
+        }
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .blog-card-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            background: var(--bg-warm);
+        }
+        .blog-card-content {
+            padding: var(--space-md);
+        }
+        .blog-card-category {
+            display: inline-block;
+            padding: 2px 8px;
+            background: var(--accent-peach);
+            color: var(--primary-dark);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+        }
+        .blog-card-title {
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-xs);
+            line-height: 1.4;
+        }
+        .blog-card-excerpt {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--space-sm);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .blog-card-meta {
+            font-size: var(--font-size-xs);
+            color: var(--text-muted);
+        }
+        @media (max-width: 640px) {
+            .blog-page-content {
+                padding: var(--space-md);
+            }
+            .blog-header h1 {
+                font-size: var(--font-size-xl);
+            }
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">What to Eat</a>
+    </header>
+
+    <main class="blog-page-content">
+        <div class="blog-header">
+            <h1>What to Eat 블로그</h1>
+            <p>음식 선택, 한국 음식 문화, 그리고 맛있는 이야기들</p>
+        </div>
+
+        <div class="blog-categories">
+            <button class="blog-category-btn active" data-category="all">전체</button>
+            <button class="blog-category-btn" data-category="psychology">음식 심리학</button>
+            <button class="blog-category-btn" data-category="culture">한국 음식 문화</button>
+            <button class="blog-category-btn" data-category="guide">식사 가이드</button>
+            <button class="blog-category-btn" data-category="fun">재미있는 이야기</button>
+        </div>
+
+        <div class="blog-grid" id="blog-grid">
+            <!-- 음식 결정 심리학 -->
+            <a href="blog/why-menu-selection-is-hard.html" class="blog-card" data-category="psychology">
+                <img src="./assets/images/foods/food_think.png" alt="메뉴 선택 고민" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">음식 심리학</span>
+                    <h2 class="blog-card-title">왜 우리는 메뉴 선택이 어려울까? 결정 장애의 심리학</h2>
+                    <p class="blog-card-excerpt">매일 점심, 저녁마다 반복되는 '뭐 먹지?' 고민. 왜 음식 선택은 이렇게 어려울까요? 결정 피로의 심리학적 원인을 알아봅니다.</p>
+                    <span class="blog-card-meta">2026.01.12 · 5분</span>
+                </div>
+            </a>
+
+            <a href="blog/lunch-vs-dinner-pattern.html" class="blog-card" data-category="psychology">
+                <img src="./assets/images/foods/bibimbap.png" alt="점심 저녁 식사" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">음식 심리학</span>
+                    <h2 class="blog-card-title">점심 vs 저녁: 시간대별 음식 선택 패턴 분석</h2>
+                    <p class="blog-card-excerpt">점심에는 간단히, 저녁에는 든든히? 시간대에 따라 우리의 음식 선택이 어떻게 달라지는지 분석합니다.</p>
+                    <span class="blog-card-meta">2026.01.12 · 4분</span>
+                </div>
+            </a>
+
+            <a href="blog/solo-vs-group-dining.html" class="blog-card" data-category="psychology">
+                <img src="./assets/images/foods/samgyupsal.png" alt="혼밥과 회식" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">음식 심리학</span>
+                    <h2 class="blog-card-title">혼밥 vs 회식: 상황별 메뉴 고르는 법</h2>
+                    <p class="blog-card-excerpt">혼자 먹을 때와 여럿이 먹을 때, 메뉴 선택 전략이 달라야 합니다. 상황별 최적의 메뉴 선택 가이드.</p>
+                    <span class="blog-card-meta">2026.01.12 · 4분</span>
+                </div>
+            </a>
+
+            <a href="blog/5-psychological-factors.html" class="blog-card" data-category="psychology">
+                <img src="./assets/images/foods/food_think.png" alt="음식 선택 요인" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">음식 심리학</span>
+                    <h2 class="blog-card-title">음식 선택에 영향을 미치는 5가지 심리적 요인</h2>
+                    <p class="blog-card-excerpt">배고픔만으로 음식을 선택하지 않는다? 우리의 음식 선택에 영향을 미치는 숨겨진 심리적 요인들.</p>
+                    <span class="blog-card-meta">2026.01.12 · 5분</span>
+                </div>
+            </a>
+
+            <!-- 한국 음식 문화 -->
+            <a href="blog/kimchi-jjigae-soul-food.html" class="blog-card" data-category="culture">
+                <img src="./assets/images/foods/kimchi_jjigae.png" alt="김치찌개" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">한국 음식 문화</span>
+                    <h2 class="blog-card-title">한국인의 소울푸드: 김치찌개의 모든 것</h2>
+                    <p class="blog-card-excerpt">한국인이라면 누구나 좋아하는 김치찌개. 그 역사부터 맛있게 먹는 법까지, 김치찌개의 모든 것을 알아봅니다.</p>
+                    <span class="blog-card-meta">2026.01.12 · 5분</span>
+                </div>
+            </a>
+
+            <a href="blog/samgyupsal-guide.html" class="blog-card" data-category="culture">
+                <img src="./assets/images/foods/samgyupsal.png" alt="삼겹살" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">한국 음식 문화</span>
+                    <h2 class="blog-card-title">삼겹살 완벽 가이드: 부위별 특징과 맛있게 먹는 법</h2>
+                    <p class="blog-card-excerpt">삼겹살, 목살, 항정살... 돼지고기 부위별 특징과 굽는 법, 곁들임 메뉴까지 완벽 가이드.</p>
+                    <span class="blog-card-meta">2026.01.12 · 6분</span>
+                </div>
+            </a>
+
+            <a href="blog/jajangmyeon-vs-jjamppong.html" class="blog-card" data-category="culture">
+                <img src="./assets/images/foods/jajangmyeon.png" alt="짜장면과 짬뽕" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">한국 음식 문화</span>
+                    <h2 class="blog-card-title">짜장면 vs 짬뽕: 영원한 논쟁의 역사</h2>
+                    <p class="blog-card-excerpt">중국집에서 가장 어려운 선택, 짜장면과 짬뽕. 두 메뉴의 역사와 특징, 그리고 선택 가이드.</p>
+                    <span class="blog-card-meta">2026.01.12 · 5분</span>
+                </div>
+            </a>
+
+            <a href="blog/korean-chicken-history.html" class="blog-card" data-category="culture">
+                <img src="./assets/images/foods/chicken.png" alt="한국 치킨" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">한국 음식 문화</span>
+                    <h2 class="blog-card-title">한국 치킨의 역사와 진화: 후라이드부터 양념까지</h2>
+                    <p class="blog-card-excerpt">전 세계가 인정한 K-치킨. 한국 치킨의 시작부터 현재까지, 그 맛있는 역사를 따라갑니다.</p>
+                    <span class="blog-card-meta">2026.01.12 · 6분</span>
+                </div>
+            </a>
+
+            <!-- 식사 가이드 -->
+            <a href="blog/weather-food-recommendation.html" class="blog-card" data-category="guide">
+                <img src="./assets/images/foods/ramen.png" alt="날씨별 음식" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">식사 가이드</span>
+                    <h2 class="blog-card-title">날씨별 추천 메뉴: 비 오는 날엔 파전, 더운 날엔?</h2>
+                    <p class="blog-card-excerpt">날씨에 따라 당기는 음식이 다르다? 계절과 날씨에 맞는 최적의 메뉴 추천 가이드.</p>
+                    <span class="blog-card-meta">2026.01.12 · 4분</span>
+                </div>
+            </a>
+
+            <a href="blog/mood-food-recommendation.html" class="blog-card" data-category="guide">
+                <img src="./assets/images/foods/tteokbokki.png" alt="기분별 음식" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">식사 가이드</span>
+                    <h2 class="blog-card-title">기분별 음식 추천: 스트레스 받을 때, 기분 좋을 때</h2>
+                    <p class="blog-card-excerpt">기분이 음식 선택에 미치는 영향과 상황별 추천 메뉴. 오늘 기분에 맞는 음식을 찾아보세요.</p>
+                    <span class="blog-card-meta">2026.01.12 · 4분</span>
+                </div>
+            </a>
+
+            <a href="blog/healthy-late-night-snack.html" class="blog-card" data-category="guide">
+                <img src="./assets/images/foods/salad.png" alt="건강한 야식" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">식사 가이드</span>
+                    <h2 class="blog-card-title">건강한 야식 선택 가이드: 죄책감 없이 즐기는 법</h2>
+                    <p class="blog-card-excerpt">야식의 유혹을 이길 수 없다면, 최소한 현명하게 선택하자. 건강을 생각한 야식 가이드.</p>
+                    <span class="blog-card-meta">2026.01.12 · 4분</span>
+                </div>
+            </a>
+
+            <a href="blog/delivery-vs-dine-out-vs-home.html" class="blog-card" data-category="guide">
+                <img src="./assets/images/foods/pizza.png" alt="배달 외식 집밥" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">식사 가이드</span>
+                    <h2 class="blog-card-title">배달 vs 외식 vs 집밥: 상황별 최적의 선택</h2>
+                    <p class="blog-card-excerpt">배달을 시킬까, 나가서 먹을까, 집에서 해먹을까? 상황별 최적의 식사 방법 가이드.</p>
+                    <span class="blog-card-meta">2026.01.12 · 4분</span>
+                </div>
+            </a>
+
+            <!-- 재미있는 음식 이야기 -->
+            <a href="blog/food-worldcup-personality.html" class="blog-card" data-category="fun">
+                <img src="./assets/images/foods/food_think.png" alt="음식 이상형 월드컵" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">재미있는 이야기</span>
+                    <h2 class="blog-card-title">음식 이상형 월드컵으로 알아보는 나의 음식 성향</h2>
+                    <p class="blog-card-excerpt">음식 이상형 월드컵에서 어떤 음식을 선택했나요? 선택으로 알아보는 당신의 음식 성향 분석.</p>
+                    <span class="blog-card-meta">2026.01.12 · 3분</span>
+                </div>
+            </a>
+
+            <a href="blog/korean-food-debates.html" class="blog-card" data-category="fun">
+                <img src="./assets/images/foods/tangsuyuk.png" alt="음식 논쟁" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">재미있는 이야기</span>
+                    <h2 class="blog-card-title">부먹 vs 찍먹: 한국인의 음식 논쟁 베스트 10</h2>
+                    <p class="blog-card-excerpt">탕수육은 부먹? 찍먹? 한국에서 가장 뜨거운 음식 논쟁들을 모아봤습니다. 당신의 선택은?</p>
+                    <span class="blog-card-meta">2026.01.12 · 5분</span>
+                </div>
+            </a>
+
+            <a href="blog/food-trends-2026.html" class="blog-card" data-category="fun">
+                <img src="./assets/images/foods/pho.png" alt="2026 음식 트렌드" class="blog-card-image" loading="lazy">
+                <div class="blog-card-content">
+                    <span class="blog-card-category">재미있는 이야기</span>
+                    <h2 class="blog-card-title">2026년 주목해야 할 음식 트렌드 5가지</h2>
+                    <p class="blog-card-excerpt">올해는 어떤 음식이 대세일까? 2026년 주목해야 할 음식 트렌드를 미리 살펴봅니다.</p>
+                    <span class="blog-card-meta">2026.01.12 · 5분</span>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <nav class="footer-links" aria-label="사이트 링크">
+                <a href="index.html">홈</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="blog.html" aria-current="page">블로그</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="about.html">소개</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="faq.html">FAQ</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="contact.html">제휴 문의</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="privacy.html">개인정보처리방침</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="terms.html">이용약관</a>
+            </nav>
+            <p class="footer-copy">&copy; 2026 What to Eat. Bon Appetit!</p>
+        </div>
+    </footer>
+
+    <script>
+        // 카테고리 필터링
+        document.querySelectorAll('.blog-category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const category = btn.dataset.category;
+
+                // 버튼 활성화 상태 변경
+                document.querySelectorAll('.blog-category-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // 카드 필터링
+                document.querySelectorAll('.blog-card').forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

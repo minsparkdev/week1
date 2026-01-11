@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>점심 vs 저녁: 시간대별 음식 선택 패턴 분석 | What to Eat 블로그</title>
+    <meta name="description" content="점심에는 간단히, 저녁에는 든든히? 시간대에 따라 우리의 음식 선택이 어떻게 달라지는지 분석합니다. 상황별 최적의 메뉴 선택 가이드.">
+    <meta name="keywords" content="점심 메뉴, 저녁 메뉴, 시간대별 식사, 음식 선택 패턴, 직장인 점심">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://whattoeat.pages.dev/blog/lunch-vs-dinner-pattern.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://whattoeat.pages.dev/blog/lunch-vs-dinner-pattern.html">
+    <meta property="og:title" content="점심 vs 저녁: 시간대별 음식 선택 패턴 분석">
+    <meta property="og:description" content="시간대에 따라 우리의 음식 선택이 어떻게 달라지는지 분석합니다.">
+    <meta property="og:image" content="https://whattoeat.pages.dev/assets/images/foods/bibimbap.png">
+    <meta property="article:published_time" content="2026-01-12T00:00:00+09:00">
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "점심 vs 저녁: 시간대별 음식 선택 패턴 분석",
+        "description": "시간대에 따라 우리의 음식 선택이 어떻게 달라지는지 분석합니다.",
+        "image": "https://whattoeat.pages.dev/assets/images/foods/bibimbap.png",
+        "author": {"@type": "Organization", "name": "What to Eat"},
+        "publisher": {"@type": "Organization", "name": "What to Eat"},
+        "datePublished": "2026-01-12",
+        "dateModified": "2026-01-12"
+    }
+    </script>
+
+    <style>
+        .article-page {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: var(--space-xl) var(--space-lg);
+        }
+        .article-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+        .article-category {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--accent-peach);
+            color: var(--primary-dark);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+        }
+        .article-header h1 {
+            font-size: var(--font-size-2xl);
+            color: var(--text-primary);
+            line-height: 1.4;
+            margin-bottom: var(--space-md);
+        }
+        .article-meta {
+            color: var(--text-muted);
+            font-size: var(--font-size-sm);
+        }
+        .article-hero-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: var(--radius-lg);
+            margin: 0 auto var(--space-2xl);
+            display: block;
+        }
+        .article-content {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            box-shadow: var(--shadow-md);
+        }
+        .article-content h2 {
+            font-size: var(--font-size-xl);
+            color: var(--text-primary);
+            margin: var(--space-2xl) 0 var(--space-md) 0;
+            padding-bottom: var(--space-xs);
+            border-bottom: 2px solid var(--primary-light);
+        }
+        .article-content h2:first-child {
+            margin-top: 0;
+        }
+        .article-content p {
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: var(--space-md);
+        }
+        .article-content ul, .article-content ol {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: var(--space-md);
+            padding-left: var(--space-lg);
+        }
+        .article-content li {
+            margin-bottom: var(--space-sm);
+        }
+        .article-content strong {
+            color: var(--text-primary);
+        }
+        .article-cta {
+            background: var(--primary-gradient);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            text-align: center;
+            margin-top: var(--space-2xl);
+        }
+        .article-cta h3 {
+            color: white;
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-sm);
+        }
+        .article-cta p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--space-md);
+        }
+        .article-cta-btn {
+            display: inline-block;
+            padding: var(--space-sm) var(--space-xl);
+            background: white;
+            color: var(--primary);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-base);
+        }
+        .article-cta-btn:hover {
+            transform: scale(1.05);
+        }
+        .related-articles {
+            margin-top: var(--space-2xl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--border-light);
+        }
+        .related-articles h3 {
+            font-size: var(--font-size-lg);
+            color: var(--text-primary);
+            margin-bottom: var(--space-md);
+            text-align: center;
+        }
+        .related-links {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+        .related-links a {
+            padding: var(--space-sm) var(--space-md);
+            background: var(--bg-warm);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all var(--transition-base);
+        }
+        .related-links a:hover {
+            background: var(--accent-peach);
+            transform: translateX(4px);
+        }
+        @media (max-width: 640px) {
+            .article-page { padding: var(--space-md); }
+            .article-header h1 { font-size: var(--font-size-xl); }
+            .article-content { padding: var(--space-lg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="logo">What to Eat</a>
+    </header>
+
+    <main class="article-page">
+        <article>
+            <header class="article-header">
+                <span class="article-category">음식 심리학</span>
+                <h1>점심 vs 저녁: 시간대별 음식 선택 패턴 분석</h1>
+                <p class="article-meta">2026년 1월 12일 · 4분 읽기</p>
+            </header>
+
+            <img src="../assets/images/foods/bibimbap.png" alt="비빔밥" class="article-hero-image" loading="eager">
+
+            <div class="article-content">
+                <h2>시간이 음식 선택을 바꾼다</h2>
+                <p>
+                    같은 사람이라도 점심과 저녁에 선택하는 음식은 상당히 다릅니다.
+                    점심에는 김밥이나 비빔밥처럼 가볍고 빠르게 먹을 수 있는 메뉴를 찾다가도,
+                    저녁에는 삼겹살이나 치킨처럼 든든하고 여유롭게 즐길 수 있는 메뉴를 원하게 됩니다.
+                    이것은 단순히 배고픔의 정도 때문일까요? 아니면 더 깊은 이유가 있을까요?
+                </p>
+
+                <h2>점심 식사의 특징</h2>
+                <p>
+                    직장인에게 점심시간은 대부분 1시간 내외로 제한되어 있습니다.
+                    이 짧은 시간 안에 식사를 마치고, 가능하다면 커피 한 잔의 여유까지 가지려면
+                    음식 선택에 있어 <strong>효율성</strong>이 중요해집니다.
+                </p>
+                <p>
+                    연구에 따르면 점심시간에 사람들이 선호하는 음식의 특징은 다음과 같습니다:
+                </p>
+                <ul>
+                    <li><strong>조리 시간이 짧은 음식:</strong> 주문 후 10분 이내에 나오는 메뉴를 선호</li>
+                    <li><strong>가격이 합리적인 음식:</strong> 저녁보다 점심 예산이 낮은 경향</li>
+                    <li><strong>포만감 대비 부담이 적은 음식:</strong> 오후 업무에 지장을 주지 않을 정도</li>
+                    <li><strong>혼자서도 먹기 편한 음식:</strong> 혼밥 비율이 저녁보다 높음</li>
+                </ul>
+                <p>
+                    이런 이유로 점심에는 국밥, 덮밥, 비빔밥, 김밥, 라면 등
+                    한 그릇 요리가 인기를 끕니다. 빠르게 먹고, 적당히 배부르고,
+                    오후 졸음을 피할 수 있는 메뉴들이죠.
+                </p>
+
+                <h2>저녁 식사의 특징</h2>
+                <p>
+                    저녁은 점심과 완전히 다른 맥락을 가집니다.
+                    퇴근 후의 시간은 비교적 여유롭고, 하루의 피로를 음식으로 보상받고 싶은 심리가 작용합니다.
+                    또한 저녁 식사는 혼자보다 가족이나 친구, 연인과 함께하는 경우가 많습니다.
+                </p>
+                <p>
+                    저녁에 선호되는 음식의 특징은 다음과 같습니다:
+                </p>
+                <ul>
+                    <li><strong>함께 나눠 먹을 수 있는 음식:</strong> 삼겹살, 치킨, 피자 등 공유 메뉴</li>
+                    <li><strong>술과 어울리는 음식:</strong> 회식 문화의 영향으로 안주성 메뉴 선호</li>
+                    <li><strong>특별함을 주는 음식:</strong> 점심보다 조금 더 비싸도 괜찮다는 심리</li>
+                    <li><strong>천천히 즐길 수 있는 음식:</strong> 코스 요리나 구워 먹는 고기류</li>
+                </ul>
+                <p>
+                    삼겹살, 치킨, 피자, 초밥, 파스타 등이 저녁 메뉴로 사랑받는 이유입니다.
+                    이런 음식들은 먹는 과정 자체가 하나의 경험이 되고,
+                    대화를 나누며 천천히 즐기기에 적합합니다.
+                </p>
+
+                <h2>시간대별 추천 메뉴</h2>
+                <p>
+                    이런 특성을 고려하여, 시간대별로 적합한 메뉴를 정리해봤습니다.
+                </p>
+
+                <p><strong>점심 추천 메뉴 (빠르고 효율적인 선택)</strong></p>
+                <ul>
+                    <li>비빔밥, 돌솥비빔밥 - 영양 균형이 좋고 적당한 포만감</li>
+                    <li>국밥류 (설렁탕, 갈비탕, 순대국) - 빠르게 나오고 든든함</li>
+                    <li>덮밥류 (제육덮밥, 오므라이스) - 한 그릇으로 충분</li>
+                    <li>우동, 소바 - 가볍게 먹고 싶을 때</li>
+                    <li>김밥, 분식 - 시간이 정말 없을 때</li>
+                </ul>
+
+                <p><strong>저녁 추천 메뉴 (여유롭고 특별한 선택)</strong></p>
+                <ul>
+                    <li>삼겹살, 목살 - 구워 먹는 재미와 함께하는 즐거움</li>
+                    <li>치킨 - 맥주와 함께하는 치맥의 행복</li>
+                    <li>회, 초밥 - 특별한 날의 선택</li>
+                    <li>찌개류 (김치찌개, 된장찌개) - 집밥 같은 편안함</li>
+                    <li>파스타, 피자 - 양식으로 분위기 전환</li>
+                </ul>
+
+                <h2>혼자 먹을 때 vs 함께 먹을 때</h2>
+                <p>
+                    시간대만큼 중요한 것이 누구와 먹느냐입니다.
+                    같은 저녁 시간이라도 혼자 먹는다면 간단하게 라면이나 편의점 도시락을 선택할 수 있고,
+                    친구들과 함께라면 삼겹살집을 찾게 됩니다.
+                </p>
+                <p>
+                    혼밥할 때는 양 조절이 쉽고 혼자 먹기 민망하지 않은 메뉴가 좋습니다.
+                    반면 여럿이 함께할 때는 대화를 나누며 천천히 먹을 수 있고,
+                    나눠 먹는 재미가 있는 메뉴가 적합합니다.
+                </p>
+
+                <h2>나만의 패턴 만들기</h2>
+                <p>
+                    음식 선택이 어렵다면, 자신만의 시간대별 패턴을 만들어보는 것도 좋은 방법입니다.
+                    예를 들어 "월요일 점심은 국밥", "금요일 저녁은 치킨" 같은 루틴을 정해두면
+                    매번 고민할 필요가 줄어듭니다.
+                </p>
+                <p>
+                    물론 때로는 평소와 다른 선택을 하는 것도 좋습니다.
+                    점심에 삼겹살을 먹는 특별한 날, 저녁에 간단히 국수 한 그릇으로 마무리하는 날.
+                    이런 변화가 일상에 작은 즐거움을 더해줍니다.
+                </p>
+
+                <div class="article-cta">
+                    <h3>오늘 메뉴, 아직 못 정하셨나요?</h3>
+                    <p>What to Eat이 시간대에 맞는 메뉴를 추천해드립니다</p>
+                    <a href="../index.html" class="article-cta-btn">메뉴 추천받기</a>
+                </div>
+
+                <div class="related-articles">
+                    <h3>관련 글</h3>
+                    <div class="related-links">
+                        <a href="why-menu-selection-is-hard.html">왜 우리는 메뉴 선택이 어려울까?</a>
+                        <a href="solo-vs-group-dining.html">혼밥 vs 회식: 상황별 메뉴 고르는 법</a>
+                        <a href="mood-food-recommendation.html">기분별 음식 추천: 스트레스 받을 때, 기분 좋을 때</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <nav class="footer-links" aria-label="사이트 링크">
+                <a href="../index.html">홈</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../blog.html">블로그</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../about.html">소개</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../faq.html">FAQ</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../contact.html">제휴 문의</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../privacy.html">개인정보처리방침</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../terms.html">이용약관</a>
+            </nav>
+            <p class="footer-copy">&copy; 2026 What to Eat. Bon Appetit!</p>
+        </div>
+    </footer>
+</body>
+</html>

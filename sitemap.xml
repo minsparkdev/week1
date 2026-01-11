@@ -3,12 +3,129 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    <!-- 메인 페이지 -->
     <url>
         <loc>https://whattoeat.pages.dev/</loc>
         <lastmod>2026-01-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
+
+    <!-- 소개 페이지 -->
+    <url>
+        <loc>https://whattoeat.pages.dev/about.html</loc>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- 블로그 목록 -->
+    <url>
+        <loc>https://whattoeat.pages.dev/blog.html</loc>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- 블로그 아티클: 음식 결정 심리학 -->
+    <url>
+        <loc>https://whattoeat.pages.dev/blog/why-menu-selection-is-hard.html</loc>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/blog/lunch-vs-dinner-pattern.html</loc>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/blog/solo-vs-group-dining.html</loc>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/blog/5-psychological-factors.html</loc>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- 블로그 아티클: 한국 음식 문화 -->
+    <url>
+        <loc>https://whattoeat.pages.dev/blog/kimchi-jjigae-soul-food.html</loc>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/blog/samgyupsal-guide.html</loc>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/blog/jajangmyeon-vs-jjamppong.html</loc>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/blog/korean-chicken-history.html</loc>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- 블로그 아티클: 식사 가이드 -->
+    <url>
+        <loc>https://whattoeat.pages.dev/blog/weather-food-recommendation.html</loc>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/blog/mood-food-recommendation.html</loc>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/blog/healthy-late-night-snack.html</loc>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/blog/delivery-vs-dine-out-vs-home.html</loc>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- 블로그 아티클: 재미있는 음식 이야기 -->
+    <url>
+        <loc>https://whattoeat.pages.dev/blog/food-worldcup-personality.html</loc>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/blog/korean-food-debates.html</loc>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/blog/food-trends-2026.html</loc>
+        <lastmod>2026-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- 기타 페이지 -->
     <url>
         <loc>https://whattoeat.pages.dev/faq.html</loc>
         <lastmod>2026-01-11</lastmod>
