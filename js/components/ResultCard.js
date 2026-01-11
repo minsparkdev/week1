@@ -50,6 +50,17 @@ class ResultCard extends HTMLElement {
         return labels[this.mode] || '추천';
     }
 
+    getRetryLabel() {
+        const labels = {
+            random: { icon: '🎲', text: '다시 뽑기' },
+            worldcup: { icon: '🏆', text: '다시 도전' },
+            tarot: { icon: '🔮', text: '다시 뽑기' },
+            balance: { icon: '⚖️', text: '다시 도전' },
+            fullcourse: { icon: '🍽️', text: '다시 도전' }
+        };
+        return labels[this.mode] || { icon: '🔄', text: '다시 하기' };
+    }
+
     render() {
         if (!this.food) return;
 
@@ -95,7 +106,16 @@ class ResultCard extends HTMLElement {
                     </button>
                 </div>
 
-                <button class="retry-btn" id="home-btn">🏠 처음으로 돌아가기</button>
+                <div class="bottom-buttons">
+                    <button class="retry-btn primary-retry" id="retry-btn">
+                        <span class="btn-icon">${this.getRetryLabel().icon}</span>
+                        ${this.getRetryLabel().text}
+                    </button>
+                    <button class="retry-btn" id="home-btn">
+                        <span class="btn-icon">🏠</span>
+                        처음으로
+                    </button>
+                </div>
             </div>
 
             <canvas id="share-canvas" style="display: none;"></canvas>
@@ -290,11 +310,21 @@ class ResultCard extends HTMLElement {
                 font-size: 1rem;
             }
 
+            .bottom-buttons {
+                display: flex;
+                gap: 0.75rem;
+                justify-content: center;
+            }
+
             .retry-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.4rem;
                 background: transparent;
                 border: 1px solid rgba(74, 68, 88, 0.2);
                 color: #7D7A8C;
-                padding: 0.75rem 1.5rem;
+                padding: 0.75rem 1.25rem;
                 border-radius: 16px;
                 font-size: 0.875rem;
                 font-weight: 500;
@@ -305,6 +335,24 @@ class ResultCard extends HTMLElement {
             .retry-btn:hover {
                 border-color: #4A4458;
                 color: #4A4458;
+                transform: translateY(-2px);
+            }
+
+            .retry-btn.primary-retry {
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
+                border: none;
+                color: white;
+                font-weight: 600;
+                box-shadow: 0 6px 20px rgba(255, 139, 123, 0.25);
+            }
+
+            .retry-btn.primary-retry:hover {
+                box-shadow: 0 8px 24px rgba(255, 139, 123, 0.35);
+                color: white;
+            }
+
+            .retry-btn .btn-icon {
+                font-size: 1rem;
             }
 
             /* 토스트 메시지 */
@@ -443,10 +491,18 @@ class ResultCard extends HTMLElement {
                     font-size: 0.875rem;
                 }
 
+                .bottom-buttons {
+                    gap: 0.5rem;
+                }
+
                 .retry-btn {
-                    padding: 0.625rem 1.25rem;
+                    padding: 0.625rem 1rem;
                     font-size: 0.75rem;
                     border-radius: 12px;
+                }
+
+                .retry-btn .btn-icon {
+                    font-size: 0.875rem;
                 }
 
                 .toast {
@@ -490,6 +546,16 @@ class ResultCard extends HTMLElement {
         // 링크 복사 버튼
         this.shadowRoot.getElementById('copy-btn').addEventListener('click', () => {
             this.copyLink();
+        });
+
+        // 다시 하기 버튼
+        this.shadowRoot.getElementById('retry-btn').addEventListener('click', () => {
+            // 현재 모드 다시 시작
+            this.dispatchEvent(new CustomEvent('retry-mode', {
+                detail: { mode: this.mode },
+                bubbles: true,
+                composed: true
+            }));
         });
 
         // 홈 버튼

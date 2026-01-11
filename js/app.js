@@ -100,6 +100,15 @@ export function initResultListener() {
         // 결과 카드 표시 (추후 구현)
         showResultCard(food, mode);
     });
+
+    // 다시 하기 이벤트 리스너
+    document.addEventListener('retry-mode', (e) => {
+        const { mode } = e.detail;
+        console.log(`[${mode}] 다시 시작`);
+
+        // 해당 모드 다시 시작
+        switchMode(mode);
+    });
 }
 
 /**
