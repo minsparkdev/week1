@@ -166,15 +166,14 @@ class FoodTarot extends HTMLElement {
                 background: linear-gradient(135deg, #f6d365, #fda085);
                 transform: rotateY(180deg);
                 overflow: hidden;
-                padding: 10px;
-                box-sizing: border-box;
             }
 
             .card-image {
                 width: 100%;
                 height: 100%;
-                object-fit: contain;
-                border-radius: 8px;
+                object-fit: cover;
+                border-radius: 12px;
+                transform: scale(0.85);
             }
 
             .tarot-card.selected {
