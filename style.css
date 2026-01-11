@@ -107,7 +107,7 @@ body::before {
 /* =====================
    Header
    ===================== */
-header {
+body > header {
     height: 56px;
     padding: 0 var(--space-lg);
     display: flex;
