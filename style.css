@@ -206,6 +206,12 @@ main {
     max-width: 280px;
 }
 
+/* 홀수 개 카드일 때 마지막 카드 가운데 정렬 */
+.mode-grid .mode-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+}
+
 .mode-card {
     background: var(--surface);
     border: 1px solid var(--border-light);
