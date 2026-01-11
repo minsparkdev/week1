@@ -1,11 +1,61 @@
 # robots.txt for What to Eat
 # https://whattoeat.pages.dev/
 
+# Default rules for all crawlers
 User-agent: *
 Allow: /
+Crawl-delay: 1
 
-# Sitemap location
+# Google
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# AI Crawlers - Explicitly Allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+# Sitemap and LLMs.txt locations
 Sitemap: https://whattoeat.pages.dev/sitemap.xml
 
-# Crawl-delay for respectful crawling
-Crawl-delay: 1
+# LLMs.txt for AI crawlers (proposed standard)
+# https://whattoeat.pages.dev/llms.txt

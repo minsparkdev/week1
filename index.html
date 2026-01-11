@@ -5,24 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>오늘 뭐 먹지? | 메뉴 추천 - What to Eat</title>
     <meta name="description" content="결정 장애를 위한 무료 음식 추천 서비스. 랜덤 추천, 이상형 월드컵, 음식 타로, 밸런스 게임으로 오늘의 메뉴를 쉽고 재미있게 정하세요!">
-    <meta name="keywords" content="메뉴 추천, 음식 추천, 오늘 뭐 먹지, 점심 메뉴, 저녁 메뉴, 이상형 월드컵, 음식 타로, 밸런스 게임">
+    <meta name="keywords" content="메뉴 추천, 음식 추천, 오늘 뭐 먹지, 점심 메뉴, 저녁 메뉴, 이상형 월드컵, 음식 타로, 밸런스 게임, 메뉴 결정, 랜덤 음식">
     <meta name="author" content="What to Eat">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
     <link rel="canonical" href="https://whattoeat.pages.dev/">
+
+    <!-- Content Freshness -->
+    <meta name="date" content="2026-01-11">
+    <meta name="last-modified" content="2026-01-11">
+
+    <!-- Mobile App Hints -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="What to Eat">
+    <meta name="theme-color" content="#FF8B7B">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://whattoeat.pages.dev/">
-    <meta property="og:title" content="오늘 뭐 먹지? | What to Eat - 메뉴 추천 서비스">
+    <meta property="og:title" content="오늘 뭐 먹지? | What to Eat - 무료 메뉴 추천 서비스">
     <meta property="og:description" content="결정 장애를 위한 무료 음식 추천 서비스. 랜덤 추천, 이상형 월드컵, 음식 타로로 오늘의 메뉴를 정하세요!">
     <meta property="og:image" content="https://whattoeat.pages.dev/assets/images/foods/food_think.png">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="600">
     <meta property="og:locale" content="ko_KR">
     <meta property="og:site_name" content="What to Eat">
+    <meta property="article:modified_time" content="2026-01-11T00:00:00+09:00">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="오늘 뭐 먹지? | What to Eat">
-    <meta name="twitter:description" content="결정 장애를 위한 무료 음식 추천 서비스">
+    <meta name="twitter:description" content="결정 장애를 위한 무료 음식 추천 서비스. 4가지 재미있는 방법으로 메뉴를 정하세요!">
     <meta name="twitter:image" content="https://whattoeat.pages.dev/assets/images/foods/food_think.png">
 
     <!-- Google AdSense -->
@@ -30,47 +45,165 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1134027726484805"
         crossorigin="anonymous"></script>
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="style.css">
+    <!-- Performance Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://image.pollinations.ai">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-    <!-- Structured Data (JSON-LD) -->
+    <!-- Structured Data: WebApplication -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "What to Eat - 오늘 뭐 먹지?",
-        "description": "결정 장애를 위한 무료 음식 추천 서비스. 랜덤 추천, 이상형 월드컵, 음식 타로, 밸런스 게임을 제공합니다.",
+        "alternateName": ["왓투잇", "오늘 뭐 먹지", "메뉴 추천"],
+        "description": "결정 장애를 위한 무료 음식 추천 서비스입니다. 랜덤 추천, 이상형 월드컵, 음식 타로, 밸런스 게임 4가지 방식으로 오늘의 메뉴를 쉽고 재미있게 정할 수 있습니다.",
         "url": "https://whattoeat.pages.dev/",
         "applicationCategory": "LifestyleApplication",
-        "operatingSystem": "Web Browser",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "softwareVersion": "1.0",
+        "datePublished": "2026-01-01",
+        "dateModified": "2026-01-11",
         "offers": {
             "@type": "Offer",
             "price": "0",
-            "priceCurrency": "KRW"
+            "priceCurrency": "KRW",
+            "availability": "https://schema.org/InStock"
         },
         "featureList": [
-            "랜덤 음식 추천",
-            "이상형 월드컵 게임",
-            "음식 타로 운세",
-            "밸런스 게임"
+            "1초컷 - 랜덤 음식 추천 (5초 소요)",
+            "이상형 월드컵 - 16강 토너먼트 음식 대결 (1-2분 소요)",
+            "음식 타로 - 오늘의 음식 운세 보기 (30초 소요)",
+            "밸런스 게임 - 극한의 음식 선택 게임 (1분 소요)"
         ],
-        "inLanguage": "ko"
+        "screenshot": "https://whattoeat.pages.dev/assets/images/foods/food_think.png",
+        "inLanguage": "ko",
+        "isAccessibleForFree": true,
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "메뉴 선택이 어려운 사람들"
+        }
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage for AI Search -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What to Eat 서비스는 무료인가요?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "네, What to Eat의 모든 기능은 완전 무료입니다. 회원가입도 필요 없이 바로 사용하실 수 있습니다."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What to Eat에서 어떤 종류의 음식이 추천되나요?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "한식, 중식, 일식, 양식, 분식 등 다양한 카테고리의 인기 메뉴들이 포함되어 있습니다. 김치찌개, 된장찌개, 비빔밥, 삼겹살, 치킨, 피자, 햄버거, 파스타, 초밥, 라멘, 짜장면, 떡볶이 등 16가지 이상의 메뉴를 제공합니다."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "추천 결과를 저장하거나 공유할 수 있나요?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "네! 추천받은 결과는 이미지로 저장하거나 SNS에 공유할 수 있습니다. 친구들과 함께 메뉴 고민을 나눠보세요."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What to Eat은 모바일에서도 사용할 수 있나요?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "물론입니다! What to Eat은 반응형 웹으로 제작되어 스마트폰, 태블릿, PC 등 모든 기기에서 편리하게 이용하실 수 있습니다."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "이상형 월드컵은 어떻게 진행되나요?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "16가지 음식이 토너먼트 방식으로 대결합니다. 매 라운드마다 두 음식 중 더 먹고 싶은 것을 선택하면, 최종 우승 메뉴가 오늘의 추천 음식이 됩니다!"
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Structured Data: Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "What to Eat",
+        "url": "https://whattoeat.pages.dev/",
+        "logo": "https://whattoeat.pages.dev/assets/images/foods/food_think.png",
+        "description": "메뉴 결정이 어려운 분들을 위한 무료 음식 추천 서비스",
+        "foundingDate": "2026",
+        "sameAs": []
+    }
+    </script>
+
+    <!-- Structured Data: Speakable for Voice/AI Search -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "오늘 뭐 먹지? - What to Eat 메뉴 추천 서비스",
+        "speakable": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": [".hero h1", ".hero p", ".about-intro", ".about-content > p"]
+        },
+        "url": "https://whattoeat.pages.dev/"
+    }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "홈",
+                "item": "https://whattoeat.pages.dev/"
+            }
+        ]
     }
     </script>
 </head>
-<body>
-    <header>
-        <a href="#" class="logo" id="logo-home">What to Eat</a>
+<body itemscope itemtype="https://schema.org/WebApplication">
+    <header role="banner">
+        <a href="#" class="logo" id="logo-home" aria-label="What to Eat 홈으로 이동">
+            <span itemprop="name">What to Eat</span>
+        </a>
     </header>
 
-    <main>
-        <section class="hero">
-            <img src="./assets/images/foods/food_think.png" alt="음식 고민하는 캐릭터" class="hero-image">
-            <h1>오늘 메뉴가 고민되시나요?</h1>
-            <p>결정이 얼마나 어려우신가요? 상황에 맞는 솔루션을 선택하세요!</p>
+    <main role="main" id="main-content">
+        <section class="hero" aria-labelledby="hero-title">
+            <img src="./assets/images/foods/food_think.png"
+                 alt="음식을 고민하는 귀여운 캐릭터 - What to Eat 메뉴 추천 서비스"
+                 class="hero-image"
+                 width="160"
+                 height="160"
+                 loading="eager"
+                 itemprop="image">
+            <h1 id="hero-title" itemprop="headline">오늘 메뉴가 고민되시나요?</h1>
+            <p itemprop="description">결정이 얼마나 어려우신가요? 상황에 맞는 솔루션을 선택하세요!</p>
         </section>
 
         <!-- 광고 영역 1: 히어로 하단 (데스크탑만) -->
@@ -85,36 +218,37 @@
         </div>
 
         <!-- 모드 선택 허브 -->
-        <section id="mode-hub" class="mode-hub">
-            <div class="mode-grid">
-                <div class="mode-card" data-mode="random">
-                    <div class="mode-icon">🎲</div>
+        <section id="mode-hub" class="mode-hub" aria-labelledby="mode-hub-title">
+            <h2 id="mode-hub-title" class="visually-hidden">메뉴 추천 방법 선택</h2>
+            <nav class="mode-grid" role="navigation" aria-label="메뉴 추천 방법">
+                <article class="mode-card" data-mode="random" role="button" tabindex="0" aria-label="1초컷 - 5초 소요, 고민 없이 바로 추천받기">
+                    <div class="mode-icon" aria-hidden="true">🎲</div>
                     <h3 class="mode-title">1초컷</h3>
                     <p class="mode-desc">고민 없이 바로 추천받기</p>
-                    <span class="mode-time">5초</span>
-                </div>
+                    <span class="mode-time" aria-label="소요 시간">5초</span>
+                </article>
 
-                <div class="mode-card" data-mode="worldcup">
-                    <div class="mode-icon">🏆</div>
+                <article class="mode-card" data-mode="worldcup" role="button" tabindex="0" aria-label="이상형 월드컵 - 1-2분 소요, 16강 토너먼트로 결정">
+                    <div class="mode-icon" aria-hidden="true">🏆</div>
                     <h3 class="mode-title">이상형 월드컵</h3>
                     <p class="mode-desc">16강 토너먼트로 결정</p>
-                    <span class="mode-time">1-2분</span>
-                </div>
+                    <span class="mode-time" aria-label="소요 시간">1-2분</span>
+                </article>
 
-                <div class="mode-card" data-mode="tarot">
-                    <div class="mode-icon">🔮</div>
+                <article class="mode-card" data-mode="tarot" role="button" tabindex="0" aria-label="음식 타로 - 30초 소요, 오늘의 음식 운세 보기">
+                    <div class="mode-icon" aria-hidden="true">🔮</div>
                     <h3 class="mode-title">음식 타로</h3>
                     <p class="mode-desc">오늘의 음식 운세 보기</p>
-                    <span class="mode-time">30초</span>
-                </div>
+                    <span class="mode-time" aria-label="소요 시간">30초</span>
+                </article>
 
-                <div class="mode-card" data-mode="balance">
-                    <div class="mode-icon">⚖️</div>
+                <article class="mode-card" data-mode="balance" role="button" tabindex="0" aria-label="밸런스 게임 - 1분 소요, 극한의 음식 선택">
+                    <div class="mode-icon" aria-hidden="true">⚖️</div>
                     <h3 class="mode-title">밸런스 게임</h3>
                     <p class="mode-desc">극한의 음식 선택</p>
-                    <span class="mode-time">1분</span>
-                </div>
-            </div>
+                    <span class="mode-time" aria-label="소요 시간">1분</span>
+                </article>
+            </nav>
         </section>
 
         <!-- 모드 콘텐츠 영역 -->
@@ -237,15 +371,18 @@
         </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="footer-content">
-            <div class="footer-links">
+            <nav class="footer-links" aria-label="법적 고지">
                 <a href="privacy.html">개인정보처리방침</a>
-                <span class="footer-divider">|</span>
+                <span class="footer-divider" aria-hidden="true">|</span>
                 <a href="terms.html">이용약관</a>
-            </div>
+            </nav>
             <p class="footer-copy">&copy; 2026 What to Eat. Bon Appetit!</p>
             <p class="footer-info">본 서비스는 무료로 제공되며, 음식 추천 결과는 참고용입니다.</p>
+            <p class="footer-update">
+                <time datetime="2026-01-11">마지막 업데이트: 2026년 1월 11일</time>
+            </p>
         </div>
     </footer>
 
@@ -264,12 +401,19 @@
         document.addEventListener('DOMContentLoaded', () => {
             initApp();
 
-            // 모드 카드 클릭 이벤트
+            // 모드 카드 클릭 및 키보드 이벤트 (접근성)
             document.querySelectorAll('.mode-card').forEach(card => {
-                card.addEventListener('click', () => {
+                const handleModeSelect = () => {
                     const mode = card.dataset.mode;
                     if (mode) {
                         switchMode(mode);
+                    }
+                };
+                card.addEventListener('click', handleModeSelect);
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        handleModeSelect();
                     }
                 });
             });
