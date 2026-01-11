@@ -60,22 +60,33 @@
         <!-- 모드 콘텐츠 영역 -->
         <section id="mode-content" class="mode-content hidden"></section>
 
-        <!-- 제휴 문의 -->
+        <!-- 제휴 문의 (접이식) -->
         <section class="contact-section">
-            <div class="contact-card">
-                <h2>제휴 문의</h2>
-                <p>What to Eat과 함께할 파트너를 찾습니다.</p>
-                <form action="https://formspree.io/f/xreezave" method="POST" id="contact-form">
-                    <div class="form-group">
-                        <label for="email">이메일 주소</label>
-                        <input type="email" name="email" id="email" placeholder="example@email.com" required>
+            <div class="contact-card collapsible">
+                <button class="contact-header" id="contact-toggle" aria-expanded="false">
+                    <div class="contact-header-content">
+                        <h2>제휴 문의</h2>
+                        <p>What to Eat과 함께할 파트너를 찾습니다.</p>
                     </div>
-                    <div class="form-group">
-                        <label for="message">문의 내용</label>
-                        <textarea name="message" id="message" rows="4" placeholder="문의하실 내용을 입력해주세요." required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">문의하기</button>
-                </form>
+                    <span class="contact-chevron">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </button>
+                <div class="contact-body" id="contact-body">
+                    <form action="https://formspree.io/f/xreezave" method="POST" id="contact-form">
+                        <div class="form-group">
+                            <label for="email">이메일 주소</label>
+                            <input type="email" name="email" id="email" placeholder="example@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">문의 내용</label>
+                            <textarea name="message" id="message" rows="4" placeholder="문의하실 내용을 입력해주세요." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">문의하기</button>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
@@ -112,6 +123,16 @@
             // 홈으로 돌아가기 이벤트
             document.addEventListener('go-home', () => {
                 switchMode('hub');
+            });
+
+            // 제휴 문의 아코디언 토글
+            const contactToggle = document.getElementById('contact-toggle');
+            const contactBody = document.getElementById('contact-body');
+
+            contactToggle.addEventListener('click', () => {
+                const isExpanded = contactToggle.getAttribute('aria-expanded') === 'true';
+                contactToggle.setAttribute('aria-expanded', !isExpanded);
+                contactBody.classList.toggle('expanded');
             });
         });
     </script>

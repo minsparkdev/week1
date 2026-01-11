@@ -342,7 +342,7 @@ main {
 }
 
 /* =====================
-   Contact Section
+   Contact Section (Collapsible)
    ===================== */
 .contact-section {
     width: 100%;
@@ -353,11 +353,83 @@ main {
     background: var(--surface);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-lg);
-    padding: var(--space-xl);
     box-shadow: var(--shadow-sm);
+    overflow: hidden;
 }
 
-.contact-card h2 {
+.contact-card.collapsible {
+    padding: 0;
+}
+
+/* Accordion Header */
+.contact-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-lg) var(--space-xl);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color var(--transition-fast);
+}
+
+.contact-header:hover {
+    background: var(--surface-hover);
+}
+
+.contact-header-content h2 {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-xs) 0;
+}
+
+.contact-header-content p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    margin: 0;
+}
+
+.contact-chevron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-full);
+    background: var(--bg-warm);
+    color: var(--text-secondary);
+    flex-shrink: 0;
+    transition: all var(--transition-base);
+}
+
+.contact-header[aria-expanded="true"] .contact-chevron {
+    transform: rotate(180deg);
+    background: var(--primary-light);
+    color: white;
+}
+
+/* Accordion Body */
+.contact-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    padding: 0 var(--space-xl);
+}
+
+.contact-body.expanded {
+    max-height: 400px;
+    padding: 0 var(--space-xl) var(--space-xl) var(--space-xl);
+}
+
+/* Legacy styles for non-collapsible version */
+.contact-card:not(.collapsible) {
+    padding: var(--space-xl);
+}
+
+.contact-card:not(.collapsible) h2 {
     font-size: var(--font-size-xl);
     font-weight: 700;
     color: var(--text-primary);
@@ -365,7 +437,7 @@ main {
     margin-bottom: var(--space-xs);
 }
 
-.contact-card > p {
+.contact-card:not(.collapsible) > p {
     text-align: center;
     color: var(--text-secondary);
     font-size: var(--font-size-sm);
