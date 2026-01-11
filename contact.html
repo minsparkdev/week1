@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제휴 문의 | What to Eat</title>
+    <meta name="description" content="What to Eat과 함께할 파트너를 찾습니다. 제휴, 협업, 광고 문의를 남겨주세요.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://whattoeat.pages.dev/contact.html">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Structured Data: ContactPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "What to Eat 제휴 문의",
+        "description": "What to Eat과 함께할 파트너를 찾습니다.",
+        "url": "https://whattoeat.pages.dev/contact.html",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "What to Eat",
+            "url": "https://whattoeat.pages.dev/"
+        }
+    }
+    </script>
+
+    <style>
+        .contact-page {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: var(--space-xl);
+        }
+
+        .contact-page h1 {
+            font-size: var(--font-size-2xl);
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: var(--space-sm);
+        }
+
+        .contact-page .contact-intro {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xl);
+        }
+
+        .contact-page .contact-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-page .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--space-lg);
+            transition: color var(--transition-fast);
+        }
+
+        .contact-page .back-link:hover {
+            color: var(--primary);
+        }
+
+        .contact-page .contact-types {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-lg);
+            justify-content: center;
+        }
+
+        .contact-page .contact-type {
+            padding: var(--space-xs) var(--space-md);
+            background: var(--bg-warm);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 480px) {
+            .contact-page {
+                padding: var(--space-md);
+            }
+
+            .contact-page h1 {
+                font-size: var(--font-size-xl);
+            }
+
+            .contact-page .contact-card {
+                padding: var(--space-md);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header role="banner">
+        <a href="index.html" class="logo" aria-label="What to Eat 홈으로 이동">What to Eat</a>
+    </header>
+
+    <main class="contact-page" role="main">
+        <a href="index.html" class="back-link">&larr; 홈으로 돌아가기</a>
+
+        <h1>제휴 문의</h1>
+        <p class="contact-intro">What to Eat과 함께할 파트너를 찾습니다.</p>
+
+        <div class="contact-types">
+            <span class="contact-type">광고 제휴</span>
+            <span class="contact-type">콘텐츠 협업</span>
+            <span class="contact-type">서비스 연동</span>
+            <span class="contact-type">기타 문의</span>
+        </div>
+
+        <div class="contact-card">
+            <form action="https://formspree.io/f/xreezave" method="POST" id="contact-form">
+                <div class="form-group">
+                    <label for="email">이메일 주소</label>
+                    <input type="email" name="email" id="email" placeholder="example@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">회사/단체명 (선택)</label>
+                    <input type="text" name="company" id="company" placeholder="회사 또는 단체명">
+                </div>
+                <div class="form-group">
+                    <label for="message">문의 내용</label>
+                    <textarea name="message" id="message" rows="5" placeholder="제휴하고 싶은 내용을 자세히 작성해주세요." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">문의하기</button>
+            </form>
+        </div>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <nav class="footer-links" aria-label="법적 고지">
+                <a href="privacy.html">개인정보처리방침</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="terms.html">이용약관</a>
+            </nav>
+            <p class="footer-copy">&copy; 2026 What to Eat. Bon Appetit!</p>
+        </div>
+    </footer>
+</body>
+</html>

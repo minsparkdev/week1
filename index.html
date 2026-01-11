@@ -92,56 +92,6 @@
     }
     </script>
 
-    <!-- Structured Data: FAQPage for AI Search -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "What to Eat 서비스는 무료인가요?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "네, What to Eat의 모든 기능은 완전 무료입니다. 회원가입도 필요 없이 바로 사용하실 수 있습니다."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What to Eat에서 어떤 종류의 음식이 추천되나요?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "한식, 중식, 일식, 양식, 분식 등 다양한 카테고리의 인기 메뉴들이 포함되어 있습니다. 김치찌개, 된장찌개, 비빔밥, 삼겹살, 치킨, 피자, 햄버거, 파스타, 초밥, 라멘, 짜장면, 떡볶이 등 16가지 이상의 메뉴를 제공합니다."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "추천 결과를 저장하거나 공유할 수 있나요?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "네! 추천받은 결과는 이미지로 저장하거나 SNS에 공유할 수 있습니다. 친구들과 함께 메뉴 고민을 나눠보세요."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What to Eat은 모바일에서도 사용할 수 있나요?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "물론입니다! What to Eat은 반응형 웹으로 제작되어 스마트폰, 태블릿, PC 등 모든 기기에서 편리하게 이용하실 수 있습니다."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "이상형 월드컵은 어떻게 진행되나요?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "16가지 음식이 토너먼트 방식으로 대결합니다. 매 라운드마다 두 음식 중 더 먹고 싶은 것을 선택하면, 최종 우승 메뉴가 오늘의 추천 음식이 됩니다!"
-                }
-            }
-        ]
-    }
-    </script>
-
     <!-- Structured Data: Organization -->
     <script type="application/ld+json">
     {
@@ -311,69 +261,15 @@
             </div>
         </section>
 
-        <!-- FAQ 섹션 -->
-        <section class="faq-section">
-            <div class="faq-card">
-                <h2>자주 묻는 질문</h2>
-                <div class="faq-list">
-                    <details class="faq-item">
-                        <summary>서비스는 무료인가요?</summary>
-                        <p>네, What to Eat의 모든 기능은 <strong>완전 무료</strong>입니다. 회원가입도 필요 없이 바로 사용하실 수 있습니다.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>어떤 종류의 음식이 추천되나요?</summary>
-                        <p>한식, 중식, 일식, 양식, 분식 등 <strong>다양한 카테고리</strong>의 인기 메뉴들이 포함되어 있습니다. 김치찌개부터 파스타, 초밥, 햄버거까지 16가지 이상의 메뉴를 제공합니다.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>추천 결과를 저장하거나 공유할 수 있나요?</summary>
-                        <p>네! 추천받은 결과는 <strong>이미지로 저장</strong>하거나 <strong>SNS에 공유</strong>할 수 있습니다. 친구들과 함께 메뉴 고민을 나눠보세요.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>모바일에서도 사용할 수 있나요?</summary>
-                        <p>물론입니다! What to Eat은 <strong>반응형 웹</strong>으로 제작되어 스마트폰, 태블릿, PC 등 모든 기기에서 편리하게 이용하실 수 있습니다.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>이상형 월드컵은 어떻게 진행되나요?</summary>
-                        <p>16가지 음식이 토너먼트 방식으로 대결합니다. 매 라운드마다 두 음식 중 더 먹고 싶은 것을 선택하면, 최종 우승 메뉴가 오늘의 추천 음식이 됩니다!</p>
-                    </details>
-                </div>
-            </div>
-        </section>
-
-        <!-- 제휴 문의 (접이식) -->
-        <section class="contact-section">
-            <div class="contact-card collapsible">
-                <button class="contact-header" id="contact-toggle" aria-expanded="false">
-                    <div class="contact-header-content">
-                        <h2>제휴 문의</h2>
-                        <p>What to Eat과 함께할 파트너를 찾습니다.</p>
-                    </div>
-                    <span class="contact-chevron">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </span>
-                </button>
-                <div class="contact-body" id="contact-body">
-                    <form action="https://formspree.io/f/xreezave" method="POST" id="contact-form">
-                        <div class="form-group">
-                            <label for="email">이메일 주소</label>
-                            <input type="email" name="email" id="email" placeholder="example@email.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">문의 내용</label>
-                            <textarea name="message" id="message" rows="4" placeholder="문의하실 내용을 입력해주세요." required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">문의하기</button>
-                    </form>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer role="contentinfo">
         <div class="footer-content">
-            <nav class="footer-links" aria-label="법적 고지">
+            <nav class="footer-links" aria-label="사이트 링크">
+                <a href="faq.html">자주 묻는 질문</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="contact.html">제휴 문의</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
                 <a href="privacy.html">개인정보처리방침</a>
                 <span class="footer-divider" aria-hidden="true">|</span>
                 <a href="terms.html">이용약관</a>
@@ -424,16 +320,6 @@
             document.getElementById('logo-home').addEventListener('click', (e) => {
                 e.preventDefault();
                 switchMode('hub');
-            });
-
-            // 제휴 문의 아코디언 토글
-            const contactToggle = document.getElementById('contact-toggle');
-            const contactBody = document.getElementById('contact-body');
-
-            contactToggle.addEventListener('click', () => {
-                const isExpanded = contactToggle.getAttribute('aria-expanded') === 'true';
-                contactToggle.setAttribute('aria-expanded', !isExpanded);
-                contactBody.classList.toggle('expanded');
             });
         });
     </script>
