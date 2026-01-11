@@ -102,96 +102,95 @@ class FoodWorldcup extends HTMLElement {
             }
 
             @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(20px); }
+                from { opacity: 0; transform: translateY(16px); }
                 to { opacity: 1; transform: translateY(0); }
             }
 
             .worldcup-container {
-                background: var(--glass-bg, rgba(255, 255, 255, 0.7));
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.5));
-                border-radius: var(--radius, 24px);
-                padding: 2rem;
-                box-shadow: var(--glass-shadow, 0 8px 32px 0 rgba(31, 38, 135, 0.1));
+                background: #FFFFFF;
+                border: 1px solid rgba(74, 68, 88, 0.08);
+                border-radius: 24px;
+                padding: 1.5rem;
+                box-shadow: 0 4px 20px rgba(74, 68, 88, 0.08);
             }
 
             .round-info {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                margin-bottom: 1rem;
+                margin-bottom: 0.75rem;
             }
 
             .round-badge {
-                background: linear-gradient(135deg, #ff6b6b, #ffa502);
-                color: white;
-                padding: 0.5rem 1.2rem;
-                border-radius: 50px;
-                font-weight: 700;
-                font-size: 1rem;
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
+                color: #FFFFFF;
+                padding: 6px 14px;
+                border-radius: 9999px;
+                font-weight: 600;
+                font-size: 0.75rem;
             }
 
             .match-count {
-                color: var(--text-muted, #636e72);
-                font-weight: 600;
+                color: #7D7A8C;
+                font-weight: 500;
+                font-size: 0.875rem;
             }
 
             .progress-bar {
                 width: 100%;
-                height: 8px;
-                background: rgba(0, 0, 0, 0.1);
-                border-radius: 4px;
+                height: 6px;
+                background: rgba(74, 68, 88, 0.08);
+                border-radius: 3px;
                 overflow: hidden;
-                margin-bottom: 1.5rem;
+                margin-bottom: 1.25rem;
             }
 
             .progress-fill {
                 height: 100%;
-                background: linear-gradient(135deg, #ff6b6b, #ffa502);
-                border-radius: 4px;
-                transition: width 0.5s ease;
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
+                border-radius: 3px;
+                transition: width 0.4s ease;
             }
 
             .vs-title {
                 text-align: center;
-                font-size: 1.5rem;
-                color: var(--text-main, #2d3436);
-                margin-bottom: 2rem;
-                font-weight: 700;
+                font-size: 1.125rem;
+                color: #4A4458;
+                margin-bottom: 1.25rem;
+                font-weight: 600;
             }
 
             .battle-arena {
                 display: grid;
                 grid-template-columns: 1fr auto 1fr;
-                gap: 1rem;
+                gap: 0.75rem;
                 align-items: center;
             }
 
-            @media (max-width: 700px) {
+            @media (max-width: 600px) {
                 .battle-arena {
                     grid-template-columns: 1fr;
-                    gap: 1rem;
+                    gap: 0.75rem;
                 }
                 .vs-badge {
-                    margin: 0.5rem 0;
+                    margin: 0.25rem auto;
                 }
             }
 
             .food-card {
-                background: var(--glass-bg, rgba(255, 255, 255, 0.5));
-                border: 2px solid transparent;
+                background: #FFFFFF;
+                border: 2px solid rgba(74, 68, 88, 0.08);
                 border-radius: 20px;
                 overflow: hidden;
                 cursor: pointer;
-                transition: all 0.3s ease;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                transition: all 0.25s ease;
+                box-shadow: 0 2px 8px rgba(74, 68, 88, 0.06);
             }
 
             .food-card:hover {
-                transform: translateY(-5px) scale(1.02);
-                border-color: #ff6b6b;
-                box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+                transform: translateY(-4px);
+                border-color: #FFB5A7;
+                box-shadow: 0 8px 24px rgba(255, 139, 123, 0.2);
             }
 
             .food-card:active {
@@ -199,20 +198,20 @@ class FoodWorldcup extends HTMLElement {
             }
 
             .food-card.selected {
-                border-color: #ff6b6b;
-                animation: pulse 0.5s ease;
+                border-color: #FF8B7B;
+                animation: pulse 0.4s ease;
             }
 
             @keyframes pulse {
                 0%, 100% { transform: scale(1); }
-                50% { transform: scale(1.05); }
+                50% { transform: scale(1.02); }
             }
 
             .food-image {
                 width: 100%;
-                height: 200px;
+                height: 140px;
                 overflow: hidden;
-                position: relative;
+                background: linear-gradient(135deg, #FFDAC1 0%, #FFB5A7 100%);
             }
 
             .food-image img {
@@ -223,7 +222,7 @@ class FoodWorldcup extends HTMLElement {
             }
 
             .food-card:hover .food-image img {
-                transform: scale(1.1);
+                transform: scale(1.05);
             }
 
             .image-placeholder {
@@ -232,85 +231,82 @@ class FoodWorldcup extends HTMLElement {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-                font-size: 4rem;
+                font-size: 3rem;
             }
 
             .food-info {
-                padding: 1.5rem;
+                padding: 1rem;
                 text-align: center;
             }
 
             .food-category {
                 display: inline-block;
-                padding: 0.3rem 0.8rem;
-                border-radius: 50px;
-                background: rgba(255, 107, 107, 0.1);
-                color: #ff6b6b;
-                font-size: 0.8rem;
-                font-weight: 700;
+                padding: 4px 10px;
+                border-radius: 9999px;
+                background: #FFDAC1;
+                color: #E07565;
+                font-size: 0.625rem;
+                font-weight: 600;
                 margin-bottom: 0.5rem;
                 text-transform: uppercase;
             }
 
             .food-name {
-                font-size: 1.8rem;
-                color: var(--text-main, #2d3436);
-                margin: 0.5rem 0;
-                font-weight: 800;
+                font-size: 1.125rem;
+                color: #4A4458;
+                margin: 0.25rem 0;
+                font-weight: 700;
             }
 
             .food-desc {
-                color: var(--text-muted, #636e72);
-                font-size: 0.95rem;
+                color: #7D7A8C;
+                font-size: 0.75rem;
                 margin: 0;
             }
 
             .vs-badge {
-                background: linear-gradient(135deg, #667eea, #764ba2);
-                color: white;
-                width: 60px;
-                height: 60px;
+                background: #D4C1EC;
+                color: #FFFFFF;
+                width: 44px;
+                height: 44px;
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-weight: 900;
-                font-size: 1.2rem;
-                box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+                font-weight: 700;
+                font-size: 0.875rem;
                 flex-shrink: 0;
             }
 
-            /* 우승 화면 */
+            /* Winner Screen */
             .winner-container {
                 text-align: center;
-                animation: fadeIn 0.8s ease-out;
             }
 
             .winner-badge {
-                font-size: 3rem;
-                margin-bottom: 1rem;
+                font-size: 2.5rem;
+                margin-bottom: 0.75rem;
             }
 
             .winner-title {
-                font-size: 1.5rem;
-                color: var(--text-muted, #636e72);
-                margin-bottom: 0.5rem;
+                font-size: 1rem;
+                color: #7D7A8C;
+                margin-bottom: 0.25rem;
             }
 
             .winner-card {
-                background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 165, 2, 0.1));
-                border: 2px solid #ff6b6b;
-                border-radius: 24px;
-                padding: 2rem;
-                margin: 1.5rem 0;
+                background: linear-gradient(135deg, rgba(255, 218, 193, 0.3), rgba(255, 181, 167, 0.2));
+                border: 2px solid #FFB5A7;
+                border-radius: 20px;
+                padding: 1.5rem;
+                margin: 1rem 0;
             }
 
             .winner-image {
                 width: 100%;
-                max-width: 400px;
-                height: 300px;
-                margin: 0 auto 1.5rem;
+                max-width: 280px;
+                height: 200px;
+                margin: 0 auto 1rem;
                 border-radius: 16px;
                 overflow: hidden;
             }
@@ -322,45 +318,45 @@ class FoodWorldcup extends HTMLElement {
             }
 
             .winner-name {
-                font-size: 2.5rem;
-                color: var(--text-main, #2d3436);
-                font-weight: 800;
+                font-size: 1.5rem;
+                color: #4A4458;
+                font-weight: 700;
                 margin: 0.5rem 0;
             }
 
             .winner-desc {
-                color: var(--text-muted, #636e72);
-                font-size: 1.1rem;
+                color: #7D7A8C;
+                font-size: 0.875rem;
             }
 
             .action-buttons {
                 display: flex;
-                gap: 1rem;
+                gap: 0.75rem;
                 justify-content: center;
-                margin-top: 2rem;
+                margin-top: 1.25rem;
                 flex-wrap: wrap;
             }
 
             .action-btn {
-                padding: 1rem 2rem;
-                border-radius: 50px;
-                font-size: 1rem;
-                font-weight: 700;
+                padding: 0.75rem 1.5rem;
+                border-radius: 16px;
+                font-size: 0.875rem;
+                font-weight: 600;
                 cursor: pointer;
-                transition: all 0.3s ease;
+                transition: all 0.25s ease;
                 border: none;
             }
 
             .action-btn.primary {
-                background: linear-gradient(135deg, #ff6b6b, #ffa502);
-                color: white;
-                box-shadow: 0 5px 20px rgba(255, 107, 107, 0.3);
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
+                color: #FFFFFF;
+                box-shadow: 0 8px 24px rgba(255, 139, 123, 0.25);
             }
 
             .action-btn.secondary {
-                background: var(--glass-bg, rgba(255, 255, 255, 0.7));
-                color: var(--text-main, #2d3436);
-                border: 2px solid var(--glass-border, rgba(255, 255, 255, 0.5));
+                background: #FFFFFF;
+                color: #4A4458;
+                border: 1px solid rgba(74, 68, 88, 0.08);
             }
 
             .action-btn:hover {

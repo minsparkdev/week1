@@ -42,28 +42,21 @@ class FoodRecommender extends HTMLElement {
             :host {
                 display: block;
                 width: 100%;
-                animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+                animation: fadeInUp 0.5s ease-out;
             }
+
             .card {
-                background: var(--glass-bg, rgba(255, 255, 255, 0.7));
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.5));
-                border-radius: var(--radius, 24px);
-                padding: 0;
-                box-shadow: var(--glass-shadow, 0 8px 32px 0 rgba(31, 38, 135, 0.1));
-                text-align: center;
-                transition: all 0.3s ease;
-                position: relative;
+                background: #FFFFFF;
+                border: 1px solid rgba(74, 68, 88, 0.08);
+                border-radius: 24px;
                 overflow: hidden;
-                display: flex;
-                flex-direction: column;
+                box-shadow: 0 4px 20px rgba(74, 68, 88, 0.08);
             }
 
             .image-area {
                 width: 100%;
-                height: 350px;
-                background-color: rgba(0,0,0,0.03);
+                height: 280px;
+                background: linear-gradient(135deg, #FFDAC1 0%, #FFB5A7 100%);
                 position: relative;
                 overflow: hidden;
             }
@@ -72,7 +65,11 @@ class FoodRecommender extends HTMLElement {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                transition: transform 0.4s ease;
+            }
+
+            .card:hover .image-area img {
+                transform: scale(1.03);
             }
 
             .image-placeholder {
@@ -81,86 +78,80 @@ class FoodRecommender extends HTMLElement {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-                font-size: 5rem;
+                font-size: 4rem;
             }
 
             .content {
-                padding: 2.5rem 2rem;
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                padding: 1.5rem;
+                text-align: center;
             }
 
             .category {
                 display: inline-block;
-                padding: 0.5rem 1.2rem;
-                border-radius: 50px;
-                background: rgba(255, 107, 107, 0.1);
-                color: #ff6b6b;
-                font-size: 0.95rem;
-                font-weight: 700;
-                margin-bottom: 1rem;
-                letter-spacing: 0.5px;
+                padding: 6px 14px;
+                border-radius: 9999px;
+                background: #FFDAC1;
+                color: #E07565;
+                font-size: 0.75rem;
+                font-weight: 600;
+                margin-bottom: 0.75rem;
                 text-transform: uppercase;
+                letter-spacing: 0.5px;
             }
 
             h2 {
-                margin: 0 0 0.8rem 0;
-                font-size: 2.5rem;
-                color: var(--text-main, #2d3436);
-                font-weight: 800;
-                line-height: 1.1;
+                margin: 0 0 0.5rem 0;
+                font-size: 1.5rem;
+                color: #4A4458;
+                font-weight: 700;
+                line-height: 1.2;
             }
 
             .desc {
-                color: var(--text-muted, #636e72);
-                margin-bottom: 2.5rem;
-                font-size: 1.1rem;
-                min-height: 1.5em;
-                font-weight: 400;
+                color: #7D7A8C;
+                margin-bottom: 1.5rem;
+                font-size: 0.875rem;
+                min-height: 1.2em;
             }
 
             button {
-                background: linear-gradient(135deg, #ff6b6b, #ffa502);
-                color: white;
+                background: linear-gradient(135deg, #FFB5A7 0%, #FFC8A2 50%, #FFD6BA 100%);
+                color: #FFFFFF;
                 border: none;
-                padding: 1.2rem 3rem;
-                font-size: 1.1rem;
-                font-weight: 700;
-                border-radius: 50px;
+                padding: 0.875rem 2rem;
+                font-size: 0.875rem;
+                font-weight: 600;
+                border-radius: 16px;
                 cursor: pointer;
-                box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
-                transition: all 0.3s ease;
+                box-shadow: 0 8px 24px rgba(255, 139, 123, 0.25);
+                transition: all 0.25s ease;
                 width: 100%;
-                max-width: 320px;
             }
 
             button:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 15px 30px rgba(255, 107, 107, 0.4);
+                transform: translateY(-2px);
+                box-shadow: 0 12px 28px rgba(255, 139, 123, 0.35);
             }
 
             button:disabled {
-                opacity: 0.7;
+                opacity: 0.6;
                 cursor: wait;
-                background: #b2bec3;
+                background: #A9A6B5;
                 box-shadow: none;
                 transform: none;
             }
 
             @keyframes fadeInUp {
-                from { opacity: 0; transform: translateY(30px); }
+                from { opacity: 0; transform: translateY(16px); }
                 to { opacity: 1; transform: translateY(0); }
             }
 
             .result-show .image-area img {
-                animation: zoomIn 0.8s ease-out;
+                animation: zoomIn 0.5s ease-out;
             }
 
             @keyframes zoomIn {
-                from { transform: scale(1.1); opacity: 0; }
+                from { transform: scale(1.05); opacity: 0; }
                 to { transform: scale(1); opacity: 1; }
             }
         `;

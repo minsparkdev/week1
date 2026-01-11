@@ -89,55 +89,54 @@ class FoodBalance extends HTMLElement {
             }
 
             @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(20px); }
+                from { opacity: 0; transform: translateY(16px); }
                 to { opacity: 1; transform: translateY(0); }
             }
 
             .balance-container {
-                background: var(--glass-bg, rgba(255, 255, 255, 0.7));
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.5));
-                border-radius: var(--radius, 24px);
-                padding: 2rem;
-                box-shadow: var(--glass-shadow, 0 8px 32px 0 rgba(31, 38, 135, 0.1));
+                background: #FFFFFF;
+                border: 1px solid rgba(74, 68, 88, 0.08);
+                border-radius: 24px;
+                padding: 1.5rem;
+                box-shadow: 0 4px 20px rgba(74, 68, 88, 0.08);
                 text-align: center;
             }
 
             .progress-info {
-                margin-bottom: 2rem;
+                margin-bottom: 1.5rem;
             }
 
             .question-count {
                 display: inline-block;
-                background: linear-gradient(135deg, #ff6b6b, #ffa502);
-                color: white;
-                padding: 0.4rem 1rem;
-                border-radius: 50px;
-                font-weight: 700;
-                font-size: 0.9rem;
-                margin-bottom: 1rem;
+                background: linear-gradient(135deg, #B8E0D2, #D4C1EC);
+                color: #FFFFFF;
+                padding: 6px 14px;
+                border-radius: 9999px;
+                font-weight: 600;
+                font-size: 0.75rem;
+                margin-bottom: 0.75rem;
             }
 
             .progress-bar {
                 width: 100%;
-                height: 8px;
-                background: rgba(0, 0, 0, 0.1);
-                border-radius: 4px;
+                height: 6px;
+                background: rgba(74, 68, 88, 0.08);
+                border-radius: 3px;
                 overflow: hidden;
             }
 
             .progress-fill {
                 height: 100%;
-                background: linear-gradient(135deg, #ff6b6b, #ffa502);
-                transition: width 0.5s ease;
+                background: linear-gradient(135deg, #B8E0D2, #D4C1EC);
+                border-radius: 3px;
+                transition: width 0.4s ease;
             }
 
             .question-text {
-                font-size: 1.8rem;
-                color: var(--text-main, #2d3436);
-                margin: 0 0 2rem 0;
-                font-weight: 800;
+                font-size: 1.25rem;
+                color: #4A4458;
+                margin: 0 0 1.5rem 0;
+                font-weight: 700;
                 line-height: 1.4;
             }
 
@@ -145,30 +144,31 @@ class FoodBalance extends HTMLElement {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                gap: 1.5rem;
+                gap: 1rem;
                 flex-wrap: wrap;
             }
 
             .option-btn {
                 flex: 1;
-                min-width: 150px;
-                max-width: 250px;
-                padding: 2rem 1.5rem;
-                background: var(--glass-bg, rgba(255, 255, 255, 0.8));
-                border: 3px solid var(--glass-border, rgba(255, 255, 255, 0.5));
+                min-width: 130px;
+                max-width: 200px;
+                padding: 1.5rem 1rem;
+                background: #FFFFFF;
+                border: 2px solid rgba(74, 68, 88, 0.08);
                 border-radius: 20px;
                 cursor: pointer;
-                transition: all 0.3s ease;
+                transition: all 0.25s ease;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                gap: 1rem;
+                gap: 0.75rem;
+                box-shadow: 0 2px 8px rgba(74, 68, 88, 0.06);
             }
 
             .option-btn:hover {
-                transform: translateY(-5px) scale(1.02);
-                border-color: #ff6b6b;
-                box-shadow: 0 10px 30px rgba(255, 107, 107, 0.2);
+                transform: translateY(-4px);
+                border-color: #FFB5A7;
+                box-shadow: 0 8px 24px rgba(255, 139, 123, 0.2);
             }
 
             .option-btn:active {
@@ -176,41 +176,41 @@ class FoodBalance extends HTMLElement {
             }
 
             .option-btn.selected {
-                border-color: #ff6b6b;
-                background: rgba(255, 107, 107, 0.1);
+                border-color: #FF8B7B;
+                background: rgba(255, 181, 167, 0.1);
             }
 
             .option-btn.not-selected {
-                opacity: 0.5;
+                opacity: 0.4;
             }
 
             .option-emoji {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
 
             .option-text {
-                font-size: 1.3rem;
-                font-weight: 700;
-                color: var(--text-main, #2d3436);
+                font-size: 1rem;
+                font-weight: 600;
+                color: #4A4458;
             }
 
             .vs-badge {
-                background: linear-gradient(135deg, #667eea, #764ba2);
-                color: white;
-                width: 50px;
-                height: 50px;
+                background: #D4C1EC;
+                color: #FFFFFF;
+                width: 44px;
+                height: 44px;
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-weight: 900;
-                font-size: 1rem;
+                font-weight: 700;
+                font-size: 0.875rem;
                 flex-shrink: 0;
             }
 
             /* 통계 영역 */
             .stats-area {
-                margin-top: 2rem;
+                margin-top: 1.5rem;
                 animation: fadeIn 0.5s ease-out;
             }
 
@@ -221,35 +221,37 @@ class FoodBalance extends HTMLElement {
             .stat-bar {
                 display: flex;
                 width: 100%;
-                height: 40px;
-                border-radius: 20px;
+                height: 36px;
+                border-radius: 18px;
                 overflow: hidden;
-                background: #eee;
+                background: rgba(74, 68, 88, 0.08);
             }
 
             .stat-fill {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-weight: 700;
+                font-weight: 600;
+                font-size: 0.8rem;
                 color: white;
                 transition: width 0.8s ease;
             }
 
             .stat-fill.stat-a {
-                background: linear-gradient(135deg, #ff6b6b, #ffa502);
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
             }
 
             .stat-fill.stat-b {
-                background: linear-gradient(135deg, #667eea, #764ba2);
+                background: linear-gradient(135deg, #D4C1EC, #B8E0D2);
             }
 
             .stat-labels {
                 display: flex;
                 justify-content: space-between;
                 margin-top: 0.5rem;
-                color: var(--text-muted, #636e72);
-                font-weight: 600;
+                color: #7D7A8C;
+                font-weight: 500;
+                font-size: 0.8rem;
             }
 
             /* 결과 화면 */
@@ -258,27 +260,28 @@ class FoodBalance extends HTMLElement {
             }
 
             .result-title {
-                font-size: 1.5rem;
-                color: var(--text-main, #2d3436);
-                margin-bottom: 2rem;
-            }
-
-            .recommendation {
-                background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 165, 2, 0.1));
-                border: 2px solid rgba(255, 107, 107, 0.3);
-                border-radius: 20px;
-                padding: 2rem;
+                font-size: 1.25rem;
+                color: #4A4458;
+                font-weight: 700;
                 margin-bottom: 1.5rem;
             }
 
+            .recommendation {
+                background: linear-gradient(135deg, rgba(212, 193, 236, 0.15), rgba(184, 224, 210, 0.15));
+                border: 1px solid rgba(212, 193, 236, 0.3);
+                border-radius: 20px;
+                padding: 1.5rem;
+                margin-bottom: 1.25rem;
+            }
+
             .food-image-wrapper {
-                width: 180px;
-                height: 180px;
-                margin: 0 auto 1.5rem;
+                width: 140px;
+                height: 140px;
+                margin: 0 auto 1rem;
                 border-radius: 50%;
                 overflow: hidden;
-                box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
-                border: 4px solid rgba(255, 107, 107, 0.3);
+                box-shadow: 0 8px 24px rgba(212, 193, 236, 0.3);
+                border: 3px solid rgba(212, 193, 236, 0.4);
             }
 
             .food-image {
@@ -288,43 +291,44 @@ class FoodBalance extends HTMLElement {
             }
 
             .food-name {
-                font-size: 2rem;
-                font-weight: 800;
-                color: var(--text-main, #2d3436);
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #4A4458;
                 margin: 0 0 0.5rem 0;
             }
 
             .food-desc {
-                color: var(--text-muted, #636e72);
-                font-size: 1rem;
+                color: #7D7A8C;
+                font-size: 0.875rem;
             }
 
             .action-buttons {
                 display: flex;
-                gap: 1rem;
+                gap: 0.75rem;
                 justify-content: center;
                 flex-wrap: wrap;
             }
 
             .action-btn {
-                padding: 0.8rem 1.5rem;
-                border-radius: 50px;
-                font-size: 0.95rem;
-                font-weight: 700;
+                padding: 0.75rem 1.25rem;
+                border-radius: 16px;
+                font-size: 0.8rem;
+                font-weight: 600;
                 cursor: pointer;
-                transition: all 0.3s ease;
+                transition: all 0.25s ease;
                 border: none;
             }
 
             .action-btn.primary {
-                background: linear-gradient(135deg, #ff6b6b, #ffa502);
-                color: white;
+                background: linear-gradient(135deg, #D4C1EC, #B8E0D2);
+                color: #FFFFFF;
+                box-shadow: 0 6px 20px rgba(212, 193, 236, 0.3);
             }
 
             .action-btn.secondary {
-                background: var(--glass-bg);
-                color: var(--text-main);
-                border: 2px solid var(--glass-border);
+                background: #FFFFFF;
+                color: #4A4458;
+                border: 1px solid rgba(74, 68, 88, 0.08);
             }
 
             .action-btn:hover {
@@ -332,18 +336,21 @@ class FoodBalance extends HTMLElement {
             }
 
             @media (max-width: 600px) {
+                .balance-container {
+                    padding: 1.25rem;
+                }
                 .question-text {
-                    font-size: 1.4rem;
+                    font-size: 1.125rem;
                 }
                 .option-btn {
-                    min-width: 120px;
-                    padding: 1.5rem 1rem;
+                    min-width: 110px;
+                    padding: 1.25rem 0.75rem;
                 }
                 .option-emoji {
                     font-size: 2rem;
                 }
                 .option-text {
-                    font-size: 1.1rem;
+                    font-size: 0.875rem;
                 }
             }
         `;

@@ -119,49 +119,49 @@ class ResultCard extends HTMLElement {
             }
 
             @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(20px); }
+                from { opacity: 0; transform: translateY(16px); }
                 to { opacity: 1; transform: translateY(0); }
             }
 
             .result-container {
-                background: var(--glass-bg, rgba(255, 255, 255, 0.7));
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.5));
-                border-radius: var(--radius, 24px);
-                padding: 2rem;
-                box-shadow: var(--glass-shadow, 0 8px 32px 0 rgba(31, 38, 135, 0.1));
+                background: #FFFFFF;
+                border: 1px solid rgba(74, 68, 88, 0.08);
+                border-radius: 24px;
+                padding: 1.5rem;
+                box-shadow: 0 4px 20px rgba(74, 68, 88, 0.08);
                 text-align: center;
             }
 
             .result-header {
-                margin-bottom: 2rem;
+                margin-bottom: 1.5rem;
             }
 
             .mode-badge {
                 display: inline-block;
-                background: linear-gradient(135deg, #667eea, #764ba2);
+                background: linear-gradient(135deg, #D4C1EC, #B8E0D2);
                 color: white;
-                padding: 0.4rem 1rem;
-                border-radius: 50px;
-                font-size: 0.85rem;
-                font-weight: 700;
-                margin-bottom: 1rem;
+                padding: 6px 14px;
+                border-radius: 9999px;
+                font-size: 0.75rem;
+                font-weight: 600;
+                margin-bottom: 0.75rem;
             }
 
             .result-header h2 {
-                font-size: 1.5rem;
-                color: var(--text-main, #2d3436);
+                font-size: 1.125rem;
+                color: #4A4458;
                 margin: 0;
+                font-weight: 600;
             }
 
             .result-card {
                 background: white;
                 border-radius: 20px;
                 overflow: hidden;
-                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-                margin: 0 auto 2rem;
-                max-width: 400px;
+                box-shadow: 0 8px 32px rgba(74, 68, 88, 0.12);
+                margin: 0 auto 1.5rem;
+                max-width: 360px;
+                border: 1px solid rgba(74, 68, 88, 0.08);
             }
 
             .card-inner {
@@ -170,7 +170,7 @@ class ResultCard extends HTMLElement {
 
             .card-image {
                 width: 100%;
-                height: 250px;
+                height: 220px;
                 overflow: hidden;
             }
 
@@ -186,36 +186,37 @@ class ResultCard extends HTMLElement {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-                font-size: 5rem;
+                background: linear-gradient(135deg, #FFDAC1 0%, #FFB5A7 100%);
+                font-size: 4rem;
             }
 
             .card-content {
-                padding: 1.5rem;
+                padding: 1.25rem;
                 background: white;
             }
 
             .food-category {
                 display: inline-block;
-                padding: 0.3rem 0.8rem;
-                border-radius: 50px;
-                background: rgba(255, 107, 107, 0.1);
-                color: #ff6b6b;
-                font-size: 0.8rem;
-                font-weight: 700;
+                padding: 4px 12px;
+                border-radius: 9999px;
+                background: #FFDAC1;
+                color: #E07565;
+                font-size: 0.7rem;
+                font-weight: 600;
                 margin-bottom: 0.5rem;
+                text-transform: uppercase;
             }
 
             .food-name {
-                font-size: 2rem;
-                color: #2d3436;
+                font-size: 1.5rem;
+                color: #4A4458;
                 margin: 0.5rem 0;
-                font-weight: 800;
+                font-weight: 700;
             }
 
             .food-desc {
-                color: #636e72;
-                font-size: 1rem;
+                color: #7D7A8C;
+                font-size: 0.875rem;
                 margin: 0;
             }
 
@@ -223,57 +224,58 @@ class ResultCard extends HTMLElement {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: 1rem 1.5rem;
-                background: linear-gradient(135deg, #ff6b6b, #ffa502);
+                padding: 0.875rem 1.25rem;
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
                 color: white;
             }
 
             .app-name {
-                font-weight: 700;
+                font-weight: 600;
+                font-size: 0.875rem;
             }
 
             .date {
-                font-size: 0.9rem;
+                font-size: 0.8rem;
                 opacity: 0.9;
             }
 
             .action-buttons {
                 display: flex;
-                gap: 0.8rem;
+                gap: 0.5rem;
                 justify-content: center;
                 flex-wrap: wrap;
-                margin-bottom: 1.5rem;
+                margin-bottom: 1.25rem;
             }
 
             .action-btn {
                 display: flex;
                 align-items: center;
-                gap: 0.5rem;
-                padding: 0.8rem 1.5rem;
-                border-radius: 50px;
-                font-size: 0.95rem;
-                font-weight: 700;
+                gap: 0.4rem;
+                padding: 0.75rem 1rem;
+                border-radius: 16px;
+                font-size: 0.8rem;
+                font-weight: 600;
                 cursor: pointer;
-                transition: all 0.3s ease;
+                transition: all 0.25s ease;
                 border: none;
             }
 
             .action-btn.primary {
-                background: linear-gradient(135deg, #ff6b6b, #ffa502);
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
                 color: white;
-                box-shadow: 0 5px 20px rgba(255, 107, 107, 0.3);
+                box-shadow: 0 6px 20px rgba(255, 139, 123, 0.25);
             }
 
             .action-btn.secondary {
-                background: linear-gradient(135deg, #667eea, #764ba2);
+                background: linear-gradient(135deg, #D4C1EC, #B8E0D2);
                 color: white;
-                box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+                box-shadow: 0 6px 20px rgba(212, 193, 236, 0.25);
             }
 
             .action-btn.tertiary {
-                background: var(--glass-bg, rgba(255, 255, 255, 0.9));
-                color: var(--text-main, #2d3436);
-                border: 2px solid var(--glass-border, rgba(0, 0, 0, 0.1));
+                background: #FFFFFF;
+                color: #4A4458;
+                border: 1px solid rgba(74, 68, 88, 0.08);
             }
 
             .action-btn:hover {
@@ -285,24 +287,24 @@ class ResultCard extends HTMLElement {
             }
 
             .btn-icon {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
 
             .retry-btn {
                 background: transparent;
-                border: 2px solid var(--text-muted, #636e72);
-                color: var(--text-muted, #636e72);
-                padding: 0.8rem 2rem;
-                border-radius: 50px;
-                font-size: 1rem;
-                font-weight: 600;
+                border: 1px solid rgba(74, 68, 88, 0.2);
+                color: #7D7A8C;
+                padding: 0.75rem 1.5rem;
+                border-radius: 16px;
+                font-size: 0.875rem;
+                font-weight: 500;
                 cursor: pointer;
-                transition: all 0.3s ease;
+                transition: all 0.25s ease;
             }
 
             .retry-btn:hover {
-                border-color: var(--text-main, #2d3436);
-                color: var(--text-main, #2d3436);
+                border-color: #4A4458;
+                color: #4A4458;
             }
 
             /* 토스트 메시지 */
@@ -311,11 +313,12 @@ class ResultCard extends HTMLElement {
                 bottom: 2rem;
                 left: 50%;
                 transform: translateX(-50%) translateY(100px);
-                background: #2d3436;
+                background: #4A4458;
                 color: white;
-                padding: 1rem 2rem;
-                border-radius: 50px;
-                font-weight: 600;
+                padding: 0.875rem 1.5rem;
+                border-radius: 16px;
+                font-weight: 500;
+                font-size: 0.875rem;
                 opacity: 0;
                 transition: all 0.3s ease;
                 z-index: 1000;
@@ -378,10 +381,11 @@ class ResultCard extends HTMLElement {
         canvas.width = 600;
         canvas.height = 800;
 
-        // 배경 그라데이션
+        // 배경 그라데이션 - Warm Pastel
         const gradient = ctx.createLinearGradient(0, 0, 600, 800);
-        gradient.addColorStop(0, '#ff6b6b');
-        gradient.addColorStop(1, '#ffa502');
+        gradient.addColorStop(0, '#FFB5A7');
+        gradient.addColorStop(0.5, '#FFC8A2');
+        gradient.addColorStop(1, '#FFD6BA');
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, 600, 800);
 
@@ -398,8 +402,11 @@ class ResultCard extends HTMLElement {
             ctx.drawImage(this.foodImage, 70, 120, 460, 300);
             ctx.restore();
         } else {
-            // 이모지 폴백
-            ctx.fillStyle = '#f6d365';
+            // 이모지 폴백 - Warm Pastel gradient
+            const placeholderGradient = ctx.createLinearGradient(70, 120, 530, 420);
+            placeholderGradient.addColorStop(0, '#FFDAC1');
+            placeholderGradient.addColorStop(1, '#FFB5A7');
+            ctx.fillStyle = placeholderGradient;
             this.roundRect(ctx, 70, 120, 460, 300, 20);
             ctx.fill();
             ctx.font = '100px serif';
@@ -408,28 +415,28 @@ class ResultCard extends HTMLElement {
         }
 
         // 카테고리
-        ctx.fillStyle = 'rgba(255, 107, 107, 0.1)';
+        ctx.fillStyle = '#FFDAC1';
         this.roundRect(ctx, 220, 440, 160, 35, 17);
         ctx.fill();
-        ctx.fillStyle = '#ff6b6b';
-        ctx.font = 'bold 16px sans-serif';
+        ctx.fillStyle = '#E07565';
+        ctx.font = 'bold 14px sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillText(this.food.category, 300, 463);
+        ctx.fillText(this.food.category.toUpperCase(), 300, 463);
 
         // 음식 이름
-        ctx.fillStyle = '#2d3436';
-        ctx.font = 'bold 48px sans-serif';
-        ctx.fillText(this.food.name, 300, 530);
+        ctx.fillStyle = '#4A4458';
+        ctx.font = 'bold 44px sans-serif';
+        ctx.fillText(this.food.name, 300, 525);
 
         // 설명
-        ctx.fillStyle = '#636e72';
-        ctx.font = '20px sans-serif';
-        ctx.fillText(this.food.desc, 300, 575);
+        ctx.fillStyle = '#7D7A8C';
+        ctx.font = '18px sans-serif';
+        ctx.fillText(this.food.desc, 300, 570);
 
-        // 하단 바
+        // 하단 바 - Warm Pastel gradient
         const footerGradient = ctx.createLinearGradient(50, 630, 550, 700);
-        footerGradient.addColorStop(0, '#ff6b6b');
-        footerGradient.addColorStop(1, '#ffa502');
+        footerGradient.addColorStop(0, '#FFB5A7');
+        footerGradient.addColorStop(1, '#FFC8A2');
         ctx.fillStyle = footerGradient;
         this.roundRect(ctx, 50, 630, 500, 70, { tl: 0, tr: 0, bl: 30, br: 30 });
         ctx.fill();
