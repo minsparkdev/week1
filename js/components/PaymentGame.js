@@ -687,10 +687,10 @@ class PaymentGame extends HTMLElement {
                     <button class="result-btn primary" id="share-btn">
                         📤 공유하기
                     </button>
-                    <button class="result-btn accent" id="download-btn">
+                    <button class="result-btn secondary" id="download-btn">
                         💾 이미지 저장
                     </button>
-                    <button class="result-btn secondary" id="retry-btn">
+                    <button class="result-btn outline" id="retry-btn">
                         🔄 다시 하기
                     </button>
                     <button class="result-btn ghost" id="reset-btn">
@@ -1690,27 +1690,36 @@ class PaymentGame extends HTMLElement {
                 box-shadow: 0 4px 16px rgba(255, 139, 123, 0.3);
             }
 
-            .result-btn.accent {
-                background: linear-gradient(135deg, #D4C1EC, #B8E0D2);
-                color: white;
-                box-shadow: 0 4px 16px rgba(212, 193, 236, 0.3);
+            .result-btn.primary:hover {
+                box-shadow: 0 6px 20px rgba(255, 139, 123, 0.4);
             }
 
             .result-btn.secondary {
+                background: #FFFFFF;
+                color: #E07565;
+                border: 2px solid #FFDAC1;
+            }
+
+            .result-btn.secondary:hover {
+                background: #FFF9F5;
+                border-color: #FFB5A7;
+            }
+
+            .result-btn.outline {
                 background: #FFFFFF;
                 color: #4A4458;
                 border: 2px solid rgba(74, 68, 88, 0.12);
             }
 
-            .result-btn.secondary:hover {
-                border-color: #FFB5A7;
-                color: #FF8B7B;
+            .result-btn.outline:hover {
+                border-color: rgba(74, 68, 88, 0.25);
+                background: #FAFAFA;
             }
 
             .result-btn.ghost {
                 background: transparent;
                 color: #7D7A8C;
-                border: 1px solid rgba(74, 68, 88, 0.15);
+                border: 1px solid transparent;
             }
 
             .result-btn.ghost:hover {
