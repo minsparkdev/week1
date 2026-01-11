@@ -1168,24 +1168,55 @@ class PaymentGame extends HTMLElement {
     async shareResult() {
         const { winner, currentGame } = this.state;
         const gameLabel = currentGame === 'roulette' ? '룰렛' : '사다리타기';
+        const text = `🎉 ${gameLabel}으로 결정된 오늘의 결제왕은 "${winner && winner.name}"!`;
 
-        const shareData = {
+        // 이미지 공유 시도
+        try {
+            const imageUrl = await this.generateShareImage();
+
+            // Data URL을 Blob으로 변환
+            const response = await fetch(imageUrl);
+            const blob = await response.blob();
+
+            // File 객체 생성
+            const file = new File([blob], `payment-king-${Date.now()}.png`, { type: 'image/png' });
+
+            const shareData = {
+                title: 'What to Eat - 결제왕',
+                text: text,
+                files: [file]
+            };
+
+            // 파일 공유 가능 여부 확인
+            if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+                await navigator.share(shareData);
+                return;
+            }
+        } catch (err) {
+            console.warn('Image share failed:', err);
+        }
+
+        // 텍스트만 공유 시도
+        const textShareData = {
             title: 'What to Eat - 결제왕',
-            text: `🎉 ${gameLabel}으로 결정된 오늘의 결제왕은 "${winner && winner.name}"! - What to Eat`,
+            text: text + ' - What to Eat',
             url: window.location.href
         };
 
-        if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+        if (navigator.share && navigator.canShare && navigator.canShare(textShareData)) {
             try {
-                await navigator.share(shareData);
+                await navigator.share(textShareData);
+                return;
             } catch (err) {
                 if (err.name !== 'AbortError') {
                     this.copyLink();
                 }
+                return;
             }
-        } else {
-            this.copyLink();
         }
+
+        // 폴백: 클립보드 복사
+        this.copyLink();
     }
 
     async downloadImage() {
