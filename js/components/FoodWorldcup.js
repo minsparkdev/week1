@@ -193,8 +193,10 @@ class FoodWorldcup extends HTMLElement {
                 }
 
                 .battle-arena {
-                    grid-template-columns: 1fr 36px 1fr;
-                    gap: 0.5rem;
+                    grid-template-columns: 1fr 32px 1fr;
+                    gap: 0.375rem;
+                    align-items: center;
+                    justify-items: center;
                 }
 
                 .food-image {
@@ -229,14 +231,16 @@ class FoodWorldcup extends HTMLElement {
                 }
 
                 .vs-badge {
-                    width: 36px;
-                    height: 36px;
-                    font-size: 0.75rem;
+                    width: 32px;
+                    height: 32px;
+                    font-size: 0.625rem;
+                    flex-shrink: 0;
+                    z-index: 1;
                 }
             }
 
             /* Mobile - Keep side by side but more compact */
-            @media (max-width: 400px) {
+            @media (max-width: 480px) {
                 .worldcup-container {
                     padding: 0.75rem;
                 }
@@ -251,8 +255,8 @@ class FoodWorldcup extends HTMLElement {
                 }
 
                 .battle-arena {
-                    grid-template-columns: 1fr 30px 1fr;
-                    gap: 0.375rem;
+                    grid-template-columns: 1fr 26px 1fr;
+                    gap: 0.25rem;
                 }
 
                 .food-card {
@@ -260,11 +264,11 @@ class FoodWorldcup extends HTMLElement {
                 }
 
                 .food-image {
-                    height: 80px;
+                    height: 90px;
                 }
 
                 .image-placeholder {
-                    font-size: 1.5rem;
+                    font-size: 1.75rem;
                 }
 
                 .food-info {
@@ -276,7 +280,7 @@ class FoodWorldcup extends HTMLElement {
                 }
 
                 .food-name {
-                    font-size: 0.75rem;
+                    font-size: 0.8rem;
                 }
 
                 .food-desc {
@@ -284,9 +288,39 @@ class FoodWorldcup extends HTMLElement {
                 }
 
                 .vs-badge {
-                    width: 30px;
-                    height: 30px;
-                    font-size: 0.625rem;
+                    width: 26px;
+                    height: 26px;
+                    font-size: 0.5rem;
+                }
+            }
+
+            /* Very small mobile */
+            @media (max-width: 360px) {
+                .battle-arena {
+                    grid-template-columns: 1fr 22px 1fr;
+                    gap: 0.125rem;
+                }
+
+                .food-image {
+                    height: 75px;
+                }
+
+                .image-placeholder {
+                    font-size: 1.5rem;
+                }
+
+                .food-info {
+                    padding: 0.375rem;
+                }
+
+                .food-name {
+                    font-size: 0.7rem;
+                }
+
+                .vs-badge {
+                    width: 22px;
+                    height: 22px;
+                    font-size: 0.45rem;
                 }
             }
 
