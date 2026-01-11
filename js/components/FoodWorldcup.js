@@ -4,7 +4,7 @@
  * - 토너먼트 방식 음식 대결
  */
 
-import { foods, shuffleArray, generateImageUrl } from '../data/foods.js';
+import { foods, shuffleArray } from '../data/foods.js';
 
 class FoodWorldcup extends HTMLElement {
     constructor() {
@@ -402,7 +402,7 @@ class FoodWorldcup extends HTMLElement {
                 // 에러 시 이모지 유지
             };
 
-            img.src = generateImageUrl(food, 400, 300);
+            img.src = food.image;
         });
     }
 
@@ -507,7 +507,7 @@ class FoodWorldcup extends HTMLElement {
             container.appendChild(img);
         };
 
-        img.src = generateImageUrl(winner, 800, 600);
+        img.src = winner.image;
     }
 }
 

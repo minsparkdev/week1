@@ -5,7 +5,7 @@
  * - 이미지 다운로드
  */
 
-import { foods, generateImageUrl } from '../data/foods.js';
+import { foods } from '../data/foods.js';
 
 class ResultCard extends HTMLElement {
     constructor() {
@@ -342,7 +342,7 @@ class ResultCard extends HTMLElement {
             container.appendChild(img);
         };
 
-        img.src = generateImageUrl(this.food, 800, 600);
+        img.src = this.food.image;
     }
 
     bindEvents() {

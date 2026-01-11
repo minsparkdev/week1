@@ -1,10 +1,10 @@
 /**
  * FoodRecommender 컴포넌트
  * - 랜덤 음식 추천
- * - AI 이미지 생성 연동
+ * - 로컬 이미지 사용
  */
 
-import { foods, getRandomFood, generateImageUrl } from '../data/foods.js';
+import { foods, getRandomFood } from '../data/foods.js';
 
 class FoodRecommender extends HTMLElement {
     constructor() {
@@ -30,7 +30,7 @@ class FoodRecommender extends HTMLElement {
                 <div class="content">
                     <div class="category" id="category">READY</div>
                     <h2 id="food-name">무엇을 먹을까요?</h2>
-                    <p class="desc" id="desc">버튼을 눌러 AI가 추천하는 오늘의 메뉴를 확인하세요!</p>
+                    <p class="desc" id="desc">버튼을 눌러 오늘의 메뉴를 추천받으세요!</p>
                     <button id="recommend-btn">메뉴 추천받기</button>
                 </div>
             </div>
@@ -150,19 +150,6 @@ class FoodRecommender extends HTMLElement {
                 transform: none;
             }
 
-            .spinner {
-                width: 50px;
-                height: 50px;
-                border: 5px solid rgba(255, 255, 255, 0.3);
-                border-radius: 50%;
-                border-top-color: #fff;
-                animation: spin 1s ease-in-out infinite;
-            }
-
-            @keyframes spin {
-                to { transform: rotate(360deg); }
-            }
-
             @keyframes fadeInUp {
                 from { opacity: 0; transform: translateY(30px); }
                 to { opacity: 1; transform: translateY(0); }
@@ -191,16 +178,21 @@ class FoodRecommender extends HTMLElement {
         const btn = this.shadowRoot.getElementById('recommend-btn');
         const nameEl = this.shadowRoot.getElementById('food-name');
         const categoryEl = this.shadowRoot.getElementById('category');
+        const imgArea = this.shadowRoot.getElementById('image-area');
 
         btn.disabled = true;
-        btn.textContent = "AI가 메뉴를 고르는 중...";
+        btn.textContent = "메뉴를 고르는 중...";
 
-        // 셔플 효과
+        // 셔플 효과 - 이미지도 함께 변경
         let counter = 0;
         const interval = setInterval(() => {
             const randomFood = getRandomFood();
             nameEl.textContent = randomFood.name;
             categoryEl.textContent = randomFood.category;
+
+            // 셔플 중에도 이미지 미리보기
+            imgArea.innerHTML = `<img src="${randomFood.image}" alt="${randomFood.name}" style="opacity: 0.7;">`;
+
             counter++;
 
             if (counter > 10) {
@@ -226,26 +218,12 @@ class FoodRecommender extends HTMLElement {
         categoryEl.textContent = pick.category;
         descEl.textContent = pick.desc;
 
-        // 로딩 상태 표시
-        imgArea.innerHTML = '<div class="image-placeholder"><div class="spinner"></div></div>';
-
-        // AI 이미지 URL 생성
-        const imageUrl = generateImageUrl(pick);
-
-        // 이미지 생성
+        // 로컬 이미지 로드
         const img = document.createElement('img');
         img.alt = pick.name;
+        img.src = pick.image;
 
-        // 5초 타임아웃
-        const timeoutId = setTimeout(() => {
-            if (this.isAnimating) {
-                console.warn("Image load timed out");
-                handleError();
-            }
-        }, 5000);
-
-        const handleSuccess = () => {
-            clearTimeout(timeoutId);
+        img.onload = () => {
             imgArea.innerHTML = '';
             imgArea.appendChild(img);
 
@@ -253,7 +231,9 @@ class FoodRecommender extends HTMLElement {
             void card.offsetWidth;
             card.classList.add('result-show');
 
-            enableButton();
+            btn.textContent = "다른 거 추천받기";
+            btn.disabled = false;
+            this.isAnimating = false;
 
             // 결과 이벤트 발행
             this.dispatchEvent(new CustomEvent('food-result', {
@@ -263,21 +243,13 @@ class FoodRecommender extends HTMLElement {
             }));
         };
 
-        const handleError = () => {
-            clearTimeout(timeoutId);
-            imgArea.innerHTML = `<div class="image-placeholder" style="font-size: 5rem;">${pick.emoji || '😋'}</div>`;
-            enableButton();
-        };
-
-        const enableButton = () => {
+        img.onerror = () => {
+            // 이미지 로드 실패 시 이모지 표시
+            imgArea.innerHTML = `<div class="image-placeholder" style="font-size: 5rem;">${pick.emoji}</div>`;
             btn.textContent = "다른 거 추천받기";
             btn.disabled = false;
             this.isAnimating = false;
         };
-
-        img.onload = handleSuccess;
-        img.onerror = handleError;
-        img.src = imageUrl;
     }
 }
 

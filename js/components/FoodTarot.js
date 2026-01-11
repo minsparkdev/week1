@@ -4,7 +4,7 @@
  * - 5장 중 1장 선택 → 음식 운세
  */
 
-import { foods, shuffleArray, generateImageUrl } from '../data/foods.js';
+import { foods, shuffleArray } from '../data/foods.js';
 
 class FoodTarot extends HTMLElement {
     constructor() {
