@@ -1,0 +1,9 @@
+# Dependencies
+node_modules/
+
+# Backup of original large images (not for deployment)
+assets/images/foods_original/
+
+# Logs
+*.log
+firebase-debug.log
