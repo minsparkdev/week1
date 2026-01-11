@@ -586,6 +586,11 @@ class PaymentGame extends HTMLElement {
 
     renderParticipantRow(name, index) {
         const canRemove = this.state.participants.length > 1;
+        const isLast = index === this.state.participants.length - 1;
+        const canAddMore = this.state.participants.length < CONFIG.MAX_PARTICIPANTS;
+        // 마지막 입력이고 더 추가할 수 없으면 'done', 그 외에는 'next'
+        const enterKeyHint = isLast && !canAddMore ? 'done' : 'next';
+
         return `
             <div class="participant-row">
                 <input type="text"
@@ -594,6 +599,9 @@ class PaymentGame extends HTMLElement {
                        value="${this.escapeHtml(name)}"
                        placeholder="이름 입력"
                        maxlength="${CONFIG.MAX_NAME_LENGTH}"
+                       inputmode="text"
+                       enterkeyhint="${enterKeyHint}"
+                       autocomplete="off"
                        aria-label="참가자 ${index + 1} 이름">
                 ${canRemove ? `
                     <button class="remove-btn" data-index="${index}" aria-label="참가자 삭제">
@@ -678,6 +686,7 @@ class PaymentGame extends HTMLElement {
         // 참가자 입력
         shadow.querySelectorAll('.participant-input').forEach(input => {
             input.addEventListener('input', (e) => this.handleParticipantInput(e));
+            input.addEventListener('keydown', (e) => this.handleParticipantKeydown(e));
         });
 
         // 참가자 삭제
@@ -721,6 +730,36 @@ class PaymentGame extends HTMLElement {
         participants[idx] = e.target.value;
         this.state.participants = participants; // 직접 업데이트 (재렌더링 없이)
         this.updateStartButton();
+    }
+
+    handleParticipantKeydown(e) {
+        if (e.key !== 'Enter') return;
+
+        e.preventDefault();
+
+        const idx = parseInt(e.target.dataset.index);
+        const currentValue = e.target.value.trim();
+        const inputs = this.shadowRoot.querySelectorAll('.participant-input');
+        const isLast = idx === inputs.length - 1;
+        const canAddMore = this.state.participants.length < CONFIG.MAX_PARTICIPANTS;
+
+        // 현재 입력값이 비어있으면 무시
+        if (!currentValue) return;
+
+        if (isLast && canAddMore) {
+            // 마지막 입력에서 엔터: 새 참가자 추가
+            this.handleAddParticipant();
+        } else if (!isLast) {
+            // 중간 입력에서 엔터: 다음 입력으로 포커스 이동
+            const nextInput = inputs[idx + 1];
+            if (nextInput) nextInput.focus();
+        } else {
+            // 최대 인원 도달 시 게임 시작 버튼으로 포커스
+            const startBtn = this.shadowRoot.getElementById('start-game');
+            if (startBtn && this.canStartGame()) {
+                startBtn.focus();
+            }
+        }
     }
 
     handleRemoveParticipant(index) {
