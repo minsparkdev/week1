@@ -198,6 +198,12 @@ main {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-md);
+    justify-items: center;
+}
+
+.mode-grid .mode-card {
+    width: 100%;
+    max-width: 280px;
 }
 
 .mode-card {
