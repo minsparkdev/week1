@@ -1,10 +1,23 @@
 /**
  * FoodBalance 컴포넌트
  * - 음식 밸런스 게임
- * - 극한의 2지선다
+ * - 취향 분석 기반 추천
+ *
+ * 로직 흐름:
+ * 1. 5개 질문에 대해 A/B 선택
+ * 2. 각 선택에 따라 취향 프로파일 업데이트
+ * 3. 최종 프로파일 기반으로 최적 음식 추천
+ * 4. 취향 분석 결과와 함께 표시
  */
 
-import { balanceQuestions, foods, shuffleArray, getRandomFood } from '../data/foods.js';
+import { balanceQuestions, shuffleArray } from '../data/foods.js';
+import {
+    createInitialProfile,
+    updateProfile,
+    analyzeProfile,
+    recommendFoods,
+    generateRecommendationReason
+} from '../utils/tasteAnalyzer.js';
 
 class FoodBalance extends HTMLElement {
     constructor() {
@@ -14,6 +27,9 @@ class FoodBalance extends HTMLElement {
         this.currentIndex = 0;
         this.answers = [];
         this.totalQuestions = 5;
+        this.profile = null;
+        this.recommendation = null;
+        this.analysis = null;
     }
 
     connectedCallback() {
@@ -26,6 +42,9 @@ class FoodBalance extends HTMLElement {
         this.questions = shuffleArray([...balanceQuestions]).slice(0, this.totalQuestions);
         this.currentIndex = 0;
         this.answers = [];
+        this.profile = createInitialProfile();
+        this.recommendation = null;
+        this.analysis = null;
     }
 
     render() {
@@ -259,19 +278,119 @@ class FoodBalance extends HTMLElement {
                 text-align: center;
             }
 
+            .result-header {
+                margin-bottom: 1.5rem;
+            }
+
+            .result-badge {
+                display: inline-block;
+                background: linear-gradient(135deg, #B8E0D2, #D4C1EC);
+                color: #FFFFFF;
+                padding: 6px 14px;
+                border-radius: 9999px;
+                font-weight: 600;
+                font-size: 0.75rem;
+                margin-bottom: 0.75rem;
+            }
+
             .result-title {
                 font-size: 1.25rem;
                 color: #4A4458;
                 font-weight: 700;
-                margin-bottom: 1.5rem;
+                margin: 0 0 0.25rem 0;
             }
 
+            .result-subtitle {
+                color: #7D7A8C;
+                font-size: 0.875rem;
+                margin: 0;
+            }
+
+            /* 취향 분석 카드 */
+            .analysis-card {
+                background: linear-gradient(135deg, rgba(184, 224, 210, 0.15), rgba(212, 193, 236, 0.15));
+                border: 1px solid rgba(184, 224, 210, 0.3);
+                border-radius: 16px;
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .taste-type {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .taste-type-emoji {
+                font-size: 1.5rem;
+            }
+
+            .taste-type-name {
+                font-size: 1rem;
+                font-weight: 700;
+                color: #4A4458;
+            }
+
+            .taste-type-desc {
+                color: #7D7A8C;
+                font-size: 0.8rem;
+                margin: 0;
+            }
+
+            /* 취향 게이지 */
+            .traits-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.5rem;
+                margin-top: 0.75rem;
+            }
+
+            .trait-item {
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+
+            .trait-label {
+                font-size: 0.7rem;
+                color: #7D7A8C;
+                text-align: left;
+            }
+
+            .trait-bar {
+                height: 6px;
+                background: rgba(74, 68, 88, 0.1);
+                border-radius: 3px;
+                overflow: hidden;
+            }
+
+            .trait-fill {
+                height: 100%;
+                background: linear-gradient(135deg, #B8E0D2, #D4C1EC);
+                border-radius: 3px;
+                transition: width 0.5s ease;
+            }
+
+            /* 추천 음식 카드 */
             .recommendation {
                 background: linear-gradient(135deg, rgba(212, 193, 236, 0.15), rgba(184, 224, 210, 0.15));
                 border: 1px solid rgba(212, 193, 236, 0.3);
                 border-radius: 20px;
                 padding: 1.5rem;
                 margin-bottom: 1.25rem;
+            }
+
+            .match-score {
+                display: inline-block;
+                background: linear-gradient(135deg, #D4C1EC, #B8E0D2);
+                color: #FFFFFF;
+                padding: 4px 12px;
+                border-radius: 9999px;
+                font-weight: 700;
+                font-size: 0.7rem;
+                margin-bottom: 0.75rem;
             }
 
             .food-image-wrapper {
@@ -294,12 +413,25 @@ class FoodBalance extends HTMLElement {
                 font-size: 1.5rem;
                 font-weight: 700;
                 color: #4A4458;
-                margin: 0 0 0.5rem 0;
+                margin: 0 0 0.25rem 0;
             }
 
-            .food-desc {
+            .food-category {
+                display: inline-block;
+                padding: 4px 10px;
+                background: #FFDAC1;
+                color: #E07565;
+                font-size: 0.65rem;
+                font-weight: 600;
+                border-radius: 9999px;
+                margin-bottom: 0.5rem;
+            }
+
+            .food-reason {
                 color: #7D7A8C;
-                font-size: 0.875rem;
+                font-size: 0.8rem;
+                margin: 0;
+                line-height: 1.5;
             }
 
             .action-buttons {
@@ -317,6 +449,9 @@ class FoodBalance extends HTMLElement {
                 cursor: pointer;
                 transition: all 0.25s ease;
                 border: none;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
             }
 
             .action-btn.primary {
@@ -335,6 +470,10 @@ class FoodBalance extends HTMLElement {
                 transform: translateY(-2px);
             }
 
+            .btn-icon {
+                font-size: 1rem;
+            }
+
             /* Tablet */
             @media (max-width: 600px) {
                 .balance-container {
@@ -346,15 +485,19 @@ class FoodBalance extends HTMLElement {
                     margin-bottom: 1rem;
                 }
 
-                .question-count {
+                .question-count, .result-badge {
                     padding: 4px 10px;
                     font-size: 0.625rem;
                     margin-bottom: 0.5rem;
                 }
 
-                .question-text {
+                .question-text, .result-title {
                     font-size: 1rem;
                     margin-bottom: 1rem;
+                }
+
+                .result-subtitle {
+                    font-size: 0.75rem;
                 }
 
                 .options-row {
@@ -399,6 +542,61 @@ class FoodBalance extends HTMLElement {
                 .stat-labels {
                     font-size: 0.7rem;
                 }
+
+                .analysis-card {
+                    padding: 0.75rem;
+                    border-radius: 12px;
+                }
+
+                .taste-type-emoji {
+                    font-size: 1.25rem;
+                }
+
+                .taste-type-name {
+                    font-size: 0.875rem;
+                }
+
+                .taste-type-desc {
+                    font-size: 0.7rem;
+                }
+
+                .traits-grid {
+                    gap: 0.375rem;
+                }
+
+                .trait-label {
+                    font-size: 0.625rem;
+                }
+
+                .recommendation {
+                    padding: 1rem;
+                    border-radius: 16px;
+                    margin-bottom: 1rem;
+                }
+
+                .match-score {
+                    padding: 3px 10px;
+                    font-size: 0.625rem;
+                }
+
+                .food-image-wrapper {
+                    width: 120px;
+                    height: 120px;
+                    margin-bottom: 0.75rem;
+                }
+
+                .food-name {
+                    font-size: 1.25rem;
+                }
+
+                .food-category {
+                    font-size: 0.6rem;
+                    padding: 3px 8px;
+                }
+
+                .food-reason {
+                    font-size: 0.75rem;
+                }
             }
 
             /* Mobile */
@@ -407,9 +605,13 @@ class FoodBalance extends HTMLElement {
                     padding: 0.75rem;
                 }
 
-                .question-text {
+                .question-text, .result-title {
                     font-size: 0.875rem;
                     margin-bottom: 0.75rem;
+                }
+
+                .result-subtitle {
+                    font-size: 0.7rem;
                 }
 
                 .options-row {
@@ -436,14 +638,40 @@ class FoodBalance extends HTMLElement {
                     font-size: 0.625rem;
                 }
 
-                /* Result screen mobile */
-                .result-title {
-                    font-size: 1rem;
-                    margin-bottom: 1rem;
+                .analysis-card {
+                    padding: 0.625rem;
+                    margin-bottom: 0.75rem;
+                }
+
+                .taste-type {
+                    gap: 0.375rem;
+                    margin-bottom: 0.375rem;
+                }
+
+                .taste-type-emoji {
+                    font-size: 1.125rem;
+                }
+
+                .taste-type-name {
+                    font-size: 0.8rem;
+                }
+
+                .taste-type-desc {
+                    font-size: 0.65rem;
+                }
+
+                .traits-grid {
+                    grid-template-columns: 1fr;
+                    gap: 0.25rem;
+                    margin-top: 0.5rem;
+                }
+
+                .trait-bar {
+                    height: 5px;
                 }
 
                 .recommendation {
-                    padding: 1rem;
+                    padding: 0.75rem;
                     border-radius: 14px;
                     margin-bottom: 0.75rem;
                 }
@@ -451,15 +679,15 @@ class FoodBalance extends HTMLElement {
                 .food-image-wrapper {
                     width: 100px;
                     height: 100px;
-                    margin-bottom: 0.75rem;
+                    margin-bottom: 0.5rem;
                 }
 
                 .food-name {
                     font-size: 1.125rem;
                 }
 
-                .food-desc {
-                    font-size: 0.75rem;
+                .food-reason {
+                    font-size: 0.7rem;
                 }
 
                 .action-buttons {
@@ -470,6 +698,11 @@ class FoodBalance extends HTMLElement {
                     padding: 0.625rem 1rem;
                     font-size: 0.7rem;
                     border-radius: 12px;
+                    gap: 0.375rem;
+                }
+
+                .btn-icon {
+                    font-size: 0.9rem;
                 }
             }
         `;
@@ -487,7 +720,15 @@ class FoodBalance extends HTMLElement {
 
     selectOption(choice) {
         const question = this.questions[this.currentIndex];
+
+        // 답변 저장
         this.answers.push({
+            question: question,
+            choice: choice
+        });
+
+        // 취향 프로파일 업데이트
+        this.profile = updateProfile(this.profile, {
             question: question,
             choice: choice
         });
@@ -520,7 +761,7 @@ class FoodBalance extends HTMLElement {
 
         statsArea.classList.remove('hidden');
 
-        // 약간의 랜덤 변동 추가
+        // 약간의 랜덤 변동 추가 (실제 통계처럼 보이게)
         const variance = Math.floor(Math.random() * 6) - 3;
         const percentA = Math.min(95, Math.max(5, question.statsA + variance));
         const percentB = 100 - percentA;
@@ -532,30 +773,59 @@ class FoodBalance extends HTMLElement {
     }
 
     showResult() {
-        // 답변 기반으로 음식 추천 (간단한 로직)
-        const recommendedFood = getRandomFood();
+        // 취향 분석
+        this.analysis = analyzeProfile(this.profile);
+
+        // 음식 추천 (상위 1개)
+        const recommendations = recommendFoods(this.profile, 1);
+        this.recommendation = recommendations[0];
+
+        const { food, score } = this.recommendation;
+        const reason = generateRecommendationReason(this.profile, food, score);
+        const { type, descriptions } = this.analysis;
 
         this.shadowRoot.innerHTML = `
             <style>
                 ${this.getStyles()}
             </style>
             <div class="balance-container result-container">
-                <h2 class="result-title">밸런스 게임 완료!</h2>
-                <p style="color: var(--text-muted); margin-bottom: 2rem;">
-                    당신의 선택을 분석한 결과...
-                </p>
+                <div class="result-header">
+                    <span class="result-badge">분석 완료</span>
+                    <h2 class="result-title">당신의 음식 취향을 분석했어요!</h2>
+                    <p class="result-subtitle">5개 질문을 바탕으로 분석한 결과입니다</p>
+                </div>
+
+                <div class="analysis-card">
+                    <div class="taste-type">
+                        <span class="taste-type-emoji">${type.emoji}</span>
+                        <span class="taste-type-name">${type.name}</span>
+                    </div>
+                    <p class="taste-type-desc">${type.description}</p>
+
+                    <div class="traits-grid">
+                        ${this.renderTraitBars()}
+                    </div>
+                </div>
 
                 <div class="recommendation">
+                    <span class="match-score">적합도 ${score}%</span>
                     <div class="food-image-wrapper">
-                        <img src="${recommendedFood.image}" alt="${recommendedFood.name}" class="food-image">
+                        <img src="${food.image}" alt="${food.name}" class="food-image" onerror="this.parentElement.innerHTML='<div style=\\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:3rem;\\">${food.emoji}</div>'">
                     </div>
-                    <h3 class="food-name">${recommendedFood.name}</h3>
-                    <p class="food-desc">${recommendedFood.desc}</p>
+                    <span class="food-category">${food.category}</span>
+                    <h3 class="food-name">${food.name}</h3>
+                    <p class="food-reason">${reason}</p>
                 </div>
 
                 <div class="action-buttons">
-                    <button class="action-btn primary" id="share-btn">📤 결과 공유</button>
-                    <button class="action-btn secondary" id="retry-btn">🔄 다시 하기</button>
+                    <button class="action-btn primary" id="share-btn">
+                        <span class="btn-icon">📤</span>
+                        결과 공유
+                    </button>
+                    <button class="action-btn secondary" id="retry-btn">
+                        <span class="btn-icon">🔄</span>
+                        다시 하기
+                    </button>
                 </div>
             </div>
         `;
@@ -567,11 +837,36 @@ class FoodBalance extends HTMLElement {
 
         this.shadowRoot.getElementById('share-btn').addEventListener('click', () => {
             this.dispatchEvent(new CustomEvent('food-result', {
-                detail: { food: recommendedFood, mode: 'balance' },
+                detail: { food: food, mode: 'balance' },
                 bubbles: true,
                 composed: true
             }));
         });
+    }
+
+    /**
+     * 취향 게이지 바 렌더링
+     */
+    renderTraitBars() {
+        const traitLabels = {
+            spicy: '매운맛',
+            hearty: '든든함',
+            adventurous: '도전',
+            social: '함께',
+            quick: '속도'
+        };
+
+        return Object.entries(this.profile).map(([trait, value]) => {
+            const percentage = (value / 5) * 100;
+            return `
+                <div class="trait-item">
+                    <span class="trait-label">${traitLabels[trait] || trait}</span>
+                    <div class="trait-bar">
+                        <div class="trait-fill" style="width: ${percentage}%"></div>
+                    </div>
+                </div>
+            `;
+        }).join('');
     }
 }
 
