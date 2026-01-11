@@ -80,7 +80,8 @@
             "1초컷 - 랜덤 음식 추천 (5초 소요)",
             "이상형 월드컵 - 16강 토너먼트 음식 대결 (1-2분 소요)",
             "음식 타로 - 오늘의 음식 운세 보기 (30초 소요)",
-            "밸런스 게임 - 극한의 음식 선택 게임 (1분 소요)"
+            "밸런스 게임 - 극한의 음식 선택 게임 (1분 소요)",
+            "결제왕 - 룰렛/사다리타기로 밥값 낼 사람 정하기 (30초 소요)"
         ],
         "screenshot": "https://whattoeat.pages.dev/assets/images/foods/food_think.png",
         "inLanguage": "ko",
@@ -198,6 +199,13 @@
                     <p class="mode-desc">극한의 음식 선택</p>
                     <span class="mode-time" aria-label="소요 시간">1분</span>
                 </article>
+
+                <article class="mode-card" data-mode="payment" role="button" tabindex="0" aria-label="결제왕 - 30초 소요, 누가 밥값을 낼까요?">
+                    <div class="mode-icon" aria-hidden="true">💰</div>
+                    <h3 class="mode-title">결제왕</h3>
+                    <p class="mode-desc">누가 밥값을 낼까요?</p>
+                    <span class="mode-time" aria-label="소요 시간">30초</span>
+                </article>
             </nav>
         </section>
 
@@ -256,6 +264,13 @@
                                 <p>극한의 선택을 통해 나의 음식 취향을 발견하세요.</p>
                             </div>
                         </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">💰</span>
+                            <div>
+                                <strong>결제왕</strong>
+                                <p>룰렛이나 사다리타기로 밥값 낼 사람을 정하세요.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -292,6 +307,7 @@
         import './js/components/FoodTarot.js';
         import './js/components/FoodBalance.js';
         import './js/components/ResultCard.js';
+        import './js/components/PaymentGame.js';
 
         // 앱 초기화
         import { initApp, switchMode } from './js/app.js';

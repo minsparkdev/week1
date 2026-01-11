@@ -49,6 +49,7 @@ function loadModeComponent(mode, container) {
 
     // 모드별 컴포넌트 생성
     let component;
+    console.log('[app.js] loadModeComponent called with mode:', mode);
     switch (mode) {
         case 'random':
             component = document.createElement('food-recommender');
@@ -64,6 +65,9 @@ function loadModeComponent(mode, container) {
             break;
         case 'fullcourse':
             component = document.createElement('food-fullcourse');
+            break;
+        case 'payment':
+            component = document.createElement('payment-game');
             break;
         default:
             component = document.createElement('div');
