@@ -1,0 +1,11 @@
+# robots.txt for What to Eat
+# https://whattoeat.pages.dev/
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://whattoeat.pages.dev/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
