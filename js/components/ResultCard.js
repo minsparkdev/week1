@@ -100,10 +100,6 @@ class ResultCard extends HTMLElement {
                         <span class="btn-icon">💾</span>
                         이미지 저장
                     </button>
-                    <button class="action-btn tertiary" id="copy-btn">
-                        <span class="btn-icon">📋</span>
-                        링크 복사
-                    </button>
                 </div>
 
                 <div class="bottom-buttons">
@@ -290,12 +286,6 @@ class ResultCard extends HTMLElement {
                 background: linear-gradient(135deg, #D4C1EC, #B8E0D2);
                 color: white;
                 box-shadow: 0 6px 20px rgba(212, 193, 236, 0.25);
-            }
-
-            .action-btn.tertiary {
-                background: #FFFFFF;
-                color: #4A4458;
-                border: 1px solid rgba(74, 68, 88, 0.08);
             }
 
             .action-btn:hover {
@@ -541,11 +531,6 @@ class ResultCard extends HTMLElement {
         // 다운로드 버튼
         this.shadowRoot.getElementById('download-btn').addEventListener('click', () => {
             this.downloadImage();
-        });
-
-        // 링크 복사 버튼
-        this.shadowRoot.getElementById('copy-btn').addEventListener('click', () => {
-            this.copyLink();
         });
 
         // 다시 하기 버튼
