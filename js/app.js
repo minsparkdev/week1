@@ -1,46 +1,11 @@
 /**
  * 앱 초기화 모듈
- * - 테마 관리 (다크/라이트)
  * - 모드 라우팅 (SPA 방식)
  * - 전역 이벤트 관리
  */
 
 // 현재 활성화된 모드
 let currentMode = 'hub';
-
-/**
- * 테마 시스템 초기화
- */
-export function initTheme() {
-    const toggleButton = document.getElementById('theme-toggle');
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-
-    function setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        if (toggleButton) {
-            toggleButton.textContent = theme === 'dark' ? '☀️' : '🌙';
-        }
-    }
-
-    // 저장된 테마 또는 시스템 설정 적용
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        setTheme(savedTheme);
-    } else if (prefersDarkScheme.matches) {
-        setTheme('dark');
-    } else {
-        setTheme('light');
-    }
-
-    // 토글 버튼 이벤트
-    if (toggleButton) {
-        toggleButton.addEventListener('click', () => {
-            const current = document.documentElement.getAttribute('data-theme');
-            setTheme(current === 'dark' ? 'light' : 'dark');
-        });
-    }
-}
 
 /**
  * 모드 전환 함수
@@ -174,7 +139,6 @@ export function getCurrentMode() {
  * 앱 전체 초기화
  */
 export function initApp() {
-    initTheme();
     initModeHub();
     initResultListener();
 }

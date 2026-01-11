@@ -13,8 +13,7 @@
 </head>
 <body>
     <header>
-        <div class="logo">What to Eat</div>
-        <button id="theme-toggle" aria-label="테마 변경">🌙</button>
+        <a href="#" class="logo" id="logo-home">What to Eat</a>
     </header>
 
     <main>
@@ -122,6 +121,12 @@
 
             // 홈으로 돌아가기 이벤트
             document.addEventListener('go-home', () => {
+                switchMode('hub');
+            });
+
+            // 로고 클릭 시 홈으로 이동
+            document.getElementById('logo-home').addEventListener('click', (e) => {
+                e.preventDefault();
                 switchMode('hub');
             });
 

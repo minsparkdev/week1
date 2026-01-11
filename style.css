@@ -65,22 +65,6 @@
     --transition-slow: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Dark Mode - Warm & Cozy */
-[data-theme="dark"] {
-    --bg-main: #2D2A3E;
-    --bg-warm: #363347;
-    --surface: #3D3A50;
-    --surface-hover: #4A4660;
-
-    --text-primary: #F5F3F7;
-    --text-secondary: #C4C1D0;
-    --text-muted: #8A879A;
-
-    --border-light: rgba(255, 255, 255, 0.08);
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
-    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.25);
-    --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.3);
-}
 
 /* =====================
    Base Reset & Body
@@ -120,18 +104,14 @@ body::before {
     z-index: -1;
 }
 
-[data-theme="dark"] body::before {
-    opacity: 0.1;
-}
-
 /* =====================
    Header
    ===================== */
 header {
-    height: 64px;
+    height: 56px;
     padding: 0 var(--space-lg);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background: var(--surface);
     border-bottom: 1px solid var(--border-light);
@@ -142,28 +122,17 @@ header {
 
 .logo {
     font-weight: 700;
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-lg);
     color: var(--primary);
     letter-spacing: -0.02em;
-}
-
-#theme-toggle {
-    width: 40px;
-    height: 40px;
-    border-radius: var(--radius-full);
-    background: var(--bg-warm);
-    border: none;
+    text-decoration: none;
     cursor: pointer;
-    font-size: var(--font-size-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all var(--transition-base);
+    transition: all var(--transition-fast);
 }
 
-#theme-toggle:hover {
-    background: var(--primary-light);
-    transform: rotate(15deg) scale(1.05);
+.logo:hover {
+    color: var(--primary-dark);
+    transform: scale(1.02);
 }
 
 /* =====================
@@ -299,11 +268,6 @@ main {
     border-radius: var(--radius-full);
     font-size: var(--font-size-xs);
     font-weight: 600;
-}
-
-[data-theme="dark"] .mode-time {
-    background: rgba(255, 181, 167, 0.2);
-    color: var(--primary-light);
 }
 
 /* =====================
