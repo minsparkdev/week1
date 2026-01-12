@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Tarot - Daily Food Fortune Guide | What to Eat</title>
+    <meta name="description" content="Food Tarot is a mystical game where you draw a tarot card to receive today's fortune along with a matching food recommendation. Discover what the cards have in store for you.">
+    <meta name="keywords" content="food tarot, tarot card, food fortune, daily horoscope, What to Eat, menu recommendation">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://whattoeat.pages.dev/en/guide/tarot.html">
+
+    <!-- hreflang -->
+    <link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/guide/tarot.html" />
+    <link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/guide/tarot.html" />
+    <link rel="alternate" hreflang="x-default" href="https://whattoeat.pages.dev/guide/tarot.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://whattoeat.pages.dev/en/guide/tarot.html">
+    <meta property="og:title" content="Food Tarot - Daily Food Fortune Guide | What to Eat">
+    <meta property="og:description" content="Discover today's menu and fortune through mystical tarot cards">
+    <meta property="og:image" content="https://whattoeat.pages.dev/assets/images/foods/food_think.png">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-1134027726484805">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1134027726484805"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Food Tarot - Daily Food Fortune Guide",
+        "description": "Discover today's menu and fortune through mystical tarot cards",
+        "author": { "@type": "Organization", "name": "What to Eat" },
+        "publisher": { "@type": "Organization", "name": "What to Eat" },
+        "datePublished": "2026-01-12",
+        "dateModified": "2026-01-12"
+    }
+    </script>
+
+    <style>
+        .guide-content { display: block; max-width: 720px; margin: 0 auto; padding: var(--space-xl) var(--space-lg); }
+        .guide-card { background: var(--surface); border-radius: var(--radius-lg); padding: var(--space-2xl); box-shadow: var(--shadow-md); }
+        .guide-badge { display: inline-block; background: linear-gradient(135deg, #9B8BB8, #D4C1EC); color: white; padding: 6px 16px; border-radius: 9999px; font-weight: 600; font-size: 0.875rem; margin-bottom: var(--space-md); }
+        .guide-card h1 { font-size: var(--font-size-2xl); color: var(--text-primary); margin-bottom: var(--space-sm); }
+        .guide-tagline { color: var(--text-secondary); font-size: var(--font-size-lg); margin-bottom: var(--space-xl); line-height: 1.6; }
+        .guide-section-title { font-size: var(--font-size-lg); color: var(--text-primary); margin: var(--space-xl) 0 var(--space-md) 0; padding-bottom: var(--space-xs); border-bottom: 2px solid #D4C1EC; }
+        .guide-card p { color: var(--text-secondary); line-height: 1.9; margin-bottom: var(--space-md); }
+        .guide-card ul, .guide-card ol { padding-left: var(--space-lg); margin-bottom: var(--space-md); }
+        .guide-card li { color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-sm); }
+        .guide-card strong { color: var(--text-primary); }
+        .highlight-box { background: linear-gradient(135deg, rgba(212, 193, 236, 0.2), rgba(184, 224, 210, 0.2)); border-left: 4px solid #9B8BB8; padding: var(--space-md) var(--space-lg); border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: var(--space-lg) 0; }
+        .highlight-box p { margin: 0; color: var(--text-primary); }
+        .steps-list { counter-reset: step-counter; list-style: none; padding-left: 0; }
+        .steps-list li { counter-increment: step-counter; padding-left: 3rem; position: relative; margin-bottom: var(--space-md); }
+        .steps-list li::before { content: counter(step-counter); position: absolute; left: 0; top: 0; width: 2rem; height: 2rem; background: linear-gradient(135deg, #9B8BB8, #D4C1EC); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.875rem; }
+        .cta-box { background: linear-gradient(135deg, #9B8BB8, #D4C1EC); border-radius: var(--radius-md); padding: var(--space-xl); text-align: center; margin-top: var(--space-xl); }
+        .cta-box h3 { color: white; margin-bottom: var(--space-sm); }
+        .cta-box p { color: rgba(255, 255, 255, 0.9); margin-bottom: var(--space-md); }
+        .cta-btn { display: inline-block; padding: var(--space-sm) var(--space-xl); background: white; color: #9B8BB8; border-radius: var(--radius-md); font-weight: 600; text-decoration: none; transition: all var(--transition-base); }
+        .cta-btn:hover { transform: scale(1.05); }
+        .ad-container { margin: var(--space-xl) 0; }
+        .tarot-message-example { background: var(--bg-warm); border-radius: var(--radius-md); padding: var(--space-lg); margin: var(--space-lg) 0; font-style: italic; text-align: center; }
+        .tarot-message-example .food-name { font-size: var(--font-size-lg); font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-xs); font-style: normal; }
+        .tarot-message-example .message { color: var(--text-secondary); line-height: 1.7; }
+        @media (max-width: 480px) { .guide-content { padding: var(--space-md); } .guide-card { padding: var(--space-lg); } .guide-card h1 { font-size: var(--font-size-xl); } }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="logo">What to Eat</a>
+        <a href="../../guide/tarot.html" class="lang-switch" aria-label="한국어로 전환">🌐 한국어</a>
+    </header>
+
+    <main class="guide-content">
+        <article class="guide-card">
+            <span class="guide-badge">🔮 Game Guide</span>
+            <h1>Food Tarot - Daily Food Fortune</h1>
+            <p class="guide-tagline">
+                Discover today's fortune and the perfect food match through mystical tarot cards
+            </p>
+
+            <h2 class="guide-section-title">What is Food Tarot?</h2>
+            <p>
+                <strong>Food Tarot</strong> is a mystical recommendation method where you draw a tarot card to reveal
+                your food fortune for the day. Select one of the face-down cards, and as it flips over,
+                your matching food and fortune message are revealed.
+            </p>
+            <p>
+                Beyond simple food recommendations, you receive a message with advice and energy for the day,
+                creating a special experience. Draw a card with the same excitement as visiting a fortune teller.
+            </p>
+
+            <div class="tarot-message-example">
+                <div class="food-name">🍜 Ramen</div>
+                <p class="message">"Deep thinking brings good results today. Move forward with deliberation."</p>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>🌟 About Tarot</strong> Tarot has been used for centuries as a tool for intuition and insight.
+                Food Tarot playfully reinterprets this tradition, adding mystical meaning to food choices.</p>
+            </div>
+
+            <div class="ad-container">
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-1134027726484805"
+                    data-ad-slot="auto"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <h2 class="guide-section-title">Recommended For</h2>
+            <ul>
+                <li><strong>Tarot and fortune enthusiasts</strong> - If you love mystical things and enjoy reading horoscopes</li>
+                <li><strong>Those seeking unique experiences</strong> - If you want a story, not just a recommendation</li>
+                <li><strong>Those curious about daily fortunes</strong> - If you want to know the day's energy with your food</li>
+                <li><strong>Intuitive decision-makers</strong> - If you trust gut feelings over logic</li>
+            </ul>
+
+            <h2 class="guide-section-title">How to Play</h2>
+            <ol class="steps-list">
+                <li>Click the <strong>🔮 Food Tarot</strong> card on the What to Eat main screen.</li>
+                <li>Three face-down tarot cards appear on screen.</li>
+                <li>Follow your intuition and select the card that draws you.</li>
+                <li>The card flips to reveal today's food and fortune message!</li>
+                <li>Share your result with friends or draw another card.</li>
+            </ol>
+
+            <h2 class="guide-section-title">Food-Specific Tarot Messages</h2>
+            <p>
+                Each food has a unique tarot message. Through meaningful messages connected to each food's characteristics,
+                you can gain small inspirations for your day:
+            </p>
+            <ul>
+                <li><strong>Kimchi Stew</strong> - "You need warm comfort today. A heartwarming meal awaits you"</li>
+                <li><strong>Pork Belly</strong> - "Time to recharge! Regain your vitality with a hearty meal"</li>
+                <li><strong>Bibimbap</strong> - "Various opportunities are mixing in. Harmony is your destiny today"</li>
+                <li><strong>Sushi</strong> - "A refined mindset brings luck. A clean choice is the answer!"</li>
+                <li><strong>Malatang</strong> - "Time for burning passion! Bold challenges lead to success"</li>
+            </ul>
+            <p>
+                Pizza, chicken, tonkatsu, and many more foods also have special messages prepared.
+            </p>
+
+            <h2 class="guide-section-title">The Secret to Card Selection</h2>
+            <p>
+                "Which card should I choose?" There's no right answer. The essence of tarot is intuition.
+                When you see the three cards, choose the one your eyes go to first, or where your hand naturally moves.
+            </p>
+            <p>
+                Don't overthink it. Tarot is about trusting your momentary intuition.
+                Whichever card you choose, that's the message you need today.
+            </p>
+
+            <h2 class="guide-section-title">FAQ</h2>
+            <p>
+                <strong>Q. Is the fortune message real?</strong><br>
+                A. Food Tarot is for fun and inspiration. It's different from actual divination,
+                but positive messages can help start your day in a good mood.
+            </p>
+            <p>
+                <strong>Q. The same card keeps appearing.</strong><br>
+                A. Maybe that food is specially calling to you today!
+                But if you want different results, just press "Draw Again."
+            </p>
+            <p>
+                <strong>Q. What if I don't like the food that came up?</strong><br>
+                A. Embracing the tarot's wisdom is good, but you can always draw again if you really don't want it.
+                Though sometimes you discover new joys in foods you usually don't eat!
+            </p>
+
+            <div class="cta-box">
+                <h3>🔮 Get Your Food Tarot Reading</h3>
+                <p>Meet the food that matches you along with today's fortune</p>
+                <a href="../index.html" class="cta-btn">Draw Tarot Card</a>
+            </div>
+        </article>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <nav class="footer-links" aria-label="Site links">
+                <a href="../index.html">Home</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../blog.html">Blog</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../about.html">About</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../faq.html">FAQ</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../contact.html">Contact</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../privacy.html">Privacy</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../terms.html">Terms</a>
+            </nav>
+            <p class="footer-copy">&copy; 2026 What to Eat. Bon Appetit!</p>
+        </div>
+    </footer>
+</body>
+</html>

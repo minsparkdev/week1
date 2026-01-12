@@ -206,6 +206,48 @@
         <priority>0.2</priority>
     </url>
 
+    <!-- Guide Pages (Korean) -->
+    <url>
+        <loc>https://whattoeat.pages.dev/guide/quick-pick.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/guide/quick-pick.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/guide/quick-pick.html"/>
+        <lastmod>2026-01-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/guide/worldcup.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/guide/worldcup.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/guide/worldcup.html"/>
+        <lastmod>2026-01-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/guide/tarot.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/guide/tarot.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/guide/tarot.html"/>
+        <lastmod>2026-01-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/guide/balance.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/guide/balance.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/guide/balance.html"/>
+        <lastmod>2026-01-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/guide/payment.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/guide/payment.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/guide/payment.html"/>
+        <lastmod>2026-01-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
     <!-- ==================== English Pages ==================== -->
 
     <!-- Main Page (English) -->
@@ -405,5 +447,47 @@
         <lastmod>2026-01-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.2</priority>
+    </url>
+
+    <!-- Guide Pages (English) -->
+    <url>
+        <loc>https://whattoeat.pages.dev/en/guide/quick-pick.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/guide/quick-pick.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/guide/quick-pick.html"/>
+        <lastmod>2026-01-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/en/guide/worldcup.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/guide/worldcup.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/guide/worldcup.html"/>
+        <lastmod>2026-01-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/en/guide/tarot.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/guide/tarot.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/guide/tarot.html"/>
+        <lastmod>2026-01-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/en/guide/balance.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/guide/balance.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/guide/balance.html"/>
+        <lastmod>2026-01-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://whattoeat.pages.dev/en/guide/payment.html</loc>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/guide/payment.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/guide/payment.html"/>
+        <lastmod>2026-01-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
 </urlset>

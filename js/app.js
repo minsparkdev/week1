@@ -8,6 +8,19 @@
 let currentMode = 'hub';
 
 /**
+ * 광고 표시/숨김 토글
+ * - 게임 모드에서는 광고를 숨김 (Google AdSense 정책 준수)
+ * - 콘텐츠가 충분한 허브 화면에서만 광고 표시
+ * @param {boolean} show - true: 표시, false: 숨김
+ */
+function toggleAds(show) {
+    const adContainers = document.querySelectorAll('.ad-container');
+    adContainers.forEach(ad => {
+        ad.style.display = show ? 'block' : 'none';
+    });
+}
+
+/**
  * 모드 전환 함수
  * @param {string} mode - 'hub' | 'random' | 'worldcup' | 'tarot' | 'balance' | 'fullcourse'
  */
@@ -24,10 +37,14 @@ export function switchMode(mode) {
         modeHub.classList.remove('hidden');
         modeContent.classList.add('hidden');
         modeContent.innerHTML = '';
+        // 허브에서는 광고 표시
+        toggleAds(true);
     } else {
         // 특정 모드 활성화
         modeHub.classList.add('hidden');
         modeContent.classList.remove('hidden');
+        // 게임 모드에서는 광고 숨김
+        toggleAds(false);
 
         // 해당 모드 컴포넌트 로드
         loadModeComponent(mode, modeContent);

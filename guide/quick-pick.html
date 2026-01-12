@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1초컷 - 랜덤 음식 추천 가이드 | What to Eat</title>
+    <meta name="description" content="1초컷은 버튼 한 번으로 오늘의 메뉴를 결정하는 랜덤 음식 추천 기능입니다. 결정 장애와 선택 피로를 해소하는 가장 빠른 방법을 알아보세요.">
+    <meta name="keywords" content="1초컷, 랜덤 음식 추천, 메뉴 추천, 결정 장애, 선택 피로, What to Eat, 오늘 뭐 먹지">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://whattoeat.pages.dev/guide/quick-pick.html">
+
+    <!-- hreflang -->
+    <link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/guide/quick-pick.html" />
+    <link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/guide/quick-pick.html" />
+    <link rel="alternate" hreflang="x-default" href="https://whattoeat.pages.dev/guide/quick-pick.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://whattoeat.pages.dev/guide/quick-pick.html">
+    <meta property="og:title" content="1초컷 - 랜덤 음식 추천 가이드 | What to Eat">
+    <meta property="og:description" content="버튼 한 번으로 오늘의 메뉴를 결정하는 가장 빠른 방법">
+    <meta property="og:image" content="https://whattoeat.pages.dev/assets/images/foods/food_think.png">
+    <meta property="og:locale" content="ko_KR">
+
+    <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-1134027726484805">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1134027726484805"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Structured Data: Article -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "1초컷 - 랜덤 음식 추천 가이드",
+        "description": "버튼 한 번으로 오늘의 메뉴를 결정하는 가장 빠른 방법",
+        "author": {
+            "@type": "Organization",
+            "name": "What to Eat"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "What to Eat",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://whattoeat.pages.dev/assets/images/foods/food_think.png"
+            }
+        },
+        "datePublished": "2026-01-12",
+        "dateModified": "2026-01-12"
+    }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "홈",
+                "item": "https://whattoeat.pages.dev/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "가이드",
+                "item": "https://whattoeat.pages.dev/guide/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "1초컷"
+            }
+        ]
+    }
+    </script>
+
+    <!-- Structured Data: HowTo -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "1초컷으로 메뉴 추천받는 방법",
+        "description": "버튼 한 번으로 오늘의 메뉴를 결정하는 방법",
+        "step": [
+            {
+                "@type": "HowToStep",
+                "name": "1초컷 선택",
+                "text": "메인 화면에서 1초컷 카드를 클릭합니다"
+            },
+            {
+                "@type": "HowToStep",
+                "name": "추천 버튼 클릭",
+                "text": "메뉴 추천받기 버튼을 클릭합니다"
+            },
+            {
+                "@type": "HowToStep",
+                "name": "결과 확인",
+                "text": "랜덤으로 추천된 오늘의 메뉴를 확인합니다"
+            }
+        ],
+        "totalTime": "PT5S"
+    }
+    </script>
+
+    <style>
+        .guide-content {
+            display: block;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: var(--space-xl) var(--space-lg);
+        }
+        .guide-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            box-shadow: var(--shadow-md);
+        }
+        .guide-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: var(--space-md);
+        }
+        .guide-card h1 {
+            font-size: var(--font-size-2xl);
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+        }
+        .guide-tagline {
+            color: var(--text-secondary);
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-xl);
+            line-height: 1.6;
+        }
+        .guide-section-title {
+            font-size: var(--font-size-lg);
+            color: var(--text-primary);
+            margin: var(--space-xl) 0 var(--space-md) 0;
+            padding-bottom: var(--space-xs);
+            border-bottom: 2px solid var(--primary-light);
+        }
+        .guide-card p {
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: var(--space-md);
+        }
+        .guide-card ul, .guide-card ol {
+            padding-left: var(--space-lg);
+            margin-bottom: var(--space-md);
+        }
+        .guide-card li {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: var(--space-sm);
+        }
+        .guide-card strong {
+            color: var(--text-primary);
+        }
+        .highlight-box {
+            background: var(--bg-warm);
+            border-left: 4px solid var(--primary);
+            padding: var(--space-md) var(--space-lg);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin: var(--space-lg) 0;
+        }
+        .highlight-box p {
+            margin: 0;
+            color: var(--text-primary);
+        }
+        .steps-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+        .steps-list li {
+            counter-increment: step-counter;
+            padding-left: 3rem;
+            position: relative;
+            margin-bottom: var(--space-md);
+        }
+        .steps-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--primary-gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+        .cta-box {
+            background: var(--primary-gradient);
+            border-radius: var(--radius-md);
+            padding: var(--space-xl);
+            text-align: center;
+            margin-top: var(--space-xl);
+        }
+        .cta-box h3 {
+            color: white;
+            margin-bottom: var(--space-sm);
+        }
+        .cta-box p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--space-md);
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: var(--space-sm) var(--space-xl);
+            background: white;
+            color: var(--primary);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-base);
+        }
+        .cta-btn:hover {
+            transform: scale(1.05);
+        }
+        .ad-container {
+            margin: var(--space-xl) 0;
+        }
+        @media (max-width: 480px) {
+            .guide-content {
+                padding: var(--space-md);
+            }
+            .guide-card {
+                padding: var(--space-lg);
+            }
+            .guide-card h1 {
+                font-size: var(--font-size-xl);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="logo">What to Eat</a>
+        <a href="../en/guide/quick-pick.html" class="lang-switch" aria-label="Switch to English">🌐 English</a>
+    </header>
+
+    <main class="guide-content">
+        <article class="guide-card">
+            <span class="guide-badge">🎲 게임 가이드</span>
+            <h1>1초컷 - 랜덤 음식 추천</h1>
+            <p class="guide-tagline">
+                "뭐 먹지?" 고민에 5초 만에 답을 주는 가장 빠른 메뉴 결정 방법
+            </p>
+
+            <h2 class="guide-section-title">1초컷이란?</h2>
+            <p>
+                <strong>1초컷</strong>은 What to Eat에서 제공하는 가장 빠르고 간단한 음식 추천 기능입니다.
+                버튼 한 번 클릭으로 16가지 인기 메뉴 중 하나를 랜덤으로 추천받을 수 있습니다.
+                이름처럼 정말 1초 만에 오늘의 메뉴가 결정됩니다.
+            </p>
+            <p>
+                점심시간이 다가오는데 뭘 먹을지 도저히 결정이 안 될 때, 친구들과 메뉴 선택으로 시간을 낭비하고 싶지 않을 때,
+                그냥 운명에 맡기고 싶을 때 1초컷을 사용해보세요. 복잡한 과정 없이 바로 답을 얻을 수 있습니다.
+            </p>
+
+            <div class="highlight-box">
+                <p><strong>💡 알고 계셨나요?</strong> 심리학 연구에 따르면 평균적인 성인은 하루에 약 35,000번의 결정을 내린다고 합니다.
+                작은 결정 하나라도 줄이면 더 중요한 일에 에너지를 집중할 수 있습니다.</p>
+            </div>
+
+            <!-- 광고 영역 -->
+            <div class="ad-container">
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-1134027726484805"
+                    data-ad-slot="auto"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <h2 class="guide-section-title">이런 분께 추천합니다</h2>
+            <ul>
+                <li><strong>결정 장애가 있는 분</strong> - 메뉴판을 보면 오히려 더 고민이 깊어지는 분</li>
+                <li><strong>시간이 없는 분</strong> - 점심시간 1시간 중 30분을 메뉴 고민에 쓰고 싶지 않은 분</li>
+                <li><strong>새로운 경험을 원하는 분</strong> - 항상 같은 메뉴만 먹다가 변화를 주고 싶은 분</li>
+                <li><strong>운명을 믿는 분</strong> - "오늘은 우주가 정해주는 대로!" 하고 싶은 분</li>
+            </ul>
+
+            <h2 class="guide-section-title">사용 방법</h2>
+            <ol class="steps-list">
+                <li>What to Eat 메인 화면에서 <strong>🎲 1초컷</strong> 카드를 클릭합니다.</li>
+                <li><strong>메뉴 추천받기</strong> 버튼을 누릅니다.</li>
+                <li>화면에 여러 음식이 빠르게 지나가며 셔플됩니다.</li>
+                <li>약 2-3초 후 오늘의 추천 메뉴가 결정됩니다!</li>
+                <li>마음에 들지 않으면 <strong>다른 거 추천받기</strong>를 눌러 다시 시도할 수 있습니다.</li>
+            </ol>
+
+            <h2 class="guide-section-title">결정 피로(Decision Fatigue)란?</h2>
+            <p>
+                결정 피로는 반복적인 의사결정으로 인해 판단력과 의지력이 저하되는 현상입니다.
+                스티브 잡스가 매일 같은 옷을 입은 이유, 마크 저커버그가 회색 티셔츠만 고집하는 이유가 바로 이것입니다.
+                사소한 결정에 에너지를 낭비하지 않기 위해서죠.
+            </p>
+            <p>
+                식사 메뉴 선택도 마찬가지입니다. 하루 세 번, 일주일이면 21번의 식사 결정을 내려야 합니다.
+                이 결정들이 쌓이면 정작 중요한 업무나 창의적인 활동에 쓸 에너지가 고갈됩니다.
+                1초컷은 이런 사소하지만 피곤한 결정을 대신해 드립니다.
+            </p>
+
+            <h2 class="guide-section-title">추천되는 음식들</h2>
+            <p>
+                1초컷에서는 한국에서 가장 인기 있는 16가지 메뉴 중 하나가 랜덤으로 추천됩니다:
+            </p>
+            <ul>
+                <li><strong>한식</strong>: 김치찌개, 삼겹살, 비빔밥</li>
+                <li><strong>중식</strong>: 짜장면, 마라탕, 탕수육</li>
+                <li><strong>일식</strong>: 초밥, 라멘, 돈까스</li>
+                <li><strong>양식</strong>: 피자, 파스타, 햄버거</li>
+                <li><strong>기타</strong>: 치킨, 떡볶이, 샐러드, 쌀국수</li>
+            </ul>
+            <p>
+                모두 한국에서 쉽게 접할 수 있는 대중적인 메뉴들로, 배달이든 외식이든 바로 실행에 옮길 수 있습니다.
+            </p>
+
+            <h2 class="guide-section-title">자주 묻는 질문</h2>
+            <p>
+                <strong>Q. 추천 결과가 마음에 안 들면 어떻게 하나요?</strong><br>
+                A. "다른 거 추천받기" 버튼을 눌러 무제한으로 다시 추천받을 수 있습니다.
+                하지만 진정한 1초컷 경험을 위해서는 첫 번째 결과를 믿고 따라가 보는 것을 추천드립니다!
+            </p>
+            <p>
+                <strong>Q. 알러지가 있는 음식이 나오면요?</strong><br>
+                A. 특정 음식에 알러지가 있다면 해당 음식이 나왔을 때 다시 추천받기를 사용하세요.
+                향후 업데이트에서 제외 음식 설정 기능을 추가할 예정입니다.
+            </p>
+            <p>
+                <strong>Q. 같은 음식이 계속 나와요.</strong><br>
+                A. 완전한 랜덤 방식이기 때문에 동일한 음식이 연속으로 나올 수 있습니다.
+                이것도 운명이라고 생각하고 받아들여 보세요! 😄
+            </p>
+
+            <div class="cta-box">
+                <h3>🎲 지금 바로 1초컷 해보기</h3>
+                <p>고민은 그만! 5초 안에 오늘의 메뉴를 결정하세요</p>
+                <a href="../index.html" class="cta-btn">1초컷 시작하기</a>
+            </div>
+        </article>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <nav class="footer-links" aria-label="사이트 링크">
+                <a href="../index.html">홈</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../blog.html">블로그</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../about.html">소개</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../faq.html">FAQ</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../contact.html">제휴 문의</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../privacy.html">개인정보처리방침</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../terms.html">이용약관</a>
+            </nav>
+            <p class="footer-copy">&copy; 2026 What to Eat. Bon Appetit!</p>
+        </div>
+    </footer>
+</body>
+</html>

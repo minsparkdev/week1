@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Pick - Random Food Recommendation Guide | What to Eat</title>
+    <meta name="description" content="Quick Pick is a random food recommendation feature that decides today's menu with just one button click. Learn how to beat decision fatigue the fastest way.">
+    <meta name="keywords" content="quick pick, random food recommendation, menu picker, decision fatigue, What to Eat, what to eat today">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://whattoeat.pages.dev/en/guide/quick-pick.html">
+
+    <!-- hreflang -->
+    <link rel="alternate" hreflang="ko" href="https://whattoeat.pages.dev/guide/quick-pick.html" />
+    <link rel="alternate" hreflang="en" href="https://whattoeat.pages.dev/en/guide/quick-pick.html" />
+    <link rel="alternate" hreflang="x-default" href="https://whattoeat.pages.dev/guide/quick-pick.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://whattoeat.pages.dev/en/guide/quick-pick.html">
+    <meta property="og:title" content="Quick Pick - Random Food Recommendation Guide | What to Eat">
+    <meta property="og:description" content="The fastest way to decide today's menu with just one button click">
+    <meta property="og:image" content="https://whattoeat.pages.dev/assets/images/foods/food_think.png">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-1134027726484805">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1134027726484805"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Structured Data: Article -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Quick Pick - Random Food Recommendation Guide",
+        "description": "The fastest way to decide today's menu with just one button click",
+        "author": {
+            "@type": "Organization",
+            "name": "What to Eat"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "What to Eat",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://whattoeat.pages.dev/assets/images/foods/food_think.png"
+            }
+        },
+        "datePublished": "2026-01-12",
+        "dateModified": "2026-01-12"
+    }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://whattoeat.pages.dev/en/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Guide",
+                "item": "https://whattoeat.pages.dev/en/guide/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Quick Pick"
+            }
+        ]
+    }
+    </script>
+
+    <!-- Structured Data: HowTo -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Get a Menu Recommendation with Quick Pick",
+        "description": "How to decide today's menu with just one button click",
+        "step": [
+            {
+                "@type": "HowToStep",
+                "name": "Select Quick Pick",
+                "text": "Click the Quick Pick card on the main screen"
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Click Recommend Button",
+                "text": "Click the Get Recommendation button"
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Check Result",
+                "text": "See your randomly recommended menu for today"
+            }
+        ],
+        "totalTime": "PT5S"
+    }
+    </script>
+
+    <style>
+        .guide-content {
+            display: block;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: var(--space-xl) var(--space-lg);
+        }
+        .guide-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            box-shadow: var(--shadow-md);
+        }
+        .guide-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: var(--space-md);
+        }
+        .guide-card h1 {
+            font-size: var(--font-size-2xl);
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+        }
+        .guide-tagline {
+            color: var(--text-secondary);
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-xl);
+            line-height: 1.6;
+        }
+        .guide-section-title {
+            font-size: var(--font-size-lg);
+            color: var(--text-primary);
+            margin: var(--space-xl) 0 var(--space-md) 0;
+            padding-bottom: var(--space-xs);
+            border-bottom: 2px solid var(--primary-light);
+        }
+        .guide-card p {
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: var(--space-md);
+        }
+        .guide-card ul, .guide-card ol {
+            padding-left: var(--space-lg);
+            margin-bottom: var(--space-md);
+        }
+        .guide-card li {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: var(--space-sm);
+        }
+        .guide-card strong {
+            color: var(--text-primary);
+        }
+        .highlight-box {
+            background: var(--bg-warm);
+            border-left: 4px solid var(--primary);
+            padding: var(--space-md) var(--space-lg);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin: var(--space-lg) 0;
+        }
+        .highlight-box p {
+            margin: 0;
+            color: var(--text-primary);
+        }
+        .steps-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+        .steps-list li {
+            counter-increment: step-counter;
+            padding-left: 3rem;
+            position: relative;
+            margin-bottom: var(--space-md);
+        }
+        .steps-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--primary-gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+        .cta-box {
+            background: var(--primary-gradient);
+            border-radius: var(--radius-md);
+            padding: var(--space-xl);
+            text-align: center;
+            margin-top: var(--space-xl);
+        }
+        .cta-box h3 {
+            color: white;
+            margin-bottom: var(--space-sm);
+        }
+        .cta-box p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--space-md);
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: var(--space-sm) var(--space-xl);
+            background: white;
+            color: var(--primary);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-base);
+        }
+        .cta-btn:hover {
+            transform: scale(1.05);
+        }
+        .ad-container {
+            margin: var(--space-xl) 0;
+        }
+        @media (max-width: 480px) {
+            .guide-content {
+                padding: var(--space-md);
+            }
+            .guide-card {
+                padding: var(--space-lg);
+            }
+            .guide-card h1 {
+                font-size: var(--font-size-xl);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="logo">What to Eat</a>
+        <a href="../../guide/quick-pick.html" class="lang-switch" aria-label="한국어로 전환">🌐 한국어</a>
+    </header>
+
+    <main class="guide-content">
+        <article class="guide-card">
+            <span class="guide-badge">🎲 Game Guide</span>
+            <h1>Quick Pick - Random Food Recommendation</h1>
+            <p class="guide-tagline">
+                The fastest way to answer "What should I eat?" in just 5 seconds
+            </p>
+
+            <h2 class="guide-section-title">What is Quick Pick?</h2>
+            <p>
+                <strong>Quick Pick</strong> is the fastest and simplest food recommendation feature offered by What to Eat.
+                With just one button click, you can get a random recommendation from 16 popular menu items.
+                Just as the name suggests, your menu for today is decided in literally one second.
+            </p>
+            <p>
+                When lunch time is approaching and you just can't decide what to eat, when you don't want to waste time
+                choosing a menu with friends, or when you just want to leave it up to fate - try Quick Pick.
+                You'll get an answer immediately without any complicated process.
+            </p>
+
+            <div class="highlight-box">
+                <p><strong>💡 Did you know?</strong> According to psychology research, the average adult makes about 35,000 decisions a day.
+                Reducing even small decisions allows you to focus your energy on more important matters.</p>
+            </div>
+
+            <!-- Ad Container -->
+            <div class="ad-container">
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-1134027726484805"
+                    data-ad-slot="auto"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <h2 class="guide-section-title">Recommended For</h2>
+            <ul>
+                <li><strong>Those with decision paralysis</strong> - If looking at a menu only deepens your dilemma</li>
+                <li><strong>Those short on time</strong> - If you don't want to spend 30 minutes of your lunch hour just deciding what to eat</li>
+                <li><strong>Those seeking new experiences</strong> - If you've been eating the same thing and want a change</li>
+                <li><strong>Those who believe in fate</strong> - If you want to say "Today, let the universe decide!"</li>
+            </ul>
+
+            <h2 class="guide-section-title">How to Use</h2>
+            <ol class="steps-list">
+                <li>On the What to Eat main screen, click the <strong>🎲 Quick Pick</strong> card.</li>
+                <li>Press the <strong>Get Recommendation</strong> button.</li>
+                <li>Watch as various foods flash across the screen in a shuffle.</li>
+                <li>After about 2-3 seconds, today's recommended menu is decided!</li>
+                <li>If you're not satisfied, click <strong>Try Another</strong> to get a new recommendation.</li>
+            </ol>
+
+            <h2 class="guide-section-title">What is Decision Fatigue?</h2>
+            <p>
+                Decision fatigue is a phenomenon where judgment and willpower deteriorate due to repetitive decision-making.
+                This is why Steve Jobs wore the same clothes every day, and why Mark Zuckerberg sticks to gray t-shirts.
+                They didn't want to waste energy on trivial decisions.
+            </p>
+            <p>
+                The same applies to choosing meals. You need to make 3 meal decisions a day, which adds up to 21 decisions a week.
+                When these decisions accumulate, the energy you need for important work or creative activities gets depleted.
+                Quick Pick takes care of these small but tiring decisions for you.
+            </p>
+
+            <h2 class="guide-section-title">Available Food Options</h2>
+            <p>
+                Quick Pick randomly recommends from 16 of the most popular menu items in Korea:
+            </p>
+            <ul>
+                <li><strong>Korean</strong>: Kimchi Stew, Samgyeopsal (Pork Belly), Bibimbap</li>
+                <li><strong>Chinese</strong>: Jajangmyeon (Black Bean Noodles), Malatang, Sweet and Sour Pork</li>
+                <li><strong>Japanese</strong>: Sushi, Ramen, Tonkatsu</li>
+                <li><strong>Western</strong>: Pizza, Pasta, Hamburger</li>
+                <li><strong>Others</strong>: Fried Chicken, Tteokbokki, Salad, Pho</li>
+            </ul>
+            <p>
+                All are popular menu items easily accessible in Korea, whether for delivery or dining out.
+            </p>
+
+            <h2 class="guide-section-title">Frequently Asked Questions</h2>
+            <p>
+                <strong>Q. What if I don't like the recommendation?</strong><br>
+                A. You can press "Try Another" button to get unlimited new recommendations.
+                However, for the true Quick Pick experience, we recommend trusting and following the first result!
+            </p>
+            <p>
+                <strong>Q. What if a food I'm allergic to comes up?</strong><br>
+                A. If you have allergies to certain foods, just use the retry button when that food appears.
+                We plan to add an exclusion setting feature in future updates.
+            </p>
+            <p>
+                <strong>Q. The same food keeps coming up.</strong><br>
+                A. Since it's completely random, the same food can appear consecutively.
+                Think of it as fate and embrace it! 😄
+            </p>
+
+            <div class="cta-box">
+                <h3>🎲 Try Quick Pick Now</h3>
+                <p>Stop overthinking! Decide today's menu in 5 seconds</p>
+                <a href="../index.html" class="cta-btn">Start Quick Pick</a>
+            </div>
+        </article>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <nav class="footer-links" aria-label="Site links">
+                <a href="../index.html">Home</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../blog.html">Blog</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../about.html">About</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../faq.html">FAQ</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../contact.html">Contact</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../privacy.html">Privacy</a>
+                <span class="footer-divider" aria-hidden="true">|</span>
+                <a href="../terms.html">Terms</a>
+            </nav>
+            <p class="footer-copy">&copy; 2026 What to Eat. Bon Appetit!</p>
+        </div>
+    </footer>
+</body>
+</html>
