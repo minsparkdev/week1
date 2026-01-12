@@ -570,11 +570,18 @@ main {
     background: var(--bg-warm);
     border-radius: var(--radius-md);
     transition: all var(--transition-base);
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
 
 .feature-item:hover {
     transform: translateX(4px);
     background: var(--accent-peach);
+}
+
+.feature-item:visited {
+    color: inherit;
 }
 
 .feature-icon {
@@ -593,21 +600,6 @@ main {
     font-size: var(--font-size-sm);
     margin: 0;
     line-height: 1.5;
-}
-
-.feature-link {
-    display: inline-block;
-    margin-top: var(--space-xs);
-    font-size: var(--font-size-xs);
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 500;
-    transition: all var(--transition-fast);
-}
-
-.feature-link:hover {
-    color: var(--primary-dark);
-    text-decoration: underline;
 }
 
 /* =====================
