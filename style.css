@@ -570,18 +570,21 @@ main {
     background: var(--bg-warm);
     border-radius: var(--radius-md);
     transition: all var(--transition-base);
+}
+
+a.feature-item,
+a.feature-item:hover,
+a.feature-item:visited,
+a.feature-item:active,
+a.feature-item:focus {
     text-decoration: none;
     color: inherit;
-    cursor: pointer;
+    outline: none;
 }
 
 .feature-item:hover {
     transform: translateX(4px);
     background: var(--accent-peach);
-}
-
-.feature-item:visited {
-    color: inherit;
 }
 
 .feature-icon {
