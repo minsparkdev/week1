@@ -1,6 +1,6 @@
 /**
  * FoodWorldcup Component
- * - Round of 16 Food Tournament
+ * - Food Tournament (Round of 16/8/4)
  * - Tournament-style food battle
  */
 
@@ -19,25 +19,43 @@ class FoodWorldcup extends HTMLElement {
         this.roundName = 'Round of 16';
         this.totalMatches = 0;
         this.currentMatch = 0;
+        this.gamePhase = 'select'; // 'select' | 'playing' | 'result'
+        this.selectedRoundSize = null;
     }
 
     connectedCallback() {
-        this.initGame();
         this.render();
     }
 
-    initGame() {
-        // Randomly select 16 foods
-        this.candidates = shuffleArray([...foods]).slice(0, 16);
+    initGame(roundSize = 16) {
+        this.selectedRoundSize = roundSize;
+        // Randomly select foods based on round size
+        this.candidates = shuffleArray([...foods]).slice(0, roundSize);
         this.currentRound = [...this.candidates];
         this.nextRound = [];
         this.matchIndex = 0;
-        this.roundName = 'Round of 16';
-        this.totalMatches = 8;
+
+        // Round configuration mapping
+        const roundConfig = {
+            16: { name: 'Round of 16', matches: 8 },
+            8: { name: 'Quarterfinals', matches: 4 },
+            4: { name: 'Semifinals', matches: 2 }
+        };
+
+        const config = roundConfig[roundSize];
+        this.roundName = config.name;
+        this.totalMatches = config.matches;
         this.currentMatch = 1;
+        this.gamePhase = 'playing';
     }
 
     render() {
+        // Round selection screen
+        if (this.gamePhase === 'select') {
+            this.renderRoundSelector();
+            return;
+        }
+
         const [foodA, foodB] = this.getCurrentMatch();
 
         this.shadowRoot.innerHTML = `
@@ -91,6 +109,46 @@ class FoodWorldcup extends HTMLElement {
     getCurrentMatch() {
         const idx = this.matchIndex * 2;
         return [this.currentRound[idx], this.currentRound[idx + 1]];
+    }
+
+    renderRoundSelector() {
+        this.shadowRoot.innerHTML = `
+            <style>
+                ${this.getStyles()}
+            </style>
+            <div class="worldcup-container round-selector">
+                <div class="selector-header">
+                    <span class="selector-icon">🏆</span>
+                    <h2 class="selector-title">Food World Cup</h2>
+                </div>
+                <div class="round-options">
+                    <button class="round-btn" data-round="16">
+                        <span class="round-num">16</span>
+                        <span class="round-matches">8 🎮</span>
+                    </button>
+                    <button class="round-btn" data-round="8">
+                        <span class="round-num">8</span>
+                        <span class="round-matches">4 🎮</span>
+                    </button>
+                    <button class="round-btn" data-round="4">
+                        <span class="round-num">4</span>
+                        <span class="round-matches">2 🎮</span>
+                    </button>
+                </div>
+            </div>
+        `;
+
+        this.bindRoundSelectorEvents();
+    }
+
+    bindRoundSelectorEvents() {
+        this.shadowRoot.querySelectorAll('.round-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const roundSize = parseInt(btn.dataset.round);
+                this.initGame(roundSize);
+                this.render();
+            });
+        });
     }
 
     getStyles() {
@@ -553,6 +611,106 @@ class FoodWorldcup extends HTMLElement {
                     border-radius: 12px;
                 }
             }
+
+            /* Round Selector Styles */
+            .round-selector {
+                text-align: center;
+                padding: 2rem 1.5rem;
+            }
+
+            .selector-header {
+                margin-bottom: 2rem;
+            }
+
+            .selector-icon {
+                font-size: 3rem;
+                display: block;
+                margin-bottom: 0.75rem;
+            }
+
+            .selector-title {
+                font-size: 1.25rem;
+                color: #4A4458;
+                font-weight: 700;
+                margin: 0;
+            }
+
+            .round-options {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .round-btn {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100px;
+                height: 100px;
+                background: #FFFFFF;
+                border: 2px solid rgba(74, 68, 88, 0.12);
+                border-radius: 20px;
+                cursor: pointer;
+                transition: all 0.25s ease;
+                box-shadow: 0 2px 8px rgba(74, 68, 88, 0.06);
+            }
+
+            .round-btn:hover {
+                transform: translateY(-4px);
+                border-color: #FFB5A7;
+                box-shadow: 0 8px 24px rgba(255, 139, 123, 0.2);
+            }
+
+            .round-btn:active {
+                transform: scale(0.98);
+            }
+
+            .round-num {
+                font-size: 2rem;
+                font-weight: 800;
+                color: #4A4458;
+                line-height: 1;
+            }
+
+            .round-matches {
+                font-size: 0.875rem;
+                color: #7D7A8C;
+                margin-top: 0.25rem;
+            }
+
+            @media (max-width: 480px) {
+                .round-selector {
+                    padding: 1.5rem 1rem;
+                }
+
+                .selector-icon {
+                    font-size: 2.5rem;
+                }
+
+                .selector-title {
+                    font-size: 1rem;
+                }
+
+                .round-options {
+                    gap: 0.75rem;
+                }
+
+                .round-btn {
+                    width: 85px;
+                    height: 85px;
+                    border-radius: 16px;
+                }
+
+                .round-num {
+                    font-size: 1.5rem;
+                }
+
+                .round-matches {
+                    font-size: 0.75rem;
+                }
+            }
         `;
     }
 
@@ -608,7 +766,7 @@ class FoodWorldcup extends HTMLElement {
         this.matchIndex++;
         this.currentMatch++;
 
-        // Check if current round is over
+        // Check if current round is complete
         if (this.matchIndex >= this.currentRound.length / 2) {
             setTimeout(() => this.advanceRound(), 500);
         } else {
@@ -630,9 +788,9 @@ class FoodWorldcup extends HTMLElement {
 
         // Update round name
         switch (this.currentRound.length) {
-            case 8: this.roundName = 'Quarter'; this.totalMatches = 4; break;
-            case 4: this.roundName = 'Semi'; this.totalMatches = 2; break;
-            case 2: this.roundName = 'Final'; this.totalMatches = 1; break;
+            case 8: this.roundName = 'Quarterfinals'; this.totalMatches = 4; break;
+            case 4: this.roundName = 'Semifinals'; this.totalMatches = 2; break;
+            case 2: this.roundName = 'Finals'; this.totalMatches = 1; break;
         }
         this.currentMatch = 1;
 
@@ -669,7 +827,7 @@ class FoodWorldcup extends HTMLElement {
 
         // Button events
         this.shadowRoot.getElementById('retry-btn').addEventListener('click', () => {
-            this.initGame();
+            this.gamePhase = 'select';
             this.render();
         });
 

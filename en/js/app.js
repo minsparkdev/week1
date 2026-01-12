@@ -8,6 +8,19 @@
 let currentMode = 'hub';
 
 /**
+ * Toggle ads visibility
+ * - Hide ads in game mode (Google AdSense policy compliance)
+ * - Show ads only on hub screen with sufficient content
+ * @param {boolean} show - true: show, false: hide
+ */
+function toggleAds(show) {
+    const adContainers = document.querySelectorAll('.ad-container');
+    adContainers.forEach(ad => {
+        ad.style.display = show ? 'block' : 'none';
+    });
+}
+
+/**
  * Mode switch function
  * @param {string} mode - 'hub' | 'random' | 'worldcup' | 'tarot' | 'balance' | 'fullcourse'
  */
@@ -24,10 +37,14 @@ export function switchMode(mode) {
         modeHub.classList.remove('hidden');
         modeContent.classList.add('hidden');
         modeContent.innerHTML = '';
+        // Show ads on hub
+        toggleAds(true);
     } else {
         // Activate specific mode
         modeHub.classList.add('hidden');
         modeContent.classList.remove('hidden');
+        // Hide ads in game mode
+        toggleAds(false);
 
         // Load corresponding mode component
         loadModeComponent(mode, modeContent);
