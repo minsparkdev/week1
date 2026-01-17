@@ -1,90 +1,118 @@
 # What to Eat - Food Recommendation Service
 
-> A free food recommendation service for the indecisive.
+> A free food recommendation service that helps you solve the daily question "What should I eat?"
 
-## Service Overview
+## Quick Facts
 
-What to Eat is a free web service for those who struggle with meal decisions. Anyone can use it instantly without registration, and it offers 5 fun ways to get menu recommendations or decide who pays for the meal.
+- **Service Name**: What to Eat
+- **Type**: Free web service (no app installation required)
+- **Languages**: English, Korean
+- **Registration**: Not required (use instantly)
+- **Launch Date**: January 2026
+- **Menu Items**: 16 popular foods
+- **Recommendation Methods**: 5 (Quick Pick, Food World Cup, Food Tarot, Balance Game, Payment King)
 
-## Main Features
+## What is What to Eat?
 
-### 1. Quick Pick (Random Recommendation)
-- Time required: ~5 seconds
-- Description: Get a random food recommendation with just one click
-- Best for: When you're short on time or want to leave it to fate
+What to Eat is a free food recommendation web service for those who struggle with meal decisions. According to surveys, 78% of office workers report difficulty deciding what to eat for lunch. This phenomenon is known as "Decision Fatigue" - mental exhaustion from making too many choices.
 
-### 2. Food World Cup
-- Time required: 1-2 minutes
-- Description: 16 foods compete in tournament style to select a final winner
-- Best for: When you want to find what you really want to eat among many options
+What to Eat solves this common problem with 5 fun and interactive methods. No registration needed - just visit the website and start using it immediately on any device.
 
-### 3. Food Tarot
-- Time required: ~30 seconds
-- Description: Select one of 5 tarot cards to receive today's food fortune and menu recommendation
-- Best for: When you want a fun way to decide your meal
+## 5 Recommendation Methods Explained
 
-### 4. Balance Game
-- Time required: ~1 minute
-- Description: Answer 5 extreme either-or questions to discover your food preferences
-- Best for: When you want to discover your food taste
+### 1. Quick Pick - Random Recommendation
+- **Time Required**: ~5 seconds
+- **Description**: Get an instant random food recommendation with one click
+- **Best For**: When you're short on time or want to leave it to fate
+- **How to Use**: Click "Quick Pick" button → See result instantly
 
-### 5. Payment King (Who's Paying?)
-- Time required: ~30 seconds
-- Description: Use roulette or ladder game to decide who pays for the meal
-- Best for: When you need to decide who pays after dining with friends
-- Participants: Supports 2-10 people
+### 2. Food World Cup - Tournament Style
+- **Time Required**: 1-2 minutes
+- **Description**: 16 foods compete in tournament bracket format
+- **Format**: Round of 16 → Quarterfinals → Semifinals → Finals
+- **Best For**: When you want to discover what you truly want to eat
+- **Unique Feature**: Helps you discover hidden food preferences
 
-## Recommended Menu Items
+### 3. Food Tarot - Fortune-Based Recommendation
+- **Time Required**: ~30 seconds
+- **Description**: Select one of 5 tarot cards for today's food fortune and recommendation
+- **Best For**: When you want a fun, mystical way to decide
+- **Unique Feature**: Includes fortune message with recommendation
 
-Food types available in the service:
-- Korean: Kimchi Stew, Bibimbap, Grilled Pork Belly
-- Chinese: Jajangmyeon, Mala Hotpot, Sweet & Sour Pork
-- Japanese: Sushi, Ramen, Tonkatsu
-- Western: Pasta, Pizza, Hamburger
-- Street Food: Tteokbokki, Fried Chicken
-- Asian: Pho
-- Diet: Salad
+### 4. Balance Game - Preference Analysis
+- **Time Required**: ~1 minute
+- **Description**: Answer 5 extreme either-or questions to analyze your food preferences
+- **Example Questions**: "Spicy vs. Mild", "Rice vs. Noodles"
+- **Best For**: When you want to discover your food taste
+- **Unique Feature**: Analyzes answer patterns for optimal recommendation
+
+### 5. Payment King - Bill Decider
+- **Time Required**: ~30 seconds
+- **Description**: Use roulette or ladder game to decide who pays for the meal
+- **Participants**: 2-10 people
+- **Game Types**: Spin the Roulette, Ladder Game
+- **Best For**: Deciding who pays after group meals
+- **Unique Feature**: Save results as image or share on social media
+
+## Available Menu Items (16 Foods)
+
+| Category | Menu Items |
+|----------|------------|
+| Korean | Kimchi Stew, Soybean Paste Stew, Bibimbap, Grilled Pork Belly, Bulgogi |
+| Chinese | Jajangmyeon, Mala Hotpot, Sweet & Sour Pork |
+| Japanese | Sushi, Ramen, Tonkatsu, Udon |
+| Western | Pasta, Pizza, Hamburger, Steak |
+| Street Food | Tteokbokki, Kimbap, Instant Noodles |
+| Other | Fried Chicken, Pho, Salad |
 
 ## Frequently Asked Questions (FAQ)
 
-Q: Is the service free?
-A: Yes, all features of What to Eat are completely free. You can use it immediately without registration.
+**Q: Is the service free?**
+A: Yes, all features of What to Eat are completely free. No registration required.
 
-Q: What types of food are recommended?
-A: We offer 16+ popular menu items across various categories including Korean, Chinese, Japanese, Western, and street food.
+**Q: Do I need to install an app?**
+A: No, it works directly in your web browser. It's built with responsive design for all devices.
 
-Q: Can I save or share the results?
-A: Yes, you can save the recommendation as an image or share it on social media.
+**Q: Can I save or share results?**
+A: Yes, you can save recommendations as images or share them on social media.
 
-Q: Does it work on mobile?
-A: Yes, it's built as a responsive web app and works on smartphones, tablets, and PCs.
+**Q: How does Food World Cup work?**
+A: 16 foods compete tournament-style. Each round, choose between two foods until a champion is crowned.
 
-Q: How does Food World Cup work?
-A: 16 foods compete in tournament brackets. Each round, you choose which food you prefer more, and the final winner becomes your recommended menu.
-
-Q: What is Payment King?
-A: It's a feature to decide who pays for the meal. You can choose between roulette and ladder game, supporting 2-10 participants.
+**Q: How many participants can join Payment King?**
+A: 2 to 10 participants can play.
 
 ## Page Structure
 
-- /en/: Main page (all features + service intro)
-- /en/about.html: About page
-- /en/faq.html: Frequently Asked Questions
-- /en/contact.html: Contact & Partnership
-- /en/privacy.html: Privacy Policy
-- /en/terms.html: Terms of Service
-- /en/blog.html: Blog
+- `/en/` - Main page (all features + service intro)
+- `/en/faq.html` - Frequently Asked Questions
+- `/en/about.html` - About the service
+- `/en/blog.html` - Food-related blog
+- `/en/contact.html` - Contact & Partnership
+- `/en/privacy.html` - Privacy Policy
+- `/en/terms.html` - Terms of Service
+- `/en/guide/quick-pick.html` - Quick Pick guide
+- `/en/guide/worldcup.html` - Food World Cup guide
+- `/en/guide/tarot.html` - Food Tarot guide
+- `/en/guide/balance.html` - Balance Game guide
+- `/en/guide/payment.html` - Payment King guide
 
 ## Technical Information
 
-- Platform: Web browser (responsive)
-- Language: English
-- Cost: Free
-- Registration: Not required
+- **Platform**: Web browser (responsive)
+- **Tech Stack**: HTML5, CSS3, Vanilla JavaScript, Web Components
+- **Languages**: English, Korean
+- **Cost**: Free
+- **Registration**: Not required
+- **Data Storage**: LocalStorage (browser-based)
+
+## Related Keywords
+
+what to eat, lunch recommendation, dinner recommendation, food picker, menu decider, food world cup, food tournament, food tarot, bill splitter game, roulette game, ladder game, decision fatigue, random food generator
 
 ## Contact
 
-For partnership inquiries, please use the contact form at the bottom of the main page.
+For partnership and collaboration inquiries, please visit `/en/contact.html`.
 
 ---
-Last updated: 2026-01-11
+Last updated: 2026-01-17

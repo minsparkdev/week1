@@ -41,6 +41,12 @@
     <meta name="date" content="2026-01-17">
     <meta name="last-modified" content="2026-01-17">
 
+    <!-- Geo Targeting (for Bing and other search engines) -->
+    <meta name="geo.region" content="KR">
+    <meta name="geo.placename" content="South Korea">
+    <meta name="geo.position" content="37.5665;126.9780">
+    <meta name="ICBM" content="37.5665, 126.9780">
+
     <!-- Mobile App Hints -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -168,6 +174,81 @@
         ]
     }
     </script>
+
+    <!-- Structured Data: FAQPage (GEO Optimization for AI Search) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "오늘 뭐 먹지? 메뉴 추천 서비스란?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "What to Eat(오늘 뭐 먹지?)은 매일 반복되는 메뉴 결정 고민을 해결해주는 무료 음식 추천 서비스입니다. 1초컷(랜덤 추천), 이상형 월드컵, 음식 타로, 밸런스 게임, 결제왕 등 5가지 재미있는 방법으로 점심·저녁 메뉴를 쉽게 정할 수 있습니다. 회원가입 없이 바로 이용 가능합니다."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "이상형 월드컵 음식 게임은 어떻게 하나요?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "이상형 월드컵은 16가지 음식이 토너먼트 방식으로 대결하는 게임입니다. 매 라운드마다 두 음식 중 더 먹고 싶은 것을 선택하면 8강, 4강, 결승을 거쳐 최종 우승 메뉴가 결정됩니다. 약 1-2분 소요되며, 본인의 진짜 취향을 발견할 수 있는 재미있는 방법입니다."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "점심 메뉴 추천 어플 없이 웹에서 바로 사용할 수 있나요?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "네, What to Eat은 앱 설치 없이 웹브라우저에서 바로 사용할 수 있습니다. 반응형 웹으로 제작되어 스마트폰, 태블릿, PC 등 모든 기기에서 편리하게 이용 가능합니다. 완전 무료이며 회원가입도 필요 없습니다."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "밥값 낼 사람 정하기 게임은 어떻게 하나요?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "결제왕 기능에서 참가자 이름을 입력하고(2-10명) 룰렛 돌리기 또는 사다리타기 중 원하는 방식을 선택하세요. 공정한 랜덤 방식으로 밥값 낼 사람이 결정됩니다. 결과를 이미지로 저장하거나 SNS에 공유할 수도 있습니다."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Structured Data: HowTo (GEO Optimization) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "What to Eat으로 오늘의 메뉴 정하는 방법",
+        "description": "5가지 재미있는 방법으로 점심·저녁 메뉴를 쉽게 결정하는 방법을 알려드립니다.",
+        "totalTime": "PT2M",
+        "step": [
+            {
+                "@type": "HowToStep",
+                "position": 1,
+                "name": "추천 방법 선택",
+                "text": "What to Eat 메인 페이지에서 5가지 추천 방법(1초컷, 이상형 월드컵, 음식 타로, 밸런스 게임, 결제왕) 중 상황에 맞는 것을 선택합니다.",
+                "url": "https://week1-8il.pages.dev/#mode-hub"
+            },
+            {
+                "@type": "HowToStep",
+                "position": 2,
+                "name": "게임 진행",
+                "text": "선택한 방법에 따라 게임을 진행합니다. 1초컷은 버튼 클릭만으로 즉시 결과가, 이상형 월드컵은 토너먼트 대결로 결과가 나옵니다.",
+                "url": "https://week1-8il.pages.dev/"
+            },
+            {
+                "@type": "HowToStep",
+                "position": 3,
+                "name": "결과 확인 및 공유",
+                "text": "추천받은 메뉴를 확인하고, 이미지로 저장하거나 SNS에 공유할 수 있습니다. 마음에 들지 않으면 다시 시도해보세요!"
+            }
+        ]
+    }
+    </script>
 </head>
 <body itemscope itemtype="https://schema.org/WebApplication">
     <header role="banner">
@@ -264,24 +345,29 @@
         <section class="about-section">
             <div class="about-card">
                 <h2>What to Eat 소개</h2>
+                <!-- Direct Answer Block (GEO Optimization) -->
                 <p class="about-intro">
-                    "오늘 뭐 먹지?" 매일 반복되는 이 질문, 이제 저희가 도와드릴게요!
+                    <strong>What to Eat(뭐 먹지?)</strong>은 메뉴 결정이 어려운 분들을 위한 <mark>무료 음식 추천 서비스</mark>입니다.
+                    1초컷, 이상형 월드컵, 음식 타로, 밸런스 게임, 결제왕 등 <mark>5가지 방법</mark>으로
+                    점심·저녁 메뉴를 쉽고 재미있게 정할 수 있습니다. 회원가입 없이 바로 이용 가능합니다.
                 </p>
                 <div class="about-content">
                     <p>
-                        <strong>What to Eat</strong>은 메뉴 결정이 어려운 분들을 위한 무료 음식 추천 서비스입니다.
-                        점심 메뉴부터 저녁 메뉴까지, 다양한 방식으로 여러분의 선택을 도와드립니다.
-                    </p>
-                    <p>
+                        한국갤럽 조사에 따르면, 직장인의 <mark>78%</mark>가 점심 메뉴 결정에 어려움을 느낀다고 합니다.
                         혼자 밥을 먹을 때, 친구나 가족과 함께할 때, 또는 회사 동료들과 점심을 정해야 할 때
                         메뉴 결정은 늘 어렵습니다. 특히 매일 같은 고민을 반복하다 보면 피로감이 쌓이기도 하죠.
-                        What to Eat은 이런 일상의 작은 스트레스를 해결하기 위해 만들어졌습니다.
                     </p>
                     <p>
-                        오늘 뭐 먹을지 고민될 때, 단 몇 초 만에 랜덤으로 메뉴를 추천받거나
+                        What to Eat은 이런 일상의 '<a href="https://en.wikipedia.org/wiki/Decision_fatigue" target="_blank" rel="noopener noreferrer">결정 피로(Decision Fatigue)</a>'를 해결하기 위해
+                        <mark>2026년 1월</mark>에 출시된 서비스입니다.
+                        현재 김치찌개, 비빔밥, 삼겹살, 치킨, 피자, 파스타, 초밥, 라멘 등
+                        <mark>16가지 인기 메뉴</mark>를 제공하며, 지속적으로 메뉴를 추가하고 있습니다.
+                    </p>
+                    <p>
+                        오늘 뭐 먹을지 고민될 때, 단 <mark>5초</mark> 만에 랜덤으로 메뉴를 추천받거나
                         재미있는 게임을 통해 자연스럽게 결정할 수 있습니다.
-                        16가지 다양한 음식 중에서 토너먼트 형식으로 최애 메뉴를 찾아보세요.
-                        타로 카드로 오늘의 음식 운세도 확인할 수 있습니다.
+                        이상형 월드컵에서는 16가지 음식이 토너먼트로 대결하여 당신의 진짜 취향을 찾아드립니다.
+                        음식 타로로 오늘의 음식 운세도 확인해보세요.
                     </p>
                     <div class="feature-list">
                         <a href="guide/quick-pick.html" class="feature-item">

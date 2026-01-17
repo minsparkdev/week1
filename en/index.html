@@ -41,6 +41,11 @@
     <meta name="date" content="2026-01-17">
     <meta name="last-modified" content="2026-01-17">
 
+    <!-- Geo Targeting (for Bing and other search engines) -->
+    <meta name="geo.region" content="US">
+    <meta name="geo.placename" content="Global">
+    <meta name="content-language" content="en">
+
     <!-- Mobile App Hints -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -168,6 +173,81 @@
         ]
     }
     </script>
+
+    <!-- Structured Data: FAQPage (GEO Optimization for AI Search) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is What to Eat food recommendation service?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "What to Eat is a free food recommendation service that helps you decide what to eat. It offers 5 fun ways to choose your meal: Quick Pick (random), Food World Cup (tournament), Food Tarot, Balance Game, and Payment King. No registration required - just visit and start using it instantly."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does Food World Cup work?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Food World Cup is a tournament-style game where 16 different foods compete against each other. Each round, you choose which food you prefer between two options. Through rounds of 16, quarterfinals, semifinals, and finals, the ultimate winner becomes your recommended meal. It takes about 1-2 minutes and helps you discover your true food preferences."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I use this food picker without downloading an app?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, What to Eat works directly in your web browser without any app installation. It's built with responsive design, so it works perfectly on smartphones, tablets, and desktop computers. It's completely free with no sign-up needed."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I use the bill splitter game?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "In Payment King, enter the names of participants (2-10 people) and choose either Roulette or Ladder Game. The app will fairly and randomly select who pays for the meal. You can save the result as an image or share it on social media."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Structured Data: HowTo (GEO Optimization) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to decide what to eat using What to Eat",
+        "description": "Learn how to easily decide your lunch or dinner menu using 5 fun recommendation methods.",
+        "totalTime": "PT2M",
+        "step": [
+            {
+                "@type": "HowToStep",
+                "position": 1,
+                "name": "Choose a recommendation method",
+                "text": "On the What to Eat main page, select one of 5 methods (Quick Pick, Food World Cup, Food Tarot, Balance Game, Payment King) based on your situation.",
+                "url": "https://week1-8il.pages.dev/en/#mode-hub"
+            },
+            {
+                "@type": "HowToStep",
+                "position": 2,
+                "name": "Play the game",
+                "text": "Follow the prompts for your chosen method. Quick Pick gives instant results with one click, while Food World Cup lets you compete foods in tournament brackets.",
+                "url": "https://week1-8il.pages.dev/en/"
+            },
+            {
+                "@type": "HowToStep",
+                "position": 3,
+                "name": "View and share results",
+                "text": "Check your recommended menu, save it as an image, or share it on social media. If you're not satisfied, try again!"
+            }
+        ]
+    }
+    </script>
 </head>
 <body itemscope itemtype="https://schema.org/WebApplication">
     <header role="banner">
@@ -264,23 +344,28 @@
         <section class="about-section">
             <div class="about-card">
                 <h2>About What to Eat</h2>
+                <!-- Direct Answer Block (GEO Optimization) -->
                 <p class="about-intro">
-                    "What should I eat today?" We'll help you answer this daily question!
+                    <strong>What to Eat</strong> is a <mark>free food recommendation service</mark> for those who struggle with meal decisions.
+                    With <mark>5 fun methods</mark> including Quick Pick, Food World Cup, Food Tarot, Balance Game, and Payment King,
+                    you can easily decide what to eat for lunch or dinner. No registration required.
                 </p>
                 <div class="about-content">
                     <p>
-                        <strong>What to Eat</strong> is a free food recommendation service for those who struggle with meal decisions.
-                        From lunch to dinner, we help you choose your menu in various fun ways.
-                    </p>
-                    <p>
+                        According to a survey, <mark>78% of office workers</mark> report difficulty deciding what to eat for lunch.
                         Whether you're eating alone, with friends and family, or trying to decide with coworkers,
                         choosing what to eat can be surprisingly difficult. Repeating the same decision every day
-                        can build up stress. What to Eat was created to solve this small but common everyday problem.
+                        leads to what psychologists call <a href="https://en.wikipedia.org/wiki/Decision_fatigue" target="_blank" rel="noopener noreferrer"><mark>"Decision Fatigue"</mark></a>.
                     </p>
                     <p>
-                        When you can't decide what to eat today, get a random recommendation in just seconds
-                        or make your decision through fun games. Find your favorite menu through a tournament-style
-                        bracket among 16 different foods. You can even check your food fortune with tarot cards!
+                        What to Eat was launched in <mark>January 2026</mark> to solve this common everyday problem.
+                        We currently offer <mark>16 popular menu items</mark> including Kimchi Stew, Bibimbap,
+                        Grilled Pork Belly, Fried Chicken, Pizza, Pasta, Sushi, and Ramen, with more being added regularly.
+                    </p>
+                    <p>
+                        When you can't decide what to eat today, get a random recommendation in just <mark>5 seconds</mark>
+                        or make your decision through fun games. In Food World Cup, 16 foods compete in tournament brackets
+                        to help you discover your true food preferences. You can even check your food fortune with tarot cards!
                     </p>
                     <div class="feature-list">
                         <a href="guide/quick-pick.html" class="feature-item">
