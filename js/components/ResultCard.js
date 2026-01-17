@@ -111,12 +111,6 @@ class ResultCard extends HTMLElement {
                             <button class="share-modal-close" id="share-close">✕</button>
                         </div>
                         <div class="share-options">
-                            <button class="share-option kakao" id="share-kakao">
-                                <span class="share-icon">
-                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.48 3 2 6.48 2 10.8c0 2.76 1.84 5.18 4.6 6.54-.2.72-.73 2.62-.84 3.03-.13.52.19.51.4.37.17-.11 2.67-1.81 3.75-2.55.68.1 1.38.15 2.09.15 5.52 0 10-3.48 10-7.8S17.52 3 12 3z"/></svg>
-                                </span>
-                                <span class="share-label">카카오톡</span>
-                            </button>
                             <button class="share-option twitter" id="share-twitter">
                                 <span class="share-icon">
                                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -532,11 +526,6 @@ class ResultCard extends HTMLElement {
             }
 
             /* SNS 브랜드 컬러 */
-            .share-option.kakao .share-icon {
-                background: #FEE500;
-                color: #191919;
-            }
-
             .share-option.twitter .share-icon {
                 background: #000000;
                 color: white;
@@ -557,7 +546,6 @@ class ResultCard extends HTMLElement {
                 color: white;
             }
 
-            .share-option.kakao:hover { background: #FEF6D0; }
             .share-option.twitter:hover { background: #E8E8E8; }
             .share-option.facebook:hover { background: #E7F0FD; }
             .share-option.band:hover { background: #D9F5E6; }
@@ -757,9 +745,6 @@ class ResultCard extends HTMLElement {
         });
 
         // SNS 공유 버튼들
-        this.shadowRoot.getElementById('share-kakao').addEventListener('click', () => {
-            this.shareToKakao();
-        });
         this.shadowRoot.getElementById('share-twitter').addEventListener('click', () => {
             this.shareToTwitter();
         });
@@ -893,19 +878,6 @@ class ResultCard extends HTMLElement {
 
     getShareUrl() {
         return window.location.href;
-    }
-
-    shareToKakao() {
-        // 카카오톡 공유 (카카오 SDK 없이 URL 스킴 사용)
-        const text = encodeURIComponent(this.getShareText() + ' - What to Eat');
-        const url = encodeURIComponent(this.getShareUrl());
-
-        // 카카오톡 공유 URL (모바일)
-        const kakaoUrl = `https://story.kakao.com/share?url=${url}&text=${text}`;
-
-        window.open(kakaoUrl, '_blank', 'width=600,height=400');
-        this.closeShareModal();
-        this.showToast('카카오스토리로 공유합니다');
     }
 
     shareToTwitter() {
