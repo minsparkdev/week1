@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**What to Eat (뭐 먹지?)** is a Korean-language web application that helps users decide what to eat through five interactive game modes. Built as a framework-less Single Page Application using vanilla JavaScript with Web Components.
+**What to Eat (뭐 먹지?)** is a bilingual (Korean/English) web application that helps users decide what to eat through five interactive game modes. Built as a framework-less Single Page Application using vanilla JavaScript with Web Components.
 
-**Live URL**: https://whattoeat.pages.dev/
+**Live URL**: https://whattoeat.pages.dev/ (Korean) | https://whattoeat.pages.dev/en/ (English)
 
 ## Development Commands
 
@@ -31,25 +31,21 @@ node scripts/optimize-images.js
 ### Project Structure
 
 ```
-js/
-├── app.js                    # App initialization & mode routing (switchMode, loadModeComponent)
-├── components/
-│   ├── FoodRecommender.js    # 1초컷 (Quick random recommendation)
-│   ├── FoodWorldcup.js       # 이상형 월드컵 (Tournament bracket)
-│   ├── FoodTarot.js          # 음식 타로 (Card selection)
-│   ├── FoodBalance.js        # 밸런스 게임 (A/B questions with taste analysis)
-│   ├── PaymentGame.js        # 결제왕 (Payment decider - roulette/ladder games)
-│   └── ResultCard.js         # Shared result display with image generation/sharing
-├── data/
-│   └── foods.js              # Food database (16 items), balance questions, utilities
-└── utils/
-    ├── storage.js            # LocalStorage CRUD (getHistory, addToHistory, getStats, updateStats)
-    └── tasteAnalyzer.js      # Taste profile algorithm for Balance Game recommendations
+/                             # Korean version (default)
+├── js/
+│   ├── app.js                # App initialization & mode routing (switchMode, loadModeComponent)
+│   ├── components/           # Web Components for each game mode
+│   ├── data/foods.js         # Food database (16 items), balance questions, utilities
+│   └── utils/                # storage.js, tasteAnalyzer.js
+├── guide/                    # Static guide pages for each game mode
+└── assets/images/foods/      # Optimized food images
 
-assets/images/
-├── foods/                    # Optimized food images (use these)
-└── foods_original/           # Source images for optimization
+/en/                          # English version (mirrors Korean structure)
+├── js/                       # Localized components with English text
+└── guide/                    # English guide pages
 ```
+
+**Important**: When adding features, update BOTH Korean (`/js/`) and English (`/en/js/`) versions to maintain feature parity.
 
 ### Component Pattern
 
@@ -81,6 +77,8 @@ Custom events used:
 - `retry-mode` - Component → App (restart current game)
 - `go-home` - Component → App (return to mode selection hub)
 
+Mode identifiers in app.js: `random`, `worldcup`, `tarot`, `balance`, `payment`, `fullcourse` (not yet implemented)
+
 ### Data Model
 
 Food objects in `foods.js`:
@@ -110,6 +108,7 @@ Balance questions modify user's taste profile which is matched against food trai
 
 1. Create `js/components/FoodNewMode.js` extending HTMLElement
 2. Implement `connectedCallback()`, `render()`, `getStyles()`, emit `food-result` event
-3. Import in index.html module script
+3. Import in `index.html` module script
 4. Add case in `app.js` `loadModeComponent()` switch statement
-5. Add mode card to `.mode-grid` in index.html
+5. Add mode card to `.mode-grid` in `index.html`
+6. **Repeat steps 1-5 for `/en/` directory** with English text
