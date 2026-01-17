@@ -556,6 +556,16 @@ main {
     margin-bottom: var(--space-lg);
 }
 
+.about-closing {
+    margin-top: var(--space-xl);
+    padding: var(--space-lg);
+    background: var(--primary-gradient);
+    border-radius: var(--radius-md);
+    color: var(--text-on-primary);
+    text-align: center;
+    font-weight: 500;
+}
+
 .feature-list {
     display: flex;
     flex-direction: column;
