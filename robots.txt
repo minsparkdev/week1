@@ -1,5 +1,5 @@
 # robots.txt for What to Eat
-# https://whattoeat.pages.dev/
+# https://week1-8il.pages.dev/
 
 # Default rules for all crawlers
 User-agent: *
@@ -18,6 +18,22 @@ Allow: /
 
 # Bing
 User-agent: Bingbot
+Allow: /
+
+# Naver
+User-agent: Yeti
+Allow: /
+
+# Daum
+User-agent: Daumoa
+Allow: /
+
+# Yahoo
+User-agent: Slurp
+Allow: /
+
+# Yandex
+User-agent: YandexBot
 Allow: /
 
 # AI Crawlers - Explicitly Allowed
@@ -55,8 +71,8 @@ User-agent: Meta-ExternalFetcher
 Allow: /
 
 # Sitemap locations
-Sitemap: https://whattoeat.pages.dev/sitemap.xml
+Sitemap: https://week1-8il.pages.dev/sitemap.xml
 
 # LLMs.txt for AI crawlers (proposed standard)
-# Korean version: https://whattoeat.pages.dev/llms.txt
-# English version: https://whattoeat.pages.dev/en/llms.txt
+# Korean version: https://week1-8il.pages.dev/llms.txt
+# English version: https://week1-8il.pages.dev/en/llms.txt
