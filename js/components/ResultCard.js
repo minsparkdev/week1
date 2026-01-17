@@ -107,31 +107,20 @@ class ResultCard extends HTMLElement {
                     <div class="share-modal-backdrop" id="share-backdrop"></div>
                     <div class="share-modal-content">
                         <div class="share-modal-header">
-                            <h3>공유하기</h3>
+                            <h3>이미지 공유</h3>
                             <button class="share-modal-close" id="share-close">✕</button>
                         </div>
+                        <div class="share-image-preview" id="share-image-preview">
+                            <div class="share-image-loading">이미지 생성 중...</div>
+                        </div>
                         <div class="share-options">
-                            <button class="share-option twitter" id="share-twitter">
-                                <span class="share-icon">
-                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                                </span>
-                                <span class="share-label">X (트위터)</span>
+                            <button class="share-option sns-share" id="share-sns">
+                                <span class="share-icon">📤</span>
+                                <span class="share-label">SNS에 공유</span>
                             </button>
-                            <button class="share-option facebook" id="share-facebook">
-                                <span class="share-icon">
-                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                                </span>
-                                <span class="share-label">페이스북</span>
-                            </button>
-                            <button class="share-option band" id="share-band">
-                                <span class="share-icon">
-                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 16.894c-.465.465-1.23.465-1.695 0L12 12.695l-4.199 4.199c-.465.465-1.23.465-1.695 0-.465-.465-.465-1.23 0-1.695L10.305 11l-4.199-4.199c-.465-.465-.465-1.23 0-1.695.465-.465 1.23-.465 1.695 0L12 9.305l4.199-4.199c.465-.465 1.23-.465 1.695 0 .465.465.465 1.23 0 1.695L13.695 11l4.199 4.199c.465.465.465 1.23 0 1.695z"/></svg>
-                                </span>
-                                <span class="share-label">네이버 밴드</span>
-                            </button>
-                            <button class="share-option copy" id="share-copy">
-                                <span class="share-icon">🔗</span>
-                                <span class="share-label">링크 복사</span>
+                            <button class="share-option copy-image" id="share-copy-image">
+                                <span class="share-icon">📋</span>
+                                <span class="share-label">이미지 복사</span>
                             </button>
                         </div>
                     </div>
@@ -525,31 +514,42 @@ class ResultCard extends HTMLElement {
                 color: #4A4458;
             }
 
-            /* SNS 브랜드 컬러 */
-            .share-option.twitter .share-icon {
-                background: #000000;
-                color: white;
+            /* 이미지 미리보기 */
+            .share-image-preview {
+                margin-bottom: 1rem;
+                border-radius: 12px;
+                overflow: hidden;
+                background: #F8F7FA;
+                min-height: 120px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
-            .share-option.facebook .share-icon {
-                background: #1877F2;
-                color: white;
+            .share-image-preview img {
+                width: 100%;
+                height: auto;
+                display: block;
             }
 
-            .share-option.band .share-icon {
-                background: #03C75A;
-                color: white;
+            .share-image-loading {
+                color: #7D7A8C;
+                font-size: 0.875rem;
             }
 
-            .share-option.copy .share-icon {
+            /* 공유 버튼 스타일 */
+            .share-option.sns-share .share-icon {
                 background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
                 color: white;
             }
 
-            .share-option.twitter:hover { background: #E8E8E8; }
-            .share-option.facebook:hover { background: #E7F0FD; }
-            .share-option.band:hover { background: #D9F5E6; }
-            .share-option.copy:hover { background: #FFF0ED; }
+            .share-option.copy-image .share-icon {
+                background: linear-gradient(135deg, #D4C1EC, #B8E0D2);
+                color: white;
+            }
+
+            .share-option.sns-share:hover { background: #FFF0ED; }
+            .share-option.copy-image:hover { background: #F0EDF5; }
 
             /* Tablet */
             @media (max-width: 600px) {
@@ -744,28 +744,98 @@ class ResultCard extends HTMLElement {
             this.closeShareModal();
         });
 
-        // SNS 공유 버튼들
-        this.shadowRoot.getElementById('share-twitter').addEventListener('click', () => {
-            this.shareToTwitter();
+        // SNS 공유 버튼 - Web Share API로 이미지 공유
+        this.shadowRoot.getElementById('share-sns').addEventListener('click', () => {
+            this.shareImageToSNS();
         });
-        this.shadowRoot.getElementById('share-facebook').addEventListener('click', () => {
-            this.shareToFacebook();
-        });
-        this.shadowRoot.getElementById('share-band').addEventListener('click', () => {
-            this.shareToBand();
-        });
-        this.shadowRoot.getElementById('share-copy').addEventListener('click', () => {
-            this.copyLink();
-            this.closeShareModal();
+
+        // 이미지 복사 버튼
+        this.shadowRoot.getElementById('share-copy-image').addEventListener('click', () => {
+            this.copyImageToClipboard();
         });
     }
 
-    openShareModal() {
-        this.shadowRoot.getElementById('share-modal').classList.add('show');
+    async openShareModal() {
+        const modal = this.shadowRoot.getElementById('share-modal');
+        const preview = this.shadowRoot.getElementById('share-image-preview');
+
+        modal.classList.add('show');
+
+        // 이미지 생성 및 미리보기 표시
+        try {
+            preview.innerHTML = '<div class="share-image-loading">이미지 생성 중...</div>';
+            const imageUrl = await this.generateShareImage();
+            this.currentShareImageUrl = imageUrl;
+
+            // Blob 생성 및 저장 (공유용)
+            const response = await fetch(imageUrl);
+            this.currentShareImageBlob = await response.blob();
+
+            preview.innerHTML = `<img src="${imageUrl}" alt="공유 이미지">`;
+        } catch (err) {
+            console.error('Image generation failed:', err);
+            preview.innerHTML = '<div class="share-image-loading">이미지 생성 실패</div>';
+        }
     }
 
     closeShareModal() {
         this.shadowRoot.getElementById('share-modal').classList.remove('show');
+    }
+
+    async shareImageToSNS() {
+        if (!this.currentShareImageBlob) {
+            this.showToast('이미지를 준비 중입니다');
+            return;
+        }
+
+        const file = new File([this.currentShareImageBlob], `what-to-eat-${this.food.name}.png`, {
+            type: 'image/png'
+        });
+
+        const shareData = {
+            title: 'What to Eat - 오늘의 메뉴',
+            text: this.getShareText(),
+            files: [file]
+        };
+
+        // Web Share API with files 지원 확인
+        if (navigator.canShare && navigator.canShare(shareData)) {
+            try {
+                await navigator.share(shareData);
+                this.closeShareModal();
+            } catch (err) {
+                if (err.name !== 'AbortError') {
+                    // 공유 실패 시 이미지 복사로 대체
+                    await this.copyImageToClipboard();
+                }
+            }
+        } else {
+            // Web Share API 미지원 시 이미지 복사
+            await this.copyImageToClipboard();
+            this.showToast('이미지가 복사되었습니다. SNS에 붙여넣기 해주세요!');
+        }
+    }
+
+    async copyImageToClipboard() {
+        if (!this.currentShareImageBlob) {
+            this.showToast('이미지를 준비 중입니다');
+            return;
+        }
+
+        try {
+            // Clipboard API로 이미지 복사
+            await navigator.clipboard.write([
+                new ClipboardItem({
+                    'image/png': this.currentShareImageBlob
+                })
+            ]);
+            this.showToast('이미지가 복사되었습니다!');
+            this.closeShareModal();
+        } catch (err) {
+            console.error('Image copy failed:', err);
+            // 클립보드 복사 실패 시 다운로드 유도
+            this.showToast('복사 실패. 이미지 저장을 이용해주세요.');
+        }
     }
 
     async generateShareImage() {
@@ -876,64 +946,6 @@ class ResultCard extends HTMLElement {
         return `오늘 ${this.getModeLabel()}으로 결정된 메뉴는 "${this.food.name}"! ${this.food.desc}`;
     }
 
-    getShareUrl() {
-        return window.location.href;
-    }
-
-    shareToTwitter() {
-        const text = encodeURIComponent(this.getShareText());
-        const url = encodeURIComponent(this.getShareUrl());
-        const hashtags = encodeURIComponent('WhatToEat,오늘뭐먹지');
-
-        const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}`;
-
-        window.open(twitterUrl, '_blank', 'width=600,height=400');
-        this.closeShareModal();
-        this.showToast('X(트위터)로 공유합니다');
-    }
-
-    shareToFacebook() {
-        const url = encodeURIComponent(this.getShareUrl());
-
-        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-
-        window.open(facebookUrl, '_blank', 'width=600,height=400');
-        this.closeShareModal();
-        this.showToast('페이스북으로 공유합니다');
-    }
-
-    shareToBand() {
-        const text = encodeURIComponent(this.getShareText() + ' - What to Eat');
-        const url = encodeURIComponent(this.getShareUrl());
-
-        const bandUrl = `https://band.us/plugin/share?body=${text}&route=${url}`;
-
-        window.open(bandUrl, '_blank', 'width=600,height=400');
-        this.closeShareModal();
-        this.showToast('네이버 밴드로 공유합니다');
-    }
-
-    async shareResult() {
-        // 기존 Web Share API 사용 (모바일 네이티브 공유)
-        const shareData = {
-            title: 'What to Eat - 오늘의 메뉴',
-            text: this.getShareText(),
-            url: this.getShareUrl()
-        };
-
-        if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
-            try {
-                await navigator.share(shareData);
-            } catch (err) {
-                if (err.name !== 'AbortError') {
-                    this.openShareModal();
-                }
-            }
-        } else {
-            this.openShareModal();
-        }
-    }
-
     async downloadImage() {
         try {
             const imageUrl = await this.generateShareImage();
@@ -945,17 +957,6 @@ class ResultCard extends HTMLElement {
         } catch (err) {
             console.error('Download failed:', err);
             this.showToast('저장에 실패했습니다');
-        }
-    }
-
-    async copyLink() {
-        try {
-            const text = this.getShareText() + '\n' + this.getShareUrl();
-            await navigator.clipboard.writeText(text);
-            this.showToast('클립보드에 복사되었습니다!');
-        } catch (err) {
-            console.error('Copy failed:', err);
-            this.showToast('복사에 실패했습니다');
         }
     }
 

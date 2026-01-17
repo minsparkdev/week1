@@ -107,37 +107,20 @@ class ResultCard extends HTMLElement {
                     <div class="share-modal-backdrop" id="share-backdrop"></div>
                     <div class="share-modal-content">
                         <div class="share-modal-header">
-                            <h3>Share</h3>
+                            <h3>Share Image</h3>
                             <button class="share-modal-close" id="share-close">✕</button>
                         </div>
+                        <div class="share-image-preview" id="share-image-preview">
+                            <div class="share-image-loading">Generating image...</div>
+                        </div>
                         <div class="share-options">
-                            <button class="share-option twitter" id="share-twitter">
-                                <span class="share-icon">
-                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                                </span>
-                                <span class="share-label">X (Twitter)</span>
+                            <button class="share-option sns-share" id="share-sns">
+                                <span class="share-icon">📤</span>
+                                <span class="share-label">Share to SNS</span>
                             </button>
-                            <button class="share-option facebook" id="share-facebook">
-                                <span class="share-icon">
-                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                                </span>
-                                <span class="share-label">Facebook</span>
-                            </button>
-                            <button class="share-option whatsapp" id="share-whatsapp">
-                                <span class="share-icon">
-                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                                </span>
-                                <span class="share-label">WhatsApp</span>
-                            </button>
-                            <button class="share-option linkedin" id="share-linkedin">
-                                <span class="share-icon">
-                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                                </span>
-                                <span class="share-label">LinkedIn</span>
-                            </button>
-                            <button class="share-option copy" id="share-copy">
-                                <span class="share-icon">🔗</span>
-                                <span class="share-label">Copy Link</span>
+                            <button class="share-option copy-image" id="share-copy-image">
+                                <span class="share-icon">📋</span>
+                                <span class="share-label">Copy Image</span>
                             </button>
                         </div>
                     </div>
@@ -531,37 +514,42 @@ class ResultCard extends HTMLElement {
                 color: #4A4458;
             }
 
-            /* SNS Brand Colors */
-            .share-option.twitter .share-icon {
-                background: #000000;
-                color: white;
+            /* Image Preview */
+            .share-image-preview {
+                margin-bottom: 1rem;
+                border-radius: 12px;
+                overflow: hidden;
+                background: #F8F7FA;
+                min-height: 120px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
-            .share-option.facebook .share-icon {
-                background: #1877F2;
-                color: white;
+            .share-image-preview img {
+                width: 100%;
+                height: auto;
+                display: block;
             }
 
-            .share-option.whatsapp .share-icon {
-                background: #25D366;
-                color: white;
+            .share-image-loading {
+                color: #7D7A8C;
+                font-size: 0.875rem;
             }
 
-            .share-option.linkedin .share-icon {
-                background: #0A66C2;
-                color: white;
-            }
-
-            .share-option.copy .share-icon {
+            /* Share Button Styles */
+            .share-option.sns-share .share-icon {
                 background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
                 color: white;
             }
 
-            .share-option.twitter:hover { background: #E8E8E8; }
-            .share-option.facebook:hover { background: #E7F0FD; }
-            .share-option.whatsapp:hover { background: #D9F5E6; }
-            .share-option.linkedin:hover { background: #E1EEF8; }
-            .share-option.copy:hover { background: #FFF0ED; }
+            .share-option.copy-image .share-icon {
+                background: linear-gradient(135deg, #D4C1EC, #B8E0D2);
+                color: white;
+            }
+
+            .share-option.sns-share:hover { background: #FFF0ED; }
+            .share-option.copy-image:hover { background: #F0EDF5; }
 
             /* Tablet */
             @media (max-width: 600px) {
@@ -756,31 +744,98 @@ class ResultCard extends HTMLElement {
             this.closeShareModal();
         });
 
-        // SNS share buttons
-        this.shadowRoot.getElementById('share-twitter').addEventListener('click', () => {
-            this.shareToTwitter();
+        // SNS share button - Web Share API with image
+        this.shadowRoot.getElementById('share-sns').addEventListener('click', () => {
+            this.shareImageToSNS();
         });
-        this.shadowRoot.getElementById('share-facebook').addEventListener('click', () => {
-            this.shareToFacebook();
-        });
-        this.shadowRoot.getElementById('share-whatsapp').addEventListener('click', () => {
-            this.shareToWhatsApp();
-        });
-        this.shadowRoot.getElementById('share-linkedin').addEventListener('click', () => {
-            this.shareToLinkedIn();
-        });
-        this.shadowRoot.getElementById('share-copy').addEventListener('click', () => {
-            this.copyLink();
-            this.closeShareModal();
+
+        // Copy image button
+        this.shadowRoot.getElementById('share-copy-image').addEventListener('click', () => {
+            this.copyImageToClipboard();
         });
     }
 
-    openShareModal() {
-        this.shadowRoot.getElementById('share-modal').classList.add('show');
+    async openShareModal() {
+        const modal = this.shadowRoot.getElementById('share-modal');
+        const preview = this.shadowRoot.getElementById('share-image-preview');
+
+        modal.classList.add('show');
+
+        // Generate image and show preview
+        try {
+            preview.innerHTML = '<div class="share-image-loading">Generating image...</div>';
+            const imageUrl = await this.generateShareImage();
+            this.currentShareImageUrl = imageUrl;
+
+            // Create blob for sharing
+            const response = await fetch(imageUrl);
+            this.currentShareImageBlob = await response.blob();
+
+            preview.innerHTML = `<img src="${imageUrl}" alt="Share image">`;
+        } catch (err) {
+            console.error('Image generation failed:', err);
+            preview.innerHTML = '<div class="share-image-loading">Image generation failed</div>';
+        }
     }
 
     closeShareModal() {
         this.shadowRoot.getElementById('share-modal').classList.remove('show');
+    }
+
+    async shareImageToSNS() {
+        if (!this.currentShareImageBlob) {
+            this.showToast('Preparing image...');
+            return;
+        }
+
+        const file = new File([this.currentShareImageBlob], `what-to-eat-${this.food.name}.png`, {
+            type: 'image/png'
+        });
+
+        const shareData = {
+            title: 'What to Eat - Today\'s Menu',
+            text: this.getShareText(),
+            files: [file]
+        };
+
+        // Check Web Share API with files support
+        if (navigator.canShare && navigator.canShare(shareData)) {
+            try {
+                await navigator.share(shareData);
+                this.closeShareModal();
+            } catch (err) {
+                if (err.name !== 'AbortError') {
+                    // Fallback to image copy
+                    await this.copyImageToClipboard();
+                }
+            }
+        } else {
+            // Web Share API not supported - copy image
+            await this.copyImageToClipboard();
+            this.showToast('Image copied! Paste it in your SNS app.');
+        }
+    }
+
+    async copyImageToClipboard() {
+        if (!this.currentShareImageBlob) {
+            this.showToast('Preparing image...');
+            return;
+        }
+
+        try {
+            // Copy image using Clipboard API
+            await navigator.clipboard.write([
+                new ClipboardItem({
+                    'image/png': this.currentShareImageBlob
+                })
+            ]);
+            this.showToast('Image copied!');
+            this.closeShareModal();
+        } catch (err) {
+            console.error('Image copy failed:', err);
+            // Fallback to download
+            this.showToast('Copy failed. Please use Save Image.');
+        }
     }
 
     async generateShareImage() {
@@ -891,73 +946,6 @@ class ResultCard extends HTMLElement {
         return `Today's ${this.getModeLabel()} result is "${this.food.name}"! ${this.food.desc}`;
     }
 
-    getShareUrl() {
-        return window.location.href;
-    }
-
-    shareToTwitter() {
-        const text = encodeURIComponent(this.getShareText());
-        const url = encodeURIComponent(this.getShareUrl());
-        const hashtags = encodeURIComponent('WhatToEat,FoodPicker');
-
-        const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}`;
-
-        window.open(twitterUrl, '_blank', 'width=600,height=400');
-        this.closeShareModal();
-        this.showToast('Sharing to X (Twitter)');
-    }
-
-    shareToFacebook() {
-        const url = encodeURIComponent(this.getShareUrl());
-
-        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-
-        window.open(facebookUrl, '_blank', 'width=600,height=400');
-        this.closeShareModal();
-        this.showToast('Sharing to Facebook');
-    }
-
-    shareToWhatsApp() {
-        const text = encodeURIComponent(this.getShareText() + ' - ' + this.getShareUrl());
-
-        const whatsappUrl = `https://wa.me/?text=${text}`;
-
-        window.open(whatsappUrl, '_blank', 'width=600,height=400');
-        this.closeShareModal();
-        this.showToast('Sharing to WhatsApp');
-    }
-
-    shareToLinkedIn() {
-        const url = encodeURIComponent(this.getShareUrl());
-
-        const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
-
-        window.open(linkedInUrl, '_blank', 'width=600,height=400');
-        this.closeShareModal();
-        this.showToast('Sharing to LinkedIn');
-    }
-
-    async shareResult() {
-        // Use Web Share API (native sharing on mobile)
-        const shareData = {
-            title: 'What to Eat - Today\'s Menu',
-            text: this.getShareText(),
-            url: this.getShareUrl()
-        };
-
-        if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
-            try {
-                await navigator.share(shareData);
-            } catch (err) {
-                if (err.name !== 'AbortError') {
-                    this.openShareModal();
-                }
-            }
-        } else {
-            this.openShareModal();
-        }
-    }
-
     async downloadImage() {
         try {
             const imageUrl = await this.generateShareImage();
@@ -969,17 +957,6 @@ class ResultCard extends HTMLElement {
         } catch (err) {
             console.error('Download failed:', err);
             this.showToast('Save failed');
-        }
-    }
-
-    async copyLink() {
-        try {
-            const text = this.getShareText() + '\n' + this.getShareUrl();
-            await navigator.clipboard.writeText(text);
-            this.showToast('Copied to clipboard!');
-        } catch (err) {
-            console.error('Copy failed:', err);
-            this.showToast('Copy failed');
         }
     }
 
