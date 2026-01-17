@@ -9,7 +9,8 @@
  * 최적화 전략:
  * 1. 최대 너비 800px로 리사이즈 (2x DPI 대응)
  * 2. PNG 압축 최적화
- * 3. 비율 유지
+ * 3. WebP 포맷으로 추가 생성 (SEO 최적화)
+ * 4. 비율 유지
  */
 
 const sharp = require('sharp');
@@ -19,6 +20,7 @@ const path = require('path');
 const SOURCE_DIR = path.join(__dirname, '../assets/images/foods');
 const BACKUP_DIR = path.join(__dirname, '../assets/images/foods_original');
 const MAX_WIDTH = 800; // 2x DPI for 400px display
+const GENERATE_WEBP = true; // WebP 생성 여부
 
 async function getImageInfo(filePath) {
     const stats = fs.statSync(filePath);
@@ -60,11 +62,40 @@ async function optimizeImage(inputPath, outputPath) {
     return { width, height };
 }
 
+async function generateWebP(inputPath, outputPath) {
+    const metadata = await sharp(inputPath).metadata();
+
+    let width = metadata.width;
+    let height = metadata.height;
+
+    if (width > MAX_WIDTH) {
+        const ratio = MAX_WIDTH / width;
+        width = MAX_WIDTH;
+        height = Math.round(metadata.height * ratio);
+    }
+
+    await sharp(inputPath)
+        .resize(width, height, {
+            fit: 'inside',
+            withoutEnlargement: true
+        })
+        .webp({
+            quality: 85,
+            effort: 6,
+            smartSubsample: true
+        })
+        .toFile(outputPath);
+
+    const stats = fs.statSync(outputPath);
+    return { width, height, size: stats.size };
+}
+
 async function main() {
     console.log('🖼️  이미지 최적화 시작\n');
     console.log(`📁 소스: ${SOURCE_DIR}`);
     console.log(`📁 백업: ${BACKUP_DIR}`);
-    console.log(`📐 최대 너비: ${MAX_WIDTH}px\n`);
+    console.log(`📐 최대 너비: ${MAX_WIDTH}px`);
+    console.log(`🌐 WebP 생성: ${GENERATE_WEBP ? 'YES' : 'NO'}\n`);
 
     // 백업 폴더 생성
     if (!fs.existsSync(BACKUP_DIR)) {
@@ -78,15 +109,17 @@ async function main() {
 
     let totalOriginal = 0;
     let totalOptimized = 0;
+    let totalWebP = 0;
 
-    console.log('━'.repeat(70));
-    console.log('파일명'.padEnd(20) + '원본 크기'.padEnd(15) + '원본 용량'.padEnd(12) + '→ 최적화 크기'.padEnd(15) + '최적화 용량');
-    console.log('━'.repeat(70));
+    console.log('━'.repeat(85));
+    console.log('파일명'.padEnd(20) + '원본 크기'.padEnd(15) + '원본 용량'.padEnd(12) + '→ PNG'.padEnd(12) + '→ WebP'.padEnd(12) + '절감률');
+    console.log('━'.repeat(85));
 
     for (const file of files) {
         const inputPath = path.join(SOURCE_DIR, file);
         const backupPath = path.join(BACKUP_DIR, file);
         const tempPath = path.join(SOURCE_DIR, `temp_${file}`);
+        const webpPath = path.join(SOURCE_DIR, file.replace('.png', '.webp'));
 
         try {
             // 원본 정보
@@ -98,7 +131,7 @@ async function main() {
                 fs.copyFileSync(inputPath, backupPath);
             }
 
-            // 최적화 (임시 파일로)
+            // PNG 최적화 (임시 파일로)
             const newDimensions = await optimizeImage(inputPath, tempPath);
 
             // 최적화된 파일 정보
@@ -109,14 +142,26 @@ async function main() {
             fs.unlinkSync(inputPath);
             fs.renameSync(tempPath, inputPath);
 
+            // WebP 생성
+            let webpInfo = null;
+            if (GENERATE_WEBP) {
+                webpInfo = await generateWebP(inputPath, webpPath);
+                totalWebP += webpInfo.size;
+            }
+
             // 결과 출력
-            const reduction = ((1 - optimizedInfo.size / originalInfo.size) * 100).toFixed(0);
+            const pngReduction = ((1 - optimizedInfo.size / originalInfo.size) * 100).toFixed(0);
+            const webpReduction = webpInfo
+                ? ((1 - webpInfo.size / originalInfo.size) * 100).toFixed(0)
+                : '-';
+
             console.log(
                 file.padEnd(20) +
                 `${originalInfo.width}×${originalInfo.height}`.padEnd(15) +
                 `${originalInfo.sizeMB}MB`.padEnd(12) +
-                `→ ${newDimensions.width}×${newDimensions.height}`.padEnd(15) +
-                `${optimizedInfo.sizeMB}MB (-${reduction}%)`
+                `${optimizedInfo.sizeMB}MB`.padEnd(12) +
+                (webpInfo ? `${(webpInfo.size / (1024 * 1024)).toFixed(2)}MB`.padEnd(12) : '-'.padEnd(12)) +
+                `-${webpReduction}%`
             );
 
         } catch (err) {
@@ -128,18 +173,24 @@ async function main() {
         }
     }
 
-    console.log('━'.repeat(70));
+    console.log('━'.repeat(85));
 
     const totalOriginalMB = (totalOriginal / (1024 * 1024)).toFixed(2);
     const totalOptimizedMB = (totalOptimized / (1024 * 1024)).toFixed(2);
-    const totalReduction = ((1 - totalOptimized / totalOriginal) * 100).toFixed(0);
+    const totalWebPMB = (totalWebP / (1024 * 1024)).toFixed(2);
+    const pngReduction = ((1 - totalOptimized / totalOriginal) * 100).toFixed(0);
+    const webpReduction = ((1 - totalWebP / totalOriginal) * 100).toFixed(0);
 
     console.log(`\n📊 결과 요약:`);
     console.log(`   원본 총 용량: ${totalOriginalMB}MB`);
-    console.log(`   최적화 총 용량: ${totalOptimizedMB}MB`);
-    console.log(`   절감률: ${totalReduction}%`);
-    console.log(`   절감 용량: ${((totalOriginal - totalOptimized) / (1024 * 1024)).toFixed(2)}MB`);
+    console.log(`   PNG 총 용량: ${totalOptimizedMB}MB (절감 ${pngReduction}%)`);
+    if (GENERATE_WEBP) {
+        console.log(`   WebP 총 용량: ${totalWebPMB}MB (절감 ${webpReduction}%)`);
+    }
     console.log(`\n💾 원본 파일은 ${BACKUP_DIR}에 백업됨`);
+    if (GENERATE_WEBP) {
+        console.log(`🌐 WebP 파일은 PNG와 동일 폴더에 생성됨`);
+    }
 }
 
 main().catch(console.error);

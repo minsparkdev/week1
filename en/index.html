@@ -20,9 +20,12 @@
     </script>
     <meta charset="UTF-8">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
+    <link rel="apple-touch-icon" href="/favicon-192.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>What to Eat? | Free Food Recommendation Service</title>
-    <meta name="description" content="Free food recommendation service for the indecisive. Random picks, Food World Cup, Food Tarot, Balance Game, Payment King - decide your menu in fun and easy ways!">
+    <meta name="description" content="What should I eat today? A free food recommendation service for the indecisive. Try 5 fun ways to decide your meal: Quick Pick random recommendations, Food World Cup tournament, Food Tarot fortune telling, Balance Game, and Payment King. Discover new foods every day!">
     <meta name="keywords" content="food recommendation, menu picker, what to eat, lunch menu, dinner menu, food world cup, food tarot, balance game, payment king, random food, meal decision">
     <meta name="author" content="What to Eat">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -74,9 +77,15 @@
     <link rel="preconnect" href="https://pagead2.googlesyndication.com">
     <link rel="dns-prefetch" href="https://image.pollinations.ai">
 
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="../style.css" as="style">
+    <link rel="preload" href="../assets/images/foods/food_think.webp" as="image" type="image/webp">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;800&display=swap" as="style">
+
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;800&display=swap" rel="stylesheet"></noscript>
 
     <!-- Structured Data: WebApplication -->
     <script type="application/ld+json">
@@ -170,13 +179,17 @@
 
     <main role="main" id="main-content">
         <section class="hero" aria-labelledby="hero-title">
-            <img src="../assets/images/foods/food_think.png"
-                 alt="Cute character thinking about food - What to Eat food recommendation service"
-                 class="hero-image"
-                 width="160"
-                 height="160"
-                 loading="eager"
-                 itemprop="image">
+            <picture>
+                <source srcset="../assets/images/foods/food_think.webp" type="image/webp">
+                <img src="../assets/images/foods/food_think.png"
+                     alt="Cute character thinking about food - What to Eat food recommendation service"
+                     class="hero-image"
+                     width="160"
+                     height="160"
+                     loading="eager"
+                     fetchpriority="high"
+                     itemprop="image">
+            </picture>
             <h1 id="hero-title" itemprop="headline">Can't decide what to eat?</h1>
             <p itemprop="description">How hard is it to decide? Choose the solution that fits your situation!</p>
         </section>
