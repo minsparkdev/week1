@@ -102,6 +102,47 @@ class ResultCard extends HTMLElement {
                     </button>
                 </div>
 
+                <!-- SNS 공유 모달 -->
+                <div class="share-modal" id="share-modal">
+                    <div class="share-modal-backdrop" id="share-backdrop"></div>
+                    <div class="share-modal-content">
+                        <div class="share-modal-header">
+                            <h3>공유하기</h3>
+                            <button class="share-modal-close" id="share-close">✕</button>
+                        </div>
+                        <div class="share-options">
+                            <button class="share-option kakao" id="share-kakao">
+                                <span class="share-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.48 3 2 6.48 2 10.8c0 2.76 1.84 5.18 4.6 6.54-.2.72-.73 2.62-.84 3.03-.13.52.19.51.4.37.17-.11 2.67-1.81 3.75-2.55.68.1 1.38.15 2.09.15 5.52 0 10-3.48 10-7.8S17.52 3 12 3z"/></svg>
+                                </span>
+                                <span class="share-label">카카오톡</span>
+                            </button>
+                            <button class="share-option twitter" id="share-twitter">
+                                <span class="share-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                </span>
+                                <span class="share-label">X (트위터)</span>
+                            </button>
+                            <button class="share-option facebook" id="share-facebook">
+                                <span class="share-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                </span>
+                                <span class="share-label">페이스북</span>
+                            </button>
+                            <button class="share-option band" id="share-band">
+                                <span class="share-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 16.894c-.465.465-1.23.465-1.695 0L12 12.695l-4.199 4.199c-.465.465-1.23.465-1.695 0-.465-.465-.465-1.23 0-1.695L10.305 11l-4.199-4.199c-.465-.465-.465-1.23 0-1.695.465-.465 1.23-.465 1.695 0L12 9.305l4.199-4.199c.465-.465 1.23-.465 1.695 0 .465.465.465 1.23 0 1.695L13.695 11l4.199 4.199c.465.465.465 1.23 0 1.695z"/></svg>
+                                </span>
+                                <span class="share-label">네이버 밴드</span>
+                            </button>
+                            <button class="share-option copy" id="share-copy">
+                                <span class="share-icon">🔗</span>
+                                <span class="share-label">링크 복사</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="bottom-buttons">
                     <button class="retry-btn primary-retry" id="retry-btn">
                         <span class="btn-icon">${this.getRetryLabel().icon}</span>
@@ -367,6 +408,161 @@ class ResultCard extends HTMLElement {
                 opacity: 1;
             }
 
+            /* SNS 공유 모달 */
+            .share-modal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 1001;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .share-modal.show {
+                display: flex;
+            }
+
+            .share-modal-backdrop {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(74, 68, 88, 0.5);
+                backdrop-filter: blur(4px);
+                animation: fadeIn 0.2s ease-out;
+            }
+
+            .share-modal-content {
+                position: relative;
+                background: white;
+                border-radius: 24px;
+                padding: 1.5rem;
+                width: 90%;
+                max-width: 320px;
+                box-shadow: 0 20px 60px rgba(74, 68, 88, 0.3);
+                animation: slideUp 0.3s ease-out;
+            }
+
+            @keyframes slideUp {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+
+            .share-modal-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 1.25rem;
+                padding-bottom: 0.75rem;
+                border-bottom: 1px solid rgba(74, 68, 88, 0.1);
+            }
+
+            .share-modal-header h3 {
+                margin: 0;
+                font-size: 1.1rem;
+                color: #4A4458;
+                font-weight: 600;
+            }
+
+            .share-modal-close {
+                background: none;
+                border: none;
+                font-size: 1.25rem;
+                color: #7D7A8C;
+                cursor: pointer;
+                padding: 0.25rem;
+                line-height: 1;
+                transition: color 0.2s;
+            }
+
+            .share-modal-close:hover {
+                color: #4A4458;
+            }
+
+            .share-options {
+                display: flex;
+                flex-direction: column;
+                gap: 0.625rem;
+            }
+
+            .share-option {
+                display: flex;
+                align-items: center;
+                gap: 0.875rem;
+                padding: 0.875rem 1rem;
+                border: none;
+                border-radius: 14px;
+                background: #F8F7FA;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                text-align: left;
+            }
+
+            .share-option:hover {
+                transform: translateX(4px);
+            }
+
+            .share-option:active {
+                transform: translateX(2px);
+            }
+
+            .share-icon {
+                width: 36px;
+                height: 36px;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.25rem;
+            }
+
+            .share-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .share-label {
+                font-size: 0.9rem;
+                font-weight: 500;
+                color: #4A4458;
+            }
+
+            /* SNS 브랜드 컬러 */
+            .share-option.kakao .share-icon {
+                background: #FEE500;
+                color: #191919;
+            }
+
+            .share-option.twitter .share-icon {
+                background: #000000;
+                color: white;
+            }
+
+            .share-option.facebook .share-icon {
+                background: #1877F2;
+                color: white;
+            }
+
+            .share-option.band .share-icon {
+                background: #03C75A;
+                color: white;
+            }
+
+            .share-option.copy .share-icon {
+                background: linear-gradient(135deg, #FFB5A7, #FFC8A2);
+                color: white;
+            }
+
+            .share-option.kakao:hover { background: #FEF6D0; }
+            .share-option.twitter:hover { background: #E8E8E8; }
+            .share-option.facebook:hover { background: #E7F0FD; }
+            .share-option.band:hover { background: #D9F5E6; }
+            .share-option.copy:hover { background: #FFF0ED; }
+
             /* Tablet */
             @media (max-width: 600px) {
                 .result-container {
@@ -523,9 +719,9 @@ class ResultCard extends HTMLElement {
     }
 
     bindEvents() {
-        // 공유 버튼
+        // 공유 버튼 - 모달 열기
         this.shadowRoot.getElementById('share-btn').addEventListener('click', () => {
-            this.shareResult();
+            this.openShareModal();
         });
 
         // 다운로드 버튼
@@ -551,6 +747,40 @@ class ResultCard extends HTMLElement {
                 composed: true
             }));
         });
+
+        // 공유 모달 이벤트
+        this.shadowRoot.getElementById('share-backdrop').addEventListener('click', () => {
+            this.closeShareModal();
+        });
+        this.shadowRoot.getElementById('share-close').addEventListener('click', () => {
+            this.closeShareModal();
+        });
+
+        // SNS 공유 버튼들
+        this.shadowRoot.getElementById('share-kakao').addEventListener('click', () => {
+            this.shareToKakao();
+        });
+        this.shadowRoot.getElementById('share-twitter').addEventListener('click', () => {
+            this.shareToTwitter();
+        });
+        this.shadowRoot.getElementById('share-facebook').addEventListener('click', () => {
+            this.shareToFacebook();
+        });
+        this.shadowRoot.getElementById('share-band').addEventListener('click', () => {
+            this.shareToBand();
+        });
+        this.shadowRoot.getElementById('share-copy').addEventListener('click', () => {
+            this.copyLink();
+            this.closeShareModal();
+        });
+    }
+
+    openShareModal() {
+        this.shadowRoot.getElementById('share-modal').classList.add('show');
+    }
+
+    closeShareModal() {
+        this.shadowRoot.getElementById('share-modal').classList.remove('show');
     }
 
     async generateShareImage() {
@@ -657,11 +887,66 @@ class ResultCard extends HTMLElement {
         ctx.closePath();
     }
 
+    getShareText() {
+        return `오늘 ${this.getModeLabel()}으로 결정된 메뉴는 "${this.food.name}"! ${this.food.desc}`;
+    }
+
+    getShareUrl() {
+        return window.location.href;
+    }
+
+    shareToKakao() {
+        // 카카오톡 공유 (카카오 SDK 없이 URL 스킴 사용)
+        const text = encodeURIComponent(this.getShareText() + ' - What to Eat');
+        const url = encodeURIComponent(this.getShareUrl());
+
+        // 카카오톡 공유 URL (모바일)
+        const kakaoUrl = `https://story.kakao.com/share?url=${url}&text=${text}`;
+
+        window.open(kakaoUrl, '_blank', 'width=600,height=400');
+        this.closeShareModal();
+        this.showToast('카카오스토리로 공유합니다');
+    }
+
+    shareToTwitter() {
+        const text = encodeURIComponent(this.getShareText());
+        const url = encodeURIComponent(this.getShareUrl());
+        const hashtags = encodeURIComponent('WhatToEat,오늘뭐먹지');
+
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}`;
+
+        window.open(twitterUrl, '_blank', 'width=600,height=400');
+        this.closeShareModal();
+        this.showToast('X(트위터)로 공유합니다');
+    }
+
+    shareToFacebook() {
+        const url = encodeURIComponent(this.getShareUrl());
+
+        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+
+        window.open(facebookUrl, '_blank', 'width=600,height=400');
+        this.closeShareModal();
+        this.showToast('페이스북으로 공유합니다');
+    }
+
+    shareToBand() {
+        const text = encodeURIComponent(this.getShareText() + ' - What to Eat');
+        const url = encodeURIComponent(this.getShareUrl());
+
+        const bandUrl = `https://band.us/plugin/share?body=${text}&route=${url}`;
+
+        window.open(bandUrl, '_blank', 'width=600,height=400');
+        this.closeShareModal();
+        this.showToast('네이버 밴드로 공유합니다');
+    }
+
     async shareResult() {
+        // 기존 Web Share API 사용 (모바일 네이티브 공유)
         const shareData = {
             title: 'What to Eat - 오늘의 메뉴',
-            text: `오늘 ${this.getModeLabel()}으로 결정된 메뉴는 "${this.food.name}"! ${this.food.desc}`,
-            url: window.location.href
+            text: this.getShareText(),
+            url: this.getShareUrl()
         };
 
         if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
@@ -669,11 +954,11 @@ class ResultCard extends HTMLElement {
                 await navigator.share(shareData);
             } catch (err) {
                 if (err.name !== 'AbortError') {
-                    this.copyLink();
+                    this.openShareModal();
                 }
             }
         } else {
-            this.copyLink();
+            this.openShareModal();
         }
     }
 
@@ -693,7 +978,7 @@ class ResultCard extends HTMLElement {
 
     async copyLink() {
         try {
-            const text = `오늘 ${this.getModeLabel()}으로 결정된 메뉴는 "${this.food.name}"! ${this.food.desc} - What to Eat`;
+            const text = this.getShareText() + '\n' + this.getShareUrl();
             await navigator.clipboard.writeText(text);
             this.showToast('클립보드에 복사되었습니다!');
         } catch (err) {
