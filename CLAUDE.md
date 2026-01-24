@@ -11,7 +11,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Development Commands
 
 ```bash
-# Start local development server
+# Start local development server (access at http://localhost:8000)
 python3 -m http.server 8000
 
 # Optimize images (requires npm install first)
@@ -37,12 +37,14 @@ node scripts/optimize-images.js
 │   ├── components/           # Web Components for each game mode
 │   ├── data/foods.js         # Food database (16 items), balance questions, utilities
 │   └── utils/                # storage.js, tasteAnalyzer.js
-├── guide/                    # Static guide pages for each game mode
-└── assets/images/foods/      # Optimized food images
+├── guide/                    # Static guide pages (SEO landing pages for each mode)
+├── blog/                     # Static blog posts for content marketing
+└── assets/images/foods/      # Optimized food images (food-1.png through food-16.png)
 
-/en/                          # English version (mirrors Korean structure)
+/en/                          # English version (mirrors Korean structure exactly)
 ├── js/                       # Localized components with English text
-└── guide/                    # English guide pages
+├── guide/                    # English guide pages
+└── blog/                     # English blog posts
 ```
 
 **Important**: When adding features, update BOTH Korean (`/js/`) and English (`/en/js/`) versions to maintain feature parity.
@@ -77,7 +79,7 @@ Custom events used:
 - `retry-mode` - Component → App (restart current game)
 - `go-home` - Component → App (return to mode selection hub)
 
-Mode identifiers in app.js: `random`, `worldcup`, `tarot`, `balance`, `payment`, `fullcourse` (not yet implemented)
+Mode identifiers in app.js: `random`, `worldcup`, `tarot`, `balance`, `payment` (functional), `fullcourse` (not yet implemented)
 
 ### Data Model
 
@@ -111,4 +113,11 @@ Balance questions modify user's taste profile which is matched against food trai
 3. Import in `index.html` module script
 4. Add case in `app.js` `loadModeComponent()` switch statement
 5. Add mode card to `.mode-grid` in `index.html`
-6. **Repeat steps 1-5 for `/en/` directory** with English text
+6. Create guide page at `guide/new-mode.html`
+7. **Repeat steps 1-6 for `/en/` directory** with English text
+
+## Adding New Foods
+
+1. Add food image as `assets/images/foods/food-{id}.png` (run `node scripts/optimize-images.js` after)
+2. Add food object to `foods` array in `js/data/foods.js` with all required fields (id, name, category, image, desc, tarot, emoji, traits)
+3. **Repeat for `/en/js/data/foods.js`** with English translations
